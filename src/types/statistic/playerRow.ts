@@ -110,11 +110,13 @@ export interface ItemDetails {
     lore?: string
     components?: string[] | null
     tier?: number
+    purchaseTime?: string
   }
 }
 
 export interface SlotInterface {
   itemDetails: ItemDetails | null
+  player?: Player
 }
 
 // Types for ItemDescription component

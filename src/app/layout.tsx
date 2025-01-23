@@ -9,6 +9,7 @@ import { Exo_2 } from 'next/font/google'
 import type { Metadata } from 'next'
 
 import '@/styles/globals.scss'
+import EarlyAccess from '@/components/inDevelopment/EarlyAccess'
 
 const exo2 = Exo_2({
   weight: ['400', '500', '700', '900'],
@@ -41,6 +42,7 @@ export default function RootLayout({
             <TooltipAbilityPortal />
           </div>
           <Footer />
+          <EarlyAccess /> {/* temporary */}
         </body>
       </html>
     </StoreProvider>

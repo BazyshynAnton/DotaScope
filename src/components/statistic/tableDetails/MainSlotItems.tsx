@@ -7,6 +7,8 @@ import { PlayerRowUtility } from '@/utils/statistic/PlayerRowUtility'
 
 import type { SlotInterface } from '@/types/statistic/playerRow'
 
+import styles from '@/styles/statistic/PlayerRow.module.scss'
+
 // Initial State for useState in MainSlotItems component.
 const initialStateMainSlot = {
   0: false,
@@ -17,7 +19,7 @@ const initialStateMainSlot = {
   5: false,
 }
 
-export default function MainSlotItems({ itemDetails }: SlotInterface) {
+export default function MainSlotItems({ itemDetails, player }: SlotInterface) {
   //
   //
   // State for manage tooltip about each item.
@@ -40,7 +42,7 @@ export default function MainSlotItems({ itemDetails }: SlotInterface) {
       {items.map((item: string, idx: number) => {
         //
         // Get details about Current Item
-        const details = prrUtility.findDetailsAboutCurrentItem('item', item, itemDetails)
+        const details = prrUtility.findDetailsAboutCurrentItem('item', item, itemDetails, player)
 
         // Function to update the toolTipStatus when mouse enter
         const handleMouseEnter = () =>
@@ -51,7 +53,7 @@ export default function MainSlotItems({ itemDetails }: SlotInterface) {
           prrUtility.handleMouseLeave('main_slot', idx, setToolTipStatus)
 
         return (
-          <React.Fragment key={idx}>
+          <div key={idx} className={styles.mainAndBackpackItemWrapper}>
             {toolTipStatus[idx] && <ItemDescription details={details} item={item} />}
             <Image
               src={
@@ -67,7 +69,10 @@ export default function MainSlotItems({ itemDetails }: SlotInterface) {
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             />
-          </React.Fragment>
+            {item !== 'empty_slot' && details && (
+              <span className={styles.purchaseTime}>{details[item].purchaseTime}</span>
+            )}
+          </div>
         )
       })}
     </>

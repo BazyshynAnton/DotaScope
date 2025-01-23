@@ -1,4 +1,5 @@
 import { ItemDetails, UPlayerRow } from '@/types/statistic/playerRow'
+import { Player } from '@/types/statistic/tableDetails'
 
 const enum slotSizes {
   Main = 6,
@@ -149,24 +150,49 @@ export class PlayerRowUtility implements UPlayerRow {
     flag: string,
     item: string,
     detailsAboutItems?: ItemDetails,
+    player?: Player,
   ): ItemDetails | null {
-    if (flag === 'item' && detailsAboutItems) {
-      const res: ItemDetails = {}
+    switch (flag) {
+      case 'item': {
+        if (detailsAboutItems) {
+          const res: ItemDetails = {}
 
-      for (const [_, value] of Object.entries(detailsAboutItems)) {
-        if (item === value.img) {
-          res[item] = value
+          for (const [_, value] of Object.entries(detailsAboutItems)) {
+            if (item === value.img) {
+              res[item] = value
+              break
+            }
+          }
+
+          if (typeof player?.purchase_log !== 'undefined') {
+            player.purchase_log.some((purchase) => {
+              if (item === purchase.key) {
+                let minutes = Math.floor(purchase.time / 60)
+                let seconds = purchase.time % 60
+
+                if (minutes < 0 && seconds < 0) {
+                  minutes = -1
+                  seconds *= -1
+                }
+
+                res[item].purchaseTime = `${minutes}:${seconds.toString().padStart(2, '0')}`
+                return true // breaking the loop
+              }
+            })
+          }
 
           return res
         }
       }
-    } else if (flag === 'aghanim') {
-      if (item === 'ultimate_scepter') {
-        return this.mUltimateScepter
-      }
+      case 'aghanim': {
+        if (item === 'ultimate_scepter') {
+          return this.mUltimateScepter
+        }
 
-      if (item === 'aghanims_shard') {
-        return this.mAghanimsShard
+        if (item === 'aghanims_shard') {
+          return this.mAghanimsShard
+        }
+        break
       }
     }
 

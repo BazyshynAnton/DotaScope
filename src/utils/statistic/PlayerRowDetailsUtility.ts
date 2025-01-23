@@ -87,7 +87,7 @@ export class PlayerRowDetailsUtility implements UPlayerRowDetails {
     // If player is not Anonymous -> find player data
 
     if ('account_id' in player) {
-      playersProfiles.forEach((playerProfile) => {
+      playersProfiles.some((playerProfile) => {
         if ('profile' in playerProfile) {
           if (player.account_id === playerProfile.profile.account_id) {
             // avatar
@@ -101,6 +101,8 @@ export class PlayerRowDetailsUtility implements UPlayerRowDetails {
 
             // rank tier
             this.mPlayerDetails.rank_tier_info = playerProfile.rank_tier
+
+            return true // break the loop
           }
         }
       })

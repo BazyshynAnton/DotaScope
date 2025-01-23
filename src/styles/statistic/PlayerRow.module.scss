@@ -168,6 +168,28 @@ $direColor: #df2e38;
   width: 250px;
 }
 
+.mainAndBackpackItemWrapper {
+  position: relative;
+  width: 37px;
+  height: 27px;
+}
+
+.purchaseTime {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+
+  text-align: center;
+  font-size: 10px;
+
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #ffffffb0;
+
+  pointer-events: none;
+  z-index: 2;
+}
+
 .slots__mainSlot,
 .slots__backpack {
   img {

@@ -22,13 +22,13 @@ export default function BuildingsMap() {
           width={350}
           height={350}
         />
-        {buildings.map((b) => {
+        {buildings.map((b, idx) => {
           const isKilled = killedBuildings?.some((kb) => kb.key === b.key)
           const filter = isKilled ? 'grayscale(100%) brightness(70%)' : 'contrast(150%)'
 
           return (
             <span
-              key={b.offsetLeft + b.offsetTop}
+              key={idx}
               style={{
                 position: 'absolute',
                 top: b.offsetTop,
@@ -75,6 +75,7 @@ export default function BuildingsMap() {
 
             return (
               <div
+                key={pl.firstHero.key}
                 style={{
                   position: 'absolute',
                   top: pl.position.offsetTop,

@@ -20,10 +20,10 @@ export default function PlayerItems({
       <div className={styles.playerDataCell__items__wrapper}>
         <div className={styles.slots}>
           <div className={styles.slots__mainSlot}>
-            <MainSlotItems itemDetails={itemDetails} />
+            <MainSlotItems itemDetails={itemDetails} player={player} />
           </div>
           <div className={styles.slots__backpack}>
-            <BackpackItems itemDetails={itemDetails} />
+            <BackpackItems itemDetails={itemDetails} player={player} />
           </div>
         </div>
         <div className={styles.neutral}>
