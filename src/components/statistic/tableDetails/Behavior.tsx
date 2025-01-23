@@ -13,11 +13,13 @@ export default function Behavior({ details, item }: ItemDescriptionInterface) {
   // [example] -> Point Target / AOE
   let target: string = ''
   if (Array.isArray(details[item].behavior)) {
-    details[item].behavior.forEach((str) => {
-      target += str + ' / '
+    details[item].behavior.forEach((str, idx) => {
+      if (idx !== (details[item].behavior as string[]).length - 1) {
+        target += str + ' / '
+      } else {
+        target += str
+      }
     })
-
-    target = target.substring(0, target.length - 2)
   } else if (typeof details[item].behavior === 'string') target = details[item].behavior
 
   const dispellableCondition =

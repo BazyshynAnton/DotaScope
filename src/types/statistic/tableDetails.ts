@@ -15,6 +15,12 @@ export type Player = {
   backpack_1: number
   backpack_2: number
   item_neutral: number
+  purchase_log: [
+    {
+      time: number
+      key: string
+    },
+  ]
   kills: number
   deaths: number
   assists: number
@@ -56,6 +62,8 @@ export type Player = {
   abandons: number
   rank_tier: number
   is_subscriber: boolean
+  lane?: number
+  lane_role?: number
   benchmarks: {
     gold_per_min: {
       raw: number

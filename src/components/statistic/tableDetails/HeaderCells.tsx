@@ -1,3 +1,5 @@
+import { ReactTooltip } from '@/shared/reactImports'
+
 import styles from '@/styles/statistic/TableDetails.module.scss'
 
 export default function HeaderCells() {
@@ -39,7 +41,7 @@ function TableHeaderCell({
 }) {
   return (
     <th
-      title={title}
+      data-tooltip-id={str}
       // className styleFlags:
       // - kda stands for Kills, Deaths, Assists.
       // - lhDhGpmXpm stands for Last hit, Denied,
@@ -51,6 +53,7 @@ function TableHeaderCell({
       } ${styleFlag === 'netHdTdHh' && styles.netHdTdHh}`}
     >
       {str}
+      <ReactTooltip id={str} content={title} place='top' style={{ background: '#242f39' }} />
     </th>
   )
 }

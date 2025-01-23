@@ -7,6 +7,8 @@ import { PlayerRowUtility } from '@/utils/statistic/PlayerRowUtility'
 
 import type { SlotInterface } from '@/types/statistic/playerRow'
 
+import styles from '@/styles/statistic/PlayerRow.module.scss'
+
 // Initial State for useState in BackpackItems component.
 const initialStateBackpack = {
   0: false,
@@ -14,7 +16,7 @@ const initialStateBackpack = {
   2: false,
 }
 
-export default function BackpackItems({ itemDetails }: SlotInterface) {
+export default function BackpackItems({ itemDetails, player }: SlotInterface) {
   //
   // State for manage tooltip about each item.
   const [toolTipStatus, setToolTipStatus] = useState<{
@@ -36,7 +38,7 @@ export default function BackpackItems({ itemDetails }: SlotInterface) {
       {items.map((item: string, idx: number) => {
         //
         // Get details about Current Item
-        const details = prrUtility.findDetailsAboutCurrentItem('item', item, itemDetails)
+        const details = prrUtility.findDetailsAboutCurrentItem('item', item, itemDetails, player)
 
         // Function to update the toolTipStatus when mouse enter
         const handleMouseEnter = () =>
@@ -47,7 +49,7 @@ export default function BackpackItems({ itemDetails }: SlotInterface) {
           prrUtility.handleMouseLeave('backpack', idx, setToolTipStatus)
 
         return (
-          <React.Fragment key={idx}>
+          <div key={idx} className={styles.mainAndBackpackItemWrapper}>
             {toolTipStatus[idx] && <ItemDescription details={details} item={item} />}
             <Image
               src={
@@ -63,7 +65,10 @@ export default function BackpackItems({ itemDetails }: SlotInterface) {
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
             />
-          </React.Fragment>
+            {item !== 'empty_slot' && details && (
+              <span className={styles.purchaseTime}>{details[item].purchaseTime}</span>
+            )}
+          </div>
         )
       })}
     </>

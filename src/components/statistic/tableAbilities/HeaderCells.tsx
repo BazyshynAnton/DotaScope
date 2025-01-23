@@ -1,3 +1,5 @@
+import { ReactTooltip } from '@/shared/reactImports'
+
 import styles from '@/styles/statistic/TableAbilities.module.scss'
 
 export default function HeaderCells() {
@@ -14,5 +16,14 @@ export default function HeaderCells() {
 }
 
 function TableHeaderCell({ str, title }: { str: string; title: string }) {
-  return <th title={title}>{str}</th>
+  return (
+    <th data-tooltip-id={str}>
+      {str}
+      <ReactTooltip
+        id={str}
+        content={title !== 'Hero' ? title + ' - ' + str : title}
+        style={{ background: '#242f39' }}
+      />
+    </th>
+  )
 }

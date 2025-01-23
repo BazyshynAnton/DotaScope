@@ -19,8 +19,9 @@ export default function About() {
           &bull; world{"'"}s leaderboard.(this feature under development)
           <br />
           <br />
-          This project was motivated by advertising and annoying Steam authorization on same Dota2
-          data platforms such as DotaBuff, Opendota, etc.
+          This project was motivated by the distractions on the same Dota2 data platforms, such as
+          DotaBuff, Opendota, etc. The main goal is to show users only important statistics and
+          respect their time.
           <br />
           I created DotaScope because I have a passion for developing applications that can help
           people solve various problems.
