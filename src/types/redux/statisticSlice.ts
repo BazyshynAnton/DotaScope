@@ -94,6 +94,8 @@ export interface MatchDetails {
 
   picks_bans: PicksAndBans[]
 
+  objectives: Objectives[]
+
   od_data: {
     has_api: boolean
     has_gcdata: boolean
@@ -109,6 +111,12 @@ export type PicksAndBans = {
   hero_id: number
   team: number
   order: number
+}
+
+export type Objectives = {
+  time: number
+  type: string
+  key?: string
 }
 
 export interface PlayerProfile {

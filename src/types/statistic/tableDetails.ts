@@ -56,6 +56,8 @@ export type Player = {
   abandons: number
   rank_tier: number
   is_subscriber: boolean
+  lane?: number
+  lane_role?: number
   benchmarks: {
     gold_per_min: {
       raw: number
