@@ -65,7 +65,7 @@ export default function Aghanim({ player }: { player: Player }) {
         <Image
           src={`/pictures/dotaItemIcons/${player.aghanims_shard === 1 ? 'shard_1' : 'shard_0'}.png`}
           alt=''
-          width={41}
+          width={45}
           height={24}
           onMouseEnter={() => handleMouseEnterAghanim(1)}
           onMouseLeave={() => handleMouseLeaveAghanim(1)}

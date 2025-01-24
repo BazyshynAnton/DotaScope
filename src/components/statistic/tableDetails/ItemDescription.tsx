@@ -44,10 +44,17 @@ export default function ItemDescription({ details, item }: ItemDescriptionInterf
 }
 
 function ItemContent({ details, item }: ItemDescriptionInterface) {
+  const ref = useRef<HTMLDivElement>(null)
+
   return (
     <>
       <NameAndCost details={details} item={item} />
-      <div className={styles.tooltip__description}>
+      <div
+        ref={ref}
+        className={
+          (ref.current?.offsetHeight as number) <= 12 ? undefined : styles.tooltip__description
+        }
+      >
         <Behavior details={details} item={item} />
         <Attribute details={details} item={item} />
         <Abilities details={details} item={item} />

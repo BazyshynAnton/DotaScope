@@ -6,7 +6,7 @@ export default function Behavior({ details, item }: ItemDescriptionInterface) {
   //
   // Check for existence
   if (!details) {
-    throw new Error('[DATA] Cannot get data about Item Details')
+    throw Error('[DATA] Cannot get data about Item Details')
   }
 
   // Formatting string to get the result like that:

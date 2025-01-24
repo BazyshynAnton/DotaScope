@@ -4,7 +4,7 @@ import styles from '@/styles/statistic/ItemDescription.module.scss'
 
 export default function Attribute({ details, item }: ItemDescriptionInterface) {
   if (!details) {
-    throw new Error('[DATA] Cannot get data about Item Details')
+    throw Error('[DATA] Cannot get data about Item Details')
   }
 
   return (

@@ -5,10 +5,15 @@ const initialState: InitialStatisticState = {
   matchDetails: null,
   heroList: null,
   playersProfiles: null,
+
   abilities: null,
   heroAbilities: null,
   abilityIDs: null,
   items: null,
+  region: null,
+  gameMode: null,
+  lobbyType: null,
+  leagues: null,
 
   tooltipAbilityPortal: false,
   isTableDataExist: false,
@@ -32,13 +37,26 @@ export const statisticSlice = createSlice({
           state.heroList = action.payload.heroListData
           state.matchDetails = action.payload.matchDetailsData
           state.playersProfiles = action.payload.playerProfilesData
-          state.abilities = action.payload.abilitiesData
-          state.heroAbilities = action.payload.heroAbilitiesData
-          state.abilityIDs = action.payload.abilityIDsData
-          state.items = action.payload.itemsData
 
           state.error = null
         }
+      } else {
+        state.error = action.payload
+      }
+    },
+
+    setDotaConstants: (state, action) => {
+      if (typeof action.payload !== 'string') {
+        state.abilities = action.payload.abilitiesData
+        state.heroAbilities = action.payload.heroAbilitiesData
+        state.abilityIDs = action.payload.abilityIDsData
+        state.items = action.payload.itemsData
+        state.region = action.payload.regionData
+        state.gameMode = action.payload.gameModeData
+        state.lobbyType = action.payload.lobbyTypeData
+        state.leagues = action.payload.leaguesData
+
+        state.error = null
       } else {
         state.error = action.payload
       }
@@ -64,6 +82,7 @@ export const statisticSlice = createSlice({
 
 export const {
   setMatchData,
+  setDotaConstants,
   setSearch,
   setTooltipAbilityPortal,
   setIsTableDataExist,

@@ -10,7 +10,7 @@ export default function Components({ details, item }: ItemDescriptionInterface) 
   const { items } = useAppSelector((store) => store.statisticSlice)
 
   if (!details || !items) {
-    throw new Error('[DATA] Cannot get data about Item Details')
+    throw Error('[DATA] Cannot get data about Item Details')
   }
 
   return (

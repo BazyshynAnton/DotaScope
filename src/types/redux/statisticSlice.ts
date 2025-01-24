@@ -5,10 +5,15 @@ export interface InitialStatisticState {
   matchDetails: MatchDetails | null
   heroList: HeroList[] | null
   playersProfiles: PlayerProfile[] | null
+
   abilities: any | null
   heroAbilities: any | null
   abilityIDs: any | null
   items: Item | null
+  region: Region | null
+  gameMode: GameMode | null
+  lobbyType: LobbyType | null
+  leagues: League[] | null
 
   isTableDataExist: boolean
   tooltipAbilityPortal: boolean
@@ -25,10 +30,17 @@ export interface MatchData {
   heroListData: HeroList[]
   matchDetailsData: MatchDetails
   playerProfilesData: PlayerProfile[]
+}
+
+export interface DotaConstants {
   abilitiesData: any
   heroAbilitiesData: any
   abilityIDsData: any
   itemsData: any
+  regionData: Region
+  gameModeData: GameMode
+  lobbyTypeData: LobbyType
+  leaguesData: League[]
 }
 
 export interface HeroList {
@@ -130,4 +142,30 @@ export interface PlayerProfile {
   }
   rank_tier: number | null
   leaderboard_rank: number | null
+}
+
+export interface Region {
+  [key: string]: string
+}
+
+export interface GameMode {
+  [key: string]: {
+    id: number
+    name: string
+    balanced: boolean
+  }
+}
+
+export interface LobbyType {
+  [key: string]: {
+    id: number
+    name: string
+    balanced: boolean
+  }
+}
+
+export interface League {
+  leagueid: number
+  tier: string
+  name: string
 }

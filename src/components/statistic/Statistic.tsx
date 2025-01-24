@@ -1,19 +1,34 @@
 'use client'
 
-import MatchDetails from './MatchDetails'
-import MatchSideInfo from './MatchSideInfo'
 import Search from './Search'
+import MatchDetails from './MatchDetails'
 import DataLoader from '@/components/loaders/DataLoader'
 
 import { useEffect } from '@/shared/reactImports'
 import { useAppSelector, useAppDispatch } from '@/shared/reduxImports'
-import { setIsTableDataExist, setMatchData, setTableLoading } from '@/store/statisticSlice'
+import {
+  setDotaConstants,
+  setIsTableDataExist,
+  setMatchData,
+  setTableLoading,
+} from '@/store/statisticSlice'
 
-import type { MatchData } from '@/types/redux/statisticSlice'
+import type { DotaConstants, MatchData } from '@/types/redux/statisticSlice'
+import MatchHeader from './MatchHeader'
 
-export default function Statistic({ matchData }: { matchData: MatchData | string }) {
+export default function Statistic({
+  matchData,
+  dotaConstantsData,
+}: {
+  matchData: MatchData | string
+  dotaConstantsData: DotaConstants | string
+}) {
   const { tableLoading, isTableDataExist, error } = useAppSelector((store) => store.statisticSlice)
   const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(setDotaConstants(dotaConstantsData))
+  }, [])
 
   useEffect(() => {
     if (!isTableDataExist) {
@@ -29,7 +44,7 @@ export default function Statistic({ matchData }: { matchData: MatchData | string
     } else {
       const delay = async () => {
         dispatch(setTableLoading(false))
-        await dataLoadingDelay(3000)
+        await dataLoadingDelay(1500)
         dispatch(setTableLoading(true))
       }
 
@@ -38,14 +53,14 @@ export default function Statistic({ matchData }: { matchData: MatchData | string
     }
   }, [dispatch, matchData])
 
-  if (error !== null) throw Error(error) // Error handling
+  if (error !== null) throw new Error(error) // Error handling
 
   return (
     <div style={{ width: '100%' }}>
       <Search />
       {tableLoading ? (
         <>
-          <MatchSideInfo />
+          <MatchHeader />
           <MatchDetails />
         </>
       ) : (

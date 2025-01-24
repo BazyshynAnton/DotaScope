@@ -6,31 +6,30 @@ import type {
   MatchData,
   MatchDetails,
   PlayerProfile,
+  Region,
+  GameMode,
+  LobbyType,
+  DotaConstants,
+  League,
 } from '@/types/redux/statisticSlice'
 import type { Item } from '@/types/statistic/playerRow'
 
 /**
- * Fetches all data related to a specific match,
- * including match details, hero list, and player profiles,
- * using the OpenDota API.
+ * Fetches all data related to a specific match using the OpenDota API.
  *
  * If no match ID is provided, the function generates a default match ID.
  *
  * @param {number} [matchID=0] - The ID of the match.
  * Defaults to `0`, in which case the function retrieves a default match ID.
- * @returns {Promise<MatchData | string>} An object containing match details, hero list,
+ * @returns `Promise<MatchData | string>` An object containing match details, hero list,
  * and player profiles, or an error message if an error occurs.
  *
- * @throws {Error} Throws errors for invalid responses or failed API calls.
+ * @throws `Error` Throws errors for invalid responses or failed API calls.
  *
  * Returned `MatchData` object structure:
  * - `heroListData` (HeroList[]): List of heroes fetched from the API.
  * - `matchDetailsData` (MatchDetails): Details about the specified match.
  * - `playerProfilesData` (PlayerProfile[]): Profile information of players in the match.
- * - `abilitiesData` (any): Object of all abilities.
- * - `heroAbilitiesData` (any): Object of hero abilities.
- * - `abilityIDs` (any): Object of ability IDs.
- * - `abilityIDsData` (Item): Object of ability IDs.
  */
 export async function fetchMatchData(matchID: number = 0): Promise<MatchData | string> {
   try {
@@ -70,6 +69,42 @@ export async function fetchMatchData(matchID: number = 0): Promise<MatchData | s
       playerProfileResponses.map((response) => response.json()),
     )
 
+    return JSON.parse(
+      JSON.stringify({
+        heroListData,
+        matchDetailsData,
+        playerProfilesData,
+      } as MatchData),
+    )
+    //
+  } catch (error) {
+    let message
+    if (error instanceof Error) message = error.message
+    else message = String(error)
+
+    return message
+  }
+}
+
+/**
+ * Fetches Dota2 Constants using the OpenDota API.
+ *
+ * @returns `Promise<DotaConstants | string>` An object containing match details, hero list,
+ * and player profiles, or an error message if an error occurs.
+ *
+ * @throws `Error` Throws errors for invalid responses or failed API calls.
+ *
+ * Returned `DotaConstants` object structure:
+ * - `abilitiesData` (any): Object of all abilities.
+ * - `heroAbilitiesData` (any): Object of hero abilities.
+ * - `abilityIDs` (any): Object of ability IDs.
+ * - `abilityIDsData` (Item): Object of ability IDs.
+ * - `regionData` (Region): Object of regions.
+ * - `gameModeData` (GameMode): Object of game mods.
+ * - `lobbyTypeData` (LobbyType): Object of lobby types.
+ */
+export async function fetchDotaConstants(): Promise<DotaConstants | string> {
+  try {
     // Get abilities object
     const abilitiesData = await fetchHelper<any>(process.env.NEXT_PUBLIC_ABILITIES_URL as string)
     if (abilitiesData instanceof Error) throw abilitiesData
@@ -87,30 +122,38 @@ export async function fetchMatchData(matchID: number = 0): Promise<MatchData | s
     // Get items object
     const itemsData = await fetchHelper<Item>(process.env.NEXT_PUBLIC_ITEMS_URL as string)
     if (itemsData instanceof Error) throw itemsData
-
     // Get region object
-    const regionData = await fetchHelper<any>(process.env.NEXT_PUBLIC_REGION_URL as string)
+    const regionData = await fetchHelper<Region>(process.env.NEXT_PUBLIC_REGION_URL as string)
     if (regionData instanceof Error) throw regionData
 
     // Get game_mode object
-    const gameModeData = await fetchHelper<any>(process.env.NEXT_PUBLIC_GAME_MODE_URL as string)
+    const gameModeData = await fetchHelper<GameMode>(
+      process.env.NEXT_PUBLIC_GAME_MODE_URL as string,
+    )
     if (gameModeData instanceof Error) throw gameModeData
 
-    const lobbyTypeData = await fetchHelper<any>(process.env.NEXT_PUBLIC_LOBBY_TYPE_URL as string)
+    // Get lobby_type object
+    const lobbyTypeData = await fetchHelper<LobbyType>(
+      process.env.NEXT_PUBLIC_LOBBY_TYPE_URL as string,
+    )
     if (lobbyTypeData instanceof Error) throw lobbyTypeData
+
+    // Get leagues array
+    const leaguesData = await fetchHelper<League[]>(process.env.NEXT_PUBLIC_LEAGUES_URL as string)
+    if (leaguesData instanceof Error) throw leaguesData
 
     return JSON.parse(
       JSON.stringify({
-        heroListData,
-        matchDetailsData,
-        playerProfilesData,
         abilitiesData,
         heroAbilitiesData,
         abilityIDsData,
         itemsData,
-      } as MatchData),
+        regionData,
+        gameModeData,
+        lobbyTypeData,
+        leaguesData,
+      } as DotaConstants),
     )
-    //
   } catch (error) {
     let message
     if (error instanceof Error) message = error.message

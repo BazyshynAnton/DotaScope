@@ -1,4 +1,13 @@
-import type { HeroList, MatchDetails, PicksAndBans } from '@/types/redux/statisticSlice'
+import type {
+  GameMode,
+  HeroList,
+  League,
+  LobbyType,
+  Match,
+  MatchDetails,
+  PicksAndBans,
+  Region,
+} from '@/types/redux/statisticSlice'
 import type { MatchResult, PlayersByTeam, UMatchDetails } from '@/types/statistic/matchDetails'
 
 /**
@@ -125,6 +134,48 @@ export class MatchDetailsUtility implements UMatchDetails {
         return hero.name.replace('npc_dota_hero_', '')
       }
     }
+  }
+
+  /**
+   * Finds the game mode by id.
+   *
+   * @param matchDetails The details of the match.
+   * @param gameMode The object of game modes.
+   * @returns The game mode.
+   */
+  public findGameMode(matchDetails: MatchDetails, gameMode: GameMode): string {
+    const temp =
+      gameMode[matchDetails.game_mode].name.replace('game_mode_', '').replace('_', ' ') || ''
+
+    if (!temp) return temp
+
+    const res = temp.split('')
+    for (let i = 0; i < res.length; ++i) {
+      if (i === 0) res[i] = res[i].toUpperCase()
+      if (res[i] === ' ') res[i + 1] = res[i + 1].toUpperCase()
+    }
+
+    return res.join('')
+  }
+
+  /**
+   * Finds the league by id.
+   *
+   * @param matchDetails The details of the match.
+   * @param leagues The array of leagues.
+   * @returns The league.
+   */
+  public findLeague(matchDetails: MatchDetails, leagues: League[]): string {
+    let res = ''
+
+    leagues.some((league) => {
+      if (matchDetails.leagueid !== 0 && matchDetails.leagueid === league.leagueid) {
+        res = league.name
+        return true
+      }
+    })
+
+    return res
   }
 
   private static instance: MatchDetailsUtility
