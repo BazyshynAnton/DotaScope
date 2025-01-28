@@ -1,4 +1,4 @@
-$fontColor: #ffffffb0;
+@import '../variables/fontColors.scss';
 
 .buildingsMap {
   width: max-content;
@@ -12,14 +12,10 @@ $fontColor: #ffffffb0;
     font-size: 20px;
     font-weight: 600;
     text-transform: uppercase;
-    color: $fontColor;
+    color: $fontColor2;
   }
 }
 
 .buildingsMap__mapStatus {
   position: relative;
-
-  //   img {
-  //     filter: grayscale(100%) brightness(70%);
-  //   }
 }

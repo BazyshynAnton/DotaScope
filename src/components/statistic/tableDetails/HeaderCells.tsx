@@ -53,7 +53,12 @@ function TableHeaderCell({
       } ${styleFlag === 'netHdTdHh' && styles.netHdTdHh}`}
     >
       {str}
-      <ReactTooltip id={str} content={title} place='top' style={{ background: '#242f39' }} />
+      <ReactTooltip
+        id={str}
+        content={title}
+        place='top'
+        style={{ color: '#ffffffde', background: '#242f39' }}
+      />
     </th>
   )
 }

@@ -1,7 +1,7 @@
+@import '../variables/fontColors.scss';
 @import '../mixins/animation.scss';
 @import '../mixins/fontsize.scss';
 
-$fontColor: #ffffffb0;
 $border: 1px solid rgba(255, 255, 255, 0.1);
 
 @mixin cardContainer {
@@ -28,7 +28,7 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
 
 .contentHeader {
   padding: 5px 10px;
-  color: $fontColor;
+  color: $fontColor2;
   border-bottom: $border;
 }
 
@@ -60,7 +60,7 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
 .dotaNewsCard {
   padding: 10px 20px;
   width: 100%;
-  color: $fontColor;
+  color: $fontColor1;
 }
 
 .dotaNews__content {
@@ -76,7 +76,7 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   border: $border;
   h4 {
     a {
-      color: $fontColor;
+      color: $fontColor1;
     }
   }
 
@@ -106,7 +106,7 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
 .proMatchCard {
   width: 100%;
   a {
-    color: $fontColor;
+    color: $fontColor1;
   }
 
   &:hover {
@@ -173,7 +173,7 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
 
 @keyframes idColor {
   0% {
-    color: $fontColor;
+    color: $fontColor1;
   }
   100% {
     color: #3b82f6;

@@ -27,3 +27,20 @@ export async function fetchHelper<T>(
 
   return await response.json()
 }
+
+export function timeAgo(seconds: number) {
+  const minutes = Math.floor(seconds / 60)
+  const hours = Math.floor(seconds / 3600)
+  const days = Math.floor(seconds / 86400)
+
+  if (seconds < 60) {
+    return seconds === 1 ? 'a second ago' : `${seconds} seconds ago`
+  }
+  if (minutes < 60) {
+    return minutes === 1 ? 'a minute ago' : `${minutes} minutes ago`
+  }
+  if (hours < 24) {
+    return hours === 1 ? 'an hour ago' : `${hours} hours ago`
+  }
+  return `${days} day${days > 1 ? 's' : ''} ago`
+}

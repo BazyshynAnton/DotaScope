@@ -46,12 +46,6 @@ export async function fetchMatchData(matchID: number = 0): Promise<MatchData | s
     )
     if (matchDetailsData instanceof Error) throw matchDetailsData
 
-    // Get list of Heroes using Opendota API
-    const heroListData = await fetchHelper<HeroList[]>(
-      process.env.NEXT_PUBLIC_HERO_LIST_URL as string,
-    )
-    if (heroListData instanceof Error) throw heroListData
-
     // Array<number> store of player profile IDs
     const playerAccountIDs: number[] = []
     // Set IDs to playersAccountIDs
@@ -71,7 +65,6 @@ export async function fetchMatchData(matchID: number = 0): Promise<MatchData | s
 
     return JSON.parse(
       JSON.stringify({
-        heroListData,
         matchDetailsData,
         playerProfilesData,
       } as MatchData),
@@ -105,6 +98,12 @@ export async function fetchMatchData(matchID: number = 0): Promise<MatchData | s
  */
 export async function fetchDotaConstants(): Promise<DotaConstants | string> {
   try {
+    // Get list of Heroes using Opendota API
+    const heroListData = await fetchHelper<HeroList[]>(
+      process.env.NEXT_PUBLIC_HERO_LIST_URL as string,
+    )
+    if (heroListData instanceof Error) throw heroListData
+
     // Get abilities object
     const abilitiesData = await fetchHelper<any>(process.env.NEXT_PUBLIC_ABILITIES_URL as string)
     if (abilitiesData instanceof Error) throw abilitiesData
@@ -144,6 +143,7 @@ export async function fetchDotaConstants(): Promise<DotaConstants | string> {
 
     return JSON.parse(
       JSON.stringify({
+        heroListData,
         abilitiesData,
         heroAbilitiesData,
         abilityIDsData,

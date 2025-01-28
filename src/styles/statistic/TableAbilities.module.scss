@@ -1,8 +1,6 @@
+@import '../variables/fontColors.scss';
 @import '../mixins/scrollX.scss';
 
-$fontColor: #ffffffb0;
-$radiantColor: #59ce8f;
-$direColor: #df2e38;
 $border: 1px solid rgba(255, 255, 255, 0.1);
 
 .builds {
@@ -31,13 +29,14 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 13px;
   background-color: #242f39;
   th {
+    padding: 5px 0px;
     width: 40px;
+    color: $fontColor2;
   }
 }
 
-.tableHeadRow {
-  color: $fontColor;
-}
+// .tableHeadRow {
+// }
 
 .heroDataCell,
 .abilityDataCell {

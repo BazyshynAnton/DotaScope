@@ -1,3 +1,4 @@
+@import 'variables/fontColors.scss';
 @import 'mixins/fontsize.scss';
 
 *,
@@ -16,6 +17,7 @@ body {
   background-color: #1c242d;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.1) #1c242d;
+  color: $fontColor1;
 }
 
 ul,

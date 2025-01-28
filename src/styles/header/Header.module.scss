@@ -1,4 +1,5 @@
-$fontColor: #ffffffb0;
+@import '../variables/fontColors.scss';
+
 $border: 1px solid rgba(255, 255, 255, 0.1);
 $border1: 4px solid #ffffff00;
 $bgColor: #242f39;
@@ -32,19 +33,20 @@ $bgColor: #242f39;
   font-size: 19px;
   font-weight: 400;
   text-transform: capitalize;
-  color: $fontColor;
+  color: $fontColor1;
   cursor: pointer;
   z-index: 2;
 }
 
 .headerLink {
+  transition: all 0.15s ease-in-out;
   &:hover {
-    color: #fff;
+    color: $fontColor2;
   }
 }
 
 .activeHeaderLink {
-  color: #fff;
+  color: $fontColor2;
 }
 
 // small header
@@ -65,7 +67,7 @@ $bgColor: #242f39;
     display: block;
     width: 25px;
     height: 2px;
-    background-color: $fontColor;
+    background-color: $fontColor1;
   }
 }
 
@@ -76,7 +78,7 @@ $bgColor: #242f39;
     content: ' ';
     height: 33px;
     width: 2px;
-    background-color: $fontColor;
+    background-color: $fontColor1;
   }
 
   &::before {

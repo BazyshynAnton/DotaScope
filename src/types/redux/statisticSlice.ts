@@ -27,12 +27,12 @@ export interface InitialStatisticState {
 }
 
 export interface MatchData {
-  heroListData: HeroList[]
   matchDetailsData: MatchDetails
   playerProfilesData: PlayerProfile[]
 }
 
 export interface DotaConstants {
+  heroListData: HeroList[]
   abilitiesData: any
   heroAbilitiesData: any
   abilityIDsData: any
@@ -116,6 +116,7 @@ export interface MatchDetails {
   metadata: null | any
   patch: number
   region: number
+  replay_url?: string
 }
 
 export type PicksAndBans = {

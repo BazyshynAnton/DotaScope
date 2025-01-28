@@ -19,11 +19,9 @@ function TableHeaderCell({ str, title }: { str: string; title: string }) {
   return (
     <th data-tooltip-id={str}>
       {str}
-      <ReactTooltip
-        id={str}
-        content={title !== 'Hero' ? title + ' - ' + str : title}
-        style={{ background: '#242f39' }}
-      />
+      {str !== 'Hero' && (
+        <ReactTooltip id={str} content={title + ' - ' + str} style={{ background: '#242f39' }} />
+      )}
     </th>
   )
 }

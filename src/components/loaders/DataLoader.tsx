@@ -16,5 +16,5 @@ const loaderContainer: React.CSSProperties = {
   alignItems: 'flex-end',
   width: '100%',
   height: 'max-content',
-  color: '#ffffffb0',
+  color: '#ffffffde',
 }

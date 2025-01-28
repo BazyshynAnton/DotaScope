@@ -46,6 +46,8 @@ export default function InteractiveList({
 function Loader() {
   const { error } = useAppSelector((store) => store.homeSlice)
 
+  if (error !== null) console.error(error)
+
   return (
     <div
       style={{

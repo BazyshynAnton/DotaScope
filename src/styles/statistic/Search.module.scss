@@ -1,4 +1,5 @@
-$fontColor: #ffffffb0;
+@import '../variables/fontColors.scss';
+
 $border: 1px solid rgba(255, 255, 255, 0.1);
 
 .form {
@@ -9,7 +10,7 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   span {
     display: inline-block;
     font-size: 17.6px;
-    color: $fontColor;
+    color: $fontColor2;
     padding-bottom: 5px;
   }
 }
@@ -30,7 +31,7 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   outline: none;
   transition: all 110ms ease-in-out;
   font-size: 1rem;
-  color: $fontColor;
+  color: $fontColor1;
 
   &::placeholder {
     font-size: 1rem;
@@ -46,6 +47,8 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
     -webkit-appearance: none;
     margin: 0;
   }
+
+  appearance: textfield;
   -moz-appearance: textfield;
 }
 
@@ -69,12 +72,12 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .search__button_enabled {
-  color: #fff;
+  color: $fontColor2;
 
   cursor: pointer;
 }
 
 .search__button_disabled {
-  color: $fontColor;
+  color: $fontColor1;
   cursor: no-drop;
 }

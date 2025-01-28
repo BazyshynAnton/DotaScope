@@ -1,6 +1,4 @@
-$fontColor: #ffffffb0;
-$radiantColor: #59ce8f;
-$direColor: #df2e38;
+@import '../variables/fontColors.scss';
 
 .match {
   width: 100%;
@@ -42,7 +40,7 @@ $direColor: #df2e38;
   color: $radiantColor;
 }
 .scoreAndTime__duration {
-  color: $fontColor;
+  color: $fontColor2;
   font-weight: 400;
   font-size: 1rem;
 }

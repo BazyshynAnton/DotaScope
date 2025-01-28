@@ -1,8 +1,6 @@
+@import '../variables/fontColors.scss';
 @import '../mixins/scrollX.scss';
 
-$fontColor: #ffffffb0;
-$radiantColor: #59ce8f;
-$direColor: #df2e38;
 $border: 1px solid rgba(255, 255, 255, 0.1);
 
 .result {
@@ -40,6 +38,10 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   background-color: #242f39;
   font-size: 12px;
 
+  th {
+    color: $fontColor2;
+  }
+
   th,
   td {
     &:hover {
@@ -54,7 +56,6 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
 
 .table__thead__headersTableRow {
   height: 40px;
-  color: $fontColor;
   th {
     text-align: center;
   }
@@ -78,7 +79,6 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
     position: absolute;
     right: -10px;
     top: 0;
-    color: $fontColor;
     font-weight: 100;
   }
 }

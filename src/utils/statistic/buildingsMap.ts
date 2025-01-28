@@ -116,7 +116,7 @@ export const buildings = [
     url: process.env.NEXT_PUBLIC_GOODGUYS_TOWER as string,
     width: 16,
     height: 16,
-    key: 'npc_dota_goodguys_tower4_top',
+    key: 'npc_dota_goodguys_tower4',
   },
   {
     offsetTop: 280,
@@ -124,7 +124,7 @@ export const buildings = [
     url: process.env.NEXT_PUBLIC_GOODGUYS_TOWER as string,
     width: 16,
     height: 16,
-    key: 'npc_dota_goodguys_tower4_top',
+    key: 'npc_dota_goodguys_tower4',
   },
   {
     offsetTop: 293,

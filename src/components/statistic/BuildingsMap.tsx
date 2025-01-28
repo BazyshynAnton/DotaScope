@@ -7,10 +7,10 @@ import styles from '@/styles/statistic/BuildingsMap.module.scss'
 export default function BuildingsMap() {
   const { matchDetails, heroList } = useAppSelector((store) => store.statisticSlice)
 
-  if (!matchDetails || !heroList) return // maybe some temp component
+  if (!matchDetails || !heroList || matchDetails.objectives || matchDetails.players) return // maybe some temp component
 
-  const killedBuildings = findKilledBuildings(matchDetails?.objectives)
-  const playerLanes = findPlayerLanes(matchDetails?.players, heroList)
+  const killedBuildings = findKilledBuildings(matchDetails.objectives)
+  const playerLanes = findPlayerLanes(matchDetails.players, heroList)
 
   return (
     <div className={styles.buildingsMap}>

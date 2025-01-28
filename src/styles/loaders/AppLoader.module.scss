@@ -1,7 +1,9 @@
+@import '../variables/fontColors.scss';
+
 .loadingLine {
   height: 1px;
   width: 0px;
-  background-color: #ffffffb0;
+  background-color: $fontColor2;
 
   animation-name: line;
   animation-duration: 1s;

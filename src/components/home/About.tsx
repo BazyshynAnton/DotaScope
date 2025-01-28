@@ -28,7 +28,7 @@ export default function About() {
           <br />
         </p>
         <br />
-        <h3>Warning.</h3>
+        <h4>Warning:</h4>
         <p>
           I am not responsible for profanity. <br />
           We all need to understand that no one can stop players from using profanity. Therefore,

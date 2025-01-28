@@ -136,6 +136,16 @@ export class MatchDetailsUtility implements UMatchDetails {
     }
   }
 
+  public findRegion(matchDetails: MatchDetails, region: Region): string {
+    const temp = region[matchDetails.region]
+
+    if (!temp) return ''
+
+    const res = temp.toLowerCase().split('')
+    res[0] = res[0].toUpperCase()
+    return res.join('')
+  }
+
   /**
    * Finds the game mode by id.
    *
@@ -147,7 +157,7 @@ export class MatchDetailsUtility implements UMatchDetails {
     const temp =
       gameMode[matchDetails.game_mode].name.replace('game_mode_', '').replace('_', ' ') || ''
 
-    if (!temp) return temp
+    if (!temp) return ''
 
     const res = temp.split('')
     for (let i = 0; i < res.length; ++i) {

@@ -34,7 +34,6 @@ export const statisticSlice = createSlice({
     setMatchData: (state, action) => {
       if (typeof action.payload !== 'string') {
         if (state.matchDetails?.match_id !== action.payload.matchDetailsData?.match_id) {
-          state.heroList = action.payload.heroListData
           state.matchDetails = action.payload.matchDetailsData
           state.playersProfiles = action.payload.playerProfilesData
 
@@ -47,6 +46,7 @@ export const statisticSlice = createSlice({
 
     setDotaConstants: (state, action) => {
       if (typeof action.payload !== 'string') {
+        state.heroList = action.payload.heroListData
         state.abilities = action.payload.abilitiesData
         state.heroAbilities = action.payload.heroAbilitiesData
         state.abilityIDs = action.payload.abilityIDsData
