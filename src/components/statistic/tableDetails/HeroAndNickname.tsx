@@ -27,6 +27,15 @@ export default function HeroAndNickname({
             width={54}
             height={30}
           />
+          {player.leaver_status !== 0 && (
+            <Image
+              src={process.env.NEXT_PUBLIC_DISCONNECT_IMG_URL as string}
+              alt='disconnect'
+              width={51}
+              height={14.9}
+              style={{ position: 'absolute', top: 0, left: 0 }}
+            />
+          )}
         </div>
         <div className={styles.heroAndNickname__hero__level}>{player.level}</div>
         <span

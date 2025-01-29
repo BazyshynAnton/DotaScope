@@ -7,7 +7,7 @@ import styles from '@/styles/statistic/BuildingsMap.module.scss'
 export default function BuildingsMap() {
   const { matchDetails, heroList } = useAppSelector((store) => store.statisticSlice)
 
-  if (!matchDetails || !heroList || matchDetails.objectives || matchDetails.players) return // maybe some temp component
+  if (!matchDetails || !heroList || !matchDetails.objectives || !matchDetails.players) return // maybe some temp component
 
   const killedBuildings = findKilledBuildings(matchDetails.objectives)
   const playerLanes = findPlayerLanes(matchDetails.players, heroList)
@@ -17,7 +17,7 @@ export default function BuildingsMap() {
       <h4>buildings map</h4>
       <div className={styles.buildingsMap__mapStatus}>
         <Image
-          src={process.env.NEXT_PUBLIC_DOTA_MAP_PICTURE_URL as string}
+          src={process.env.NEXT_PUBLIC_DOTA_MAP_IMG_URL as string}
           alt='Dota2 map'
           width={350}
           height={350}

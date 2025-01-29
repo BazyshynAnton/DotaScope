@@ -2,7 +2,7 @@ import type { Player } from '@/types/statistic/tableDetails'
 import type { HeroList, Objectives } from '@/types/redux/statisticSlice'
 import type { LanePositions, PlayerLane } from '@/types/statistic/buildingsMap'
 
-export const findKilledBuildings = (objectives: Objectives[] | undefined) => {
+export const findKilledBuildings = (objectives: Objectives[] | undefined): Objectives[] | null => {
   if (!objectives) return null
 
   return objectives.filter((obj) => obj.type === 'building_kill')
