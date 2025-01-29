@@ -136,6 +136,13 @@ export class MatchDetailsUtility implements UMatchDetails {
     }
   }
 
+  /**
+   * Finds the region by id.
+   *
+   * @param matchDetails The details of the match.
+   * @param region The object of the regions.
+   * @returns The region.
+   */
   public findRegion(matchDetails: MatchDetails, region: Region): string {
     const temp = region[matchDetails.region]
 

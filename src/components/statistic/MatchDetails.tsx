@@ -2,7 +2,7 @@ import TableDetails from './tableDetails/TableDetails'
 import ResultOfMatch from './ResultOfMatch'
 import PicksBans from './PicksBans'
 import TableAbilities from './tableAbilities/TableAbilities'
-import MapAndGraph from './MapAndGraph'
+import MapAndChart from './MapAndChart'
 
 import { MatchDetailsUtility } from '@/utils/statistic/MatchDetailsUtility'
 import { useEffect, useState } from '@/shared/reactImports'
@@ -44,7 +44,7 @@ export default function MatchDetails() {
       <PicksBans side={'dire'} />
       <TableAbilities playersTeam={playersByTeam?.playersRadiant} />
       <TableAbilities playersTeam={playersByTeam?.playersDire} />
-      <MapAndGraph />
+      <MapAndChart />
     </div>
   )
 }

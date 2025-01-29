@@ -7,7 +7,6 @@ import { IoMdDownload } from 'react-icons/io'
 import { IoMdWarning } from 'react-icons/io'
 
 import styles from '@/styles/statistic/MatchHeader.module.scss'
-import React from 'react'
 
 export default function MatchHeader() {
   const { matchDetails, region, gameMode, lobbyType, leagues } = useAppSelector(

@@ -103,6 +103,8 @@ export interface MatchDetails {
   dire_name: string
   radiant_score: number
   dire_score: number
+  radiant_gold_adv: number[]
+  radiant_xp_adv: number[]
 
   picks_bans: PicksAndBans[]
 
