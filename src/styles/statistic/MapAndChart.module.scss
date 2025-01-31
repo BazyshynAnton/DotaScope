@@ -5,3 +5,12 @@
   gap: 1rem;
   justify-content: flex-start;
 }
+
+@media (max-width: 850px) {
+  .mapAndChart {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+}

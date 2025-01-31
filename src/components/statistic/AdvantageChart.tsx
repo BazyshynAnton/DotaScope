@@ -1,5 +1,4 @@
 import { useAppSelector } from '@/hooks/useAppSelector'
-import { MatchDetails } from '@/types/redux/statisticSlice'
 import {
   LineChart,
   Line,
@@ -14,8 +13,10 @@ import {
   TooltipProps,
 } from 'recharts'
 
+import type { MatchDetails } from '@/types/redux/statisticSlice'
+import type { NameType, ValueType } from 'recharts/types/component/DefaultTooltipContent'
+
 import styles from '@/styles/statistic/AdvantageChart.module.scss'
-import { NameType, Payload, ValueType } from 'recharts/types/component/DefaultTooltipContent'
 
 export default function AdvantageChart() {
   const { matchDetails } = useAppSelector((store) => store.statisticSlice)
@@ -66,8 +67,8 @@ function genChartData(matchDetails: MatchDetails, chartDataLength: number) {
   for (let i = 0; i <= chartDataLength; ++i) {
     chartData.push({
       time: `${i}:00`,
-      xp: matchDetails.radiant_xp_adv[i],
       gold: matchDetails.radiant_gold_adv[i],
+      xp: matchDetails.radiant_xp_adv[i],
     })
   }
 
@@ -75,11 +76,32 @@ function genChartData(matchDetails: MatchDetails, chartDataLength: number) {
 }
 
 function CustomChartTooltip(props: TooltipProps<ValueType, NameType>) {
-  const gold = (props.payload as Payload<ValueType, NameType>[])[1].payload
+  if (
+    props &&
+    props.payload &&
+    props.payload.length &&
+    props.payload[0].value &&
+    props.payload[1].value
+  ) {
+    const gold = props.payload[1].value.valueOf() as number
+    const xp = props.payload[0].value.valueOf() as number
 
-  return (
-    <div style={{ padding: '5px', background: 'rgba(35, 46, 56, 0.86)', color: '#ffffffde' }}>
-      <p>{props.label}</p>
-    </div>
-  )
+    return (
+      <div style={{ padding: '5px', background: 'rgba(35, 46, 56, 0.86)', color: '#ffffffde' }}>
+        <p>{props.label}</p>
+        <p style={{ color: '#e9bc37' }}>
+          <span style={{ color: gold > 0 ? '#59ce8f' : '#df2e38' }}>
+            {gold > 0 ? 'Radiant ' : 'Dire '}
+          </span>
+          {gold.toString().replace('-', '')} Gold
+        </p>
+        <p style={{ color: '#acc9ed' }}>
+          <span style={{ color: xp > 0 ? '#59ce8f' : '#df2e38' }}>
+            {xp > 0 ? 'Radiant ' : 'Dire '}
+          </span>
+          {xp.toString().replace('-', '')} Experience
+        </p>
+      </div>
+    )
+  }
 }
