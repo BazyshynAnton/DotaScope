@@ -1,7 +1,6 @@
 'use client'
 
-import { Tooltip as ReactTooltip } from 'react-tooltip'
-import InDevelopment from './InDevelopment'
+import { ReactTooltip } from '@/shared/reactImports'
 
 export default function EarlyAccess() {
   return (

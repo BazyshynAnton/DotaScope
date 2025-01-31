@@ -3,6 +3,7 @@
 import Search from './Search'
 import MatchDetails from './MatchDetails'
 import DataLoader from '@/components/loaders/DataLoader'
+import MatchHeader from './MatchHeader'
 
 import { useEffect } from '@/shared/reactImports'
 import { useAppSelector, useAppDispatch } from '@/shared/reduxImports'
@@ -13,8 +14,7 @@ import {
   setTableLoading,
 } from '@/store/statisticSlice'
 
-import type { DotaConstants, MatchData } from '@/types/redux/statisticSlice'
-import MatchHeader from './MatchHeader'
+import type { DotaConstants, MatchData } from '@/types/statistic/matchData'
 
 export default function Statistic({
   matchData,
@@ -53,7 +53,7 @@ export default function Statistic({
     }
   }, [dispatch, matchData])
 
-  if (error !== null) throw new Error(error) // Error handling
+  if (typeof error === 'string') throw new Error(error) // Error handling
 
   return (
     <div style={{ width: '100%' }}>

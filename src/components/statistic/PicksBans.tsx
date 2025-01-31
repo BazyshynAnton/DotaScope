@@ -1,7 +1,8 @@
 import { useAppSelector } from '@/shared/reduxImports'
-import { PicksAndBans } from '@/types/redux/statisticSlice'
 import { MatchDetailsUtility } from '@/utils/statistic/MatchDetailsUtility'
 import { Image } from '@/shared/nextjsImports'
+
+import type { PicksAndBans } from '@/types/statistic/matchData'
 
 import styles from '@/styles/statistic/PicksBans.module.scss'
 
