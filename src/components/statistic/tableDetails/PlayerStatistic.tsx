@@ -1,4 +1,4 @@
-import type { Player } from '@/types/statistic/tableDetails'
+import type { Player } from '@/types/statistic/matchData'
 
 import styles from '@/styles/statistic/PlayerRow.module.scss'
 

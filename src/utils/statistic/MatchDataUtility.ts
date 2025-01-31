@@ -1,17 +1,17 @@
-import { fetchHelper } from '../sharedUtils'
-
-import type {
-  Match,
+import {
+  DotaConstants,
+  GameMode,
   HeroList,
+  League,
+  LobbyType,
+  Match,
   MatchData,
   MatchDetails,
   PlayerProfile,
   Region,
-  GameMode,
-  LobbyType,
-  DotaConstants,
-  League,
-} from '@/types/redux/statisticSlice'
+} from '@/types/statistic/matchData'
+import { fetchHelper } from '../sharedUtils'
+
 import type { Item } from '@/types/statistic/playerRow'
 
 /**

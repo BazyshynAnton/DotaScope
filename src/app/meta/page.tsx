@@ -1,5 +1,9 @@
-import InDevelopment from '@/components/inDevelopment/InDevelopment'
+import Meta from '@/components/meta/Meta'
 
-export default function MetaPage() {
-  return <InDevelopment />
+import { fetchMetaData } from '@/utils/meta/MetaDataUtility'
+
+export default async function MetaPage() {
+  const metaData = await fetchMetaData()
+
+  return <Meta metaData={metaData} />
 }

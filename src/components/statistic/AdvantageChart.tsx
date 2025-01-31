@@ -13,8 +13,8 @@ import {
   TooltipProps,
 } from 'recharts'
 
-import type { MatchDetails } from '@/types/redux/statisticSlice'
 import type { NameType, ValueType } from 'recharts/types/component/DefaultTooltipContent'
+import type { MatchDetails } from '@/types/statistic/matchData'
 
 import styles from '@/styles/statistic/AdvantageChart.module.scss'
 

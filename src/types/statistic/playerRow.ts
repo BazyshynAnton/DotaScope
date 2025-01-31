@@ -1,5 +1,4 @@
-import type { HeroList, PlayerProfile } from '../redux/statisticSlice'
-import type { Player } from './tableDetails'
+import { HeroList, Player, PlayerProfile } from './matchData'
 
 export interface UPlayerRowDetails {
   findAppropriateHero(player: Player, heroList: HeroList[], heroAbilities: any): DetailsAboutHero

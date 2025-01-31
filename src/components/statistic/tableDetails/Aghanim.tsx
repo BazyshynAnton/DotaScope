@@ -5,7 +5,7 @@ import { useState } from '@/shared/reactImports'
 
 import { PlayerRowUtility } from '@/utils/statistic/PlayerRowUtility'
 
-import type { Player } from '@/types/statistic/tableDetails'
+import type { Player } from '@/types/statistic/matchData'
 
 // Initial State for useState in Aghanim component.
 const initialStateAghanim = {

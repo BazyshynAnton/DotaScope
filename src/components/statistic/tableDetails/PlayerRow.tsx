@@ -6,7 +6,7 @@ import PlayerItems from './PlayerItems'
 import { useAppSelector } from '@/shared/reduxImports'
 import { PlayerRowDetailsUtility } from '@/utils/statistic/PlayerRowDetailsUtility'
 
-import type { Player } from '@/types/statistic/tableDetails'
+import type { Player } from '@/types/statistic/matchData'
 import type { DetailsAboutHero, DetailsAboutPlayer, ItemDetails } from '@/types/statistic/playerRow'
 
 import styles from '@/styles/statistic/PlayerRow.module.scss'

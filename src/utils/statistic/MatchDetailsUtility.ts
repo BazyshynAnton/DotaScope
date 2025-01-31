@@ -1,13 +1,11 @@
-import type {
+import {
   GameMode,
   HeroList,
   League,
-  LobbyType,
-  Match,
   MatchDetails,
   PicksAndBans,
   Region,
-} from '@/types/redux/statisticSlice'
+} from '@/types/statistic/matchData'
 import type { MatchResult, PlayersByTeam, UMatchDetails } from '@/types/statistic/matchDetails'
 
 /**

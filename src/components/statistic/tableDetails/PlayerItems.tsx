@@ -3,7 +3,7 @@ import BackpackItems from './BackpackItems'
 import MainSlotItems from './MainSlotItems'
 import NeutralItem from './NeutralItem'
 
-import type { Player } from '@/types/statistic/tableDetails'
+import type { Player } from '@/types/statistic/matchData'
 import type { ItemDetails } from '@/types/statistic/playerRow'
 
 import styles from '@/styles/statistic/PlayerRow.module.scss'
