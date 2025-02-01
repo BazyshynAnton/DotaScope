@@ -21,7 +21,7 @@ import styles from '@/styles/statistic/AdvantageChart.module.scss'
 export default function AdvantageChart() {
   const { matchDetails } = useAppSelector((store) => store.statisticSlice)
 
-  if (!matchDetails) return
+  if (!matchDetails || !matchDetails.radiant_gold_adv || !matchDetails.radiant_xp_adv) return
 
   const chartDataLength = Math.floor(matchDetails.duration / 60)
   const data = genChartData(matchDetails, chartDataLength)

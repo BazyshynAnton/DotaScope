@@ -2,7 +2,7 @@ import { Image } from '@/shared/nextjsImports'
 import { useState } from '@/shared/reactImports'
 import { useAppDispatch, useAppSelector } from '@/shared/reduxImports'
 import { setMatchData, setSearch } from '@/store/statisticSlice'
-import { fetchMatchData } from '@/utils/statistic/MatchDataUtility'
+import { fetchMatchData } from '@/utils/statistic/matchDataUtility'
 
 import { BsSearch } from 'react-icons/bs'
 

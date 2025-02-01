@@ -1,10 +1,10 @@
 import { Link } from '@/shared/nextjsImports'
 import { useAppDispatch } from '@/shared/reduxImports'
 import { setIsTableDataExist, setMatchData, setTableLoading } from '@/store/statisticSlice'
-import { fetchMatchData } from '@/utils/statistic/MatchDataUtility'
+import { fetchMatchData } from '@/utils/statistic/matchDataUtility'
 import { timeAgo } from '@/utils/sharedUtils'
 
-import type { ProMatch } from '@/types/home/homeDataUtility'
+import type { ProMatch } from '@/types/home/homeData'
 
 import styles from '@/styles/home/Home.module.scss'
 

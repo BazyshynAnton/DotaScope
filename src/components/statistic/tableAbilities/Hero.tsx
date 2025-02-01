@@ -1,6 +1,6 @@
 import Abilities from './Abilities'
 
-import { Player } from '@/types/statistic/tableDetails'
+import { Player } from '@/types/statistic/matchData'
 import { PlayerRowDetailsUtility } from '@/utils/statistic/PlayerRowDetailsUtility'
 import { useAppSelector } from '@/shared/reduxImports'
 import { Image } from '@/shared/nextjsImports'

@@ -1,5 +1,5 @@
-import { ItemDetails, UPlayerRow } from '@/types/statistic/playerRow'
-import { Player } from '@/types/statistic/tableDetails'
+import type { ItemDetails, UPlayerRow } from '@/types/statistic/playerRow'
+import type { Player } from '@/types/statistic/matchData'
 
 const enum slotSizes {
   Main = 6,

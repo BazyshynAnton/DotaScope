@@ -1,6 +1,6 @@
 import { fetchHelper } from '../sharedUtils'
 
-import type { DotaNews, HomeData, ProMatch } from '@/types/home/homeDataUtility'
+import type { DotaNews, HomeData, ProMatch } from '@/types/home/homeData'
 
 export async function fetchHomeData(): Promise<HomeData | string> {
   try {

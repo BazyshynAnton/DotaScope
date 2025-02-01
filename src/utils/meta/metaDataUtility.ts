@@ -1,6 +1,6 @@
 import { fetchHelper } from '../sharedUtils'
 
-import type { HeroStats, MetaData } from '@/types/meta/metaDataUtility'
+import type { HeroStats, MetaData } from '@/types/meta/metaData'
 
 export async function fetchMetaData(): Promise<MetaData | string> {
   try {

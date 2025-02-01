@@ -1,5 +1,4 @@
-import type { HeroList, MatchDetails, PicksAndBans } from '../redux/statisticSlice'
-import type { Player } from './tableDetails'
+import { HeroList, MatchDetails, PicksAndBans, Player } from './matchData'
 
 export interface UMatchDetails {
   findMatchResult(matchDetails: MatchDetails): MatchResult

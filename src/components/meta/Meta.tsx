@@ -1,27 +1,60 @@
 'use client'
 
-import { useEffect } from '@/shared/reactImports'
-import { useAppDispatch, useAppSelector } from '@/shared/reduxImports'
-import { setMetaData } from '@/store/metaSlice'
+import MetaHeader from './MetaHeader'
+import MetaPublic from './MetaPublic'
 
-import type { MetaData } from '@/types/meta/metaDataUtility'
+import { useState } from '@/shared/reactImports'
+
+import type { MetaData } from '@/types/meta/metaData'
 
 import styles from '@/styles/meta/Meta.module.scss'
-import MetaHeader from './MetaHeader'
 
 export default function Meta({ metaData }: { metaData: MetaData | string }) {
-  const { error } = useAppSelector((store) => store.metaSlice)
-  const dispatch = useAppDispatch()
+  const [isPub, setIsPub] = useState(true)
+  const [currRank, setCurrRank] = useState(8)
 
-  useEffect(() => {
-    dispatch(setMetaData(metaData))
-  }, [])
+  if (typeof metaData === 'string') throw new Error(metaData)
 
-  if (typeof error === 'string') throw new Error(error)
+  const { heroStatsData } = metaData
+
+  const handleButtonClick = (condition: boolean) => () => {
+    setIsPub(condition)
+  }
 
   return (
     <div className={styles.meta}>
-      <MetaHeader />
+      <div className={styles.meta__categories}>
+        <button
+          style={{ borderBottom: isPub ? '1.5px solid #ffffffde' : undefined }}
+          onClick={handleButtonClick(true)}
+        >
+          <h3>public</h3>
+        </button>
+        <button
+          style={{ borderBottom: !isPub ? '1.5px solid #ffffffde' : undefined }}
+          onClick={handleButtonClick(false)}
+        >
+          <h3>professional</h3>
+        </button>
+      </div>
+
+      {isPub && <MetaHeader currRank={currRank} setCurrRank={setCurrRank} />}
+      <table className={styles.metaTable}>
+        <thead>
+          <tr>
+            <th>hero</th>
+            <th>winrate^</th>
+            <th>pickrate^</th>
+          </tr>
+        </thead>
+        <tbody>
+          {isPub && (
+            <>
+              <MetaPublic currRank={currRank} heroStats={heroStatsData} />
+            </>
+          )}
+        </tbody>
+      </table>
     </div>
   )
 }

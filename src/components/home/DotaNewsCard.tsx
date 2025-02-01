@@ -1,5 +1,5 @@
 import styles from '@/styles/home/Home.module.scss'
-import { NewsItem } from '@/types/home/homeDataUtility'
+import { NewsItem } from '@/types/home/homeData'
 
 export default function DotaNewsCard({ newsItem }: { newsItem: NewsItem }) {
   const date = new Date(newsItem.date * 1000)

@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '@/shared/reduxImports'
 import { useEffect } from '@/shared/reactImports'
 import { setHomeData } from '@/store/homeSlice'
 
-import type { HomeData } from '@/types/home/homeDataUtility'
+import type { HomeData } from '@/types/home/homeData'
 
 import styles from '@/styles/home/Home.module.scss'
 

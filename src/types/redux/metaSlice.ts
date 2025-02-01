@@ -1,4 +1,4 @@
-import { MetaData } from '../meta/metaDataUtility'
+import { MetaData } from '../meta/metaData'
 
 export interface InitialMetaState {
   metaData: MetaData | null

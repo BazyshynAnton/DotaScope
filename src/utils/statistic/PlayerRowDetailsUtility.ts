@@ -1,9 +1,5 @@
-import type { Player } from '@/types/statistic/tableDetails'
-
 import type { FacetGradientColor, PlayerColors } from '@/types/statistic/matchDetails'
-
-import type { HeroList, PlayerProfile } from '@/types/redux/statisticSlice'
-
+import type { Player, HeroList, PlayerProfile } from '@/types/statistic/matchData'
 import type {
   DetailsAboutHero,
   DetailsAboutPlayer,
