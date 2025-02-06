@@ -12,7 +12,7 @@ import {
 } from '@/types/statistic/matchData'
 import { fetchHelper } from '../sharedUtils'
 
-import type { Item } from '@/types/statistic/playerRow'
+import type { Items } from '@/types/statistic/playerRow'
 
 /**
  * Fetches all data related to a specific match using the OpenDota API.
@@ -119,7 +119,7 @@ export async function fetchDotaConstants(): Promise<DotaConstants | string> {
     if (abilityIDsData instanceof Error) throw abilityIDsData
 
     // Get items object
-    const itemsData = await fetchHelper<Item>(process.env.NEXT_PUBLIC_ITEMS_URL as string)
+    const itemsData = await fetchHelper<Items>(process.env.NEXT_PUBLIC_ITEMS_URL as string)
     if (itemsData instanceof Error) throw itemsData
     // Get region object
     const regionData = await fetchHelper<Region>(process.env.NEXT_PUBLIC_REGION_URL as string)

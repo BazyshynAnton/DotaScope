@@ -1,7 +1,8 @@
+import { Image } from '@/shared/nextjsImports'
+
 import type { HeroStats } from '@/types/meta/metaData'
 
 import styles from '@/styles/meta/Meta.module.scss'
-import Image from 'next/image'
 
 export default function MetaPublic({
   currRank,
@@ -13,7 +14,7 @@ export default function MetaPublic({
   const pick = `${currRank}_pick` as keyof HeroStats
   const win = `${currRank}_win` as keyof HeroStats
 
-  const filteredHeroes: HeroStats[] = heroStats
+  const sortedHeroes: HeroStats[] = heroStats
     .filter((hero) => (hero[pick] as number) > 0)
     .sort(
       (a, b) =>
@@ -23,7 +24,7 @@ export default function MetaPublic({
 
   return (
     <div className={styles.metaPub}>
-      {filteredHeroes.map((hero) => {
+      {sortedHeroes.map((hero) => {
         const winrate = ((hero[win] as number) / (hero[pick] as number)) * 100
 
         return (

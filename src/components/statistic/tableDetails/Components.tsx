@@ -13,6 +13,13 @@ export default function Components({ details, item }: ItemDescriptionInterface) 
     throw Error('[DATA] Cannot get data about Item Details')
   }
 
+  let recipe = null
+  let recipeCost = null
+  if (items[`recipe_${item}`] && items[`recipe_${item}`].cost) {
+    recipe = 'recipe'
+    recipeCost = items[`recipe_${item}`].cost
+  }
+
   return (
     <>
       {details[item].components && details[item].components.length > 0 && (
@@ -39,6 +46,17 @@ export default function Components({ details, item }: ItemDescriptionInterface) 
                 </div>
               )
             })}
+            {recipe && recipeCost && (
+              <div className={styles.components__items__item}>
+                <Image
+                  src={`${process.env.NEXT_PUBLIC_ITEM_ICON_URL}recipe.png`}
+                  alt={recipe}
+                  width={34}
+                  height={25}
+                />
+                <div>{recipeCost}</div>
+              </div>
+            )}
           </div>
         </div>
       )}

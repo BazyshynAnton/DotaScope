@@ -11,7 +11,7 @@ export interface UPlayerRowDetails {
 
   findAppropriateItems(player: Player, items: any): ItemDetails | null
 
-  findItemCostByKey(key: string, items: Item): string
+  findItemCostByKey(key: string, items: Items): string
 }
 
 export type AbilityIDs = {
@@ -53,7 +53,7 @@ export interface DetailsAboutPlayer {
   leaderboard_rank_info: number | null
 }
 
-export interface Item {
+export interface Items {
   [key: string]: {
     abilities?: Ability[]
     hint?: string[]
@@ -96,10 +96,10 @@ export interface ItemDetails {
   [key: string]: {
     abilities?: Ability[]
     hint?: string[]
-    img?: string
+    name?: string
     id?: number
     dname?: string
-    cost?: number | null
+    cost?: number
     attrib?: Attribute[]
     behavior?: string[] | string | boolean
     bkbpierce?: string
@@ -107,7 +107,7 @@ export interface ItemDetails {
     mc?: number | boolean
     cd?: number | boolean
     lore?: string
-    components?: string[] | null
+    components?: string[]
     tier?: number
     purchaseTime?: string
   }

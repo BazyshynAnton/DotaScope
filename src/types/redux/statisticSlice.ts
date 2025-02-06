@@ -7,7 +7,7 @@ import type {
   PlayerProfile,
   Region,
 } from '../statistic/matchData'
-import type { Item } from '../statistic/playerRow'
+import type { Items } from '../statistic/playerRow'
 
 export interface InitialStatisticState {
   matchDetails: MatchDetails | null
@@ -17,7 +17,7 @@ export interface InitialStatisticState {
   abilities: any | null
   heroAbilities: any | null
   abilityIDs: any | null
-  items: Item | null
+  items: Items | null
   region: Region | null
   gameMode: GameMode | null
   lobbyType: LobbyType | null

@@ -3,7 +3,7 @@ import type { Player, HeroList, PlayerProfile } from '@/types/statistic/matchDat
 import type {
   DetailsAboutHero,
   DetailsAboutPlayer,
-  Item,
+  Items,
   ItemDetails,
   UPlayerRowDetails,
 } from '@/types/statistic/playerRow'
@@ -165,15 +165,15 @@ export class PlayerRowDetailsUtility implements UPlayerRowDetails {
    * @param {Item} items The object.
    * @returns {ItemDetails | null} The items and item details if found, otherwise `null`.
    */
-  public findAppropriateItems(player: Player, items: Item): ItemDetails | null {
+  public findAppropriateItems(player: Player, items: Items): ItemDetails | null {
     const emptyValue = {
       abilities: [],
       hint: [],
-      img: 'empty_slot',
+      name: 'empty_slot',
       id: '',
       dname: 'Empty Slot',
-      cost: null,
-      attrib: [],
+      cost: undefined,
+      attrib: undefined,
       behavior: undefined,
       bkbpierce: undefined,
       dispellable: undefined,
@@ -184,7 +184,6 @@ export class PlayerRowDetailsUtility implements UPlayerRowDetails {
       tier: undefined,
     }
 
-    // use loop to init it
     this.mItemDetails = {
       item_0: emptyValue,
       item_1: emptyValue,
@@ -275,14 +274,10 @@ export class PlayerRowDetailsUtility implements UPlayerRowDetails {
    * @param {Item} items The object.
    * @returns {string} Item cost.
    */
-  public findItemCostByKey(key: string, items: Item): string {
+  public findItemCostByKey(key: string, items: Items): string {
     let cost = 0
 
-    for (const [itemsKey, value] of Object.entries(items)) {
-      if (key === itemsKey) {
-        if (value.cost) cost = value.cost
-      }
-    }
+    if (items[key].cost) cost = items[key].cost
 
     return cost.toString()
   }

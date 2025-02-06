@@ -31,7 +31,7 @@ export default function MetaHeader({
         <Image
           key={rank}
           src={rank}
-          alt='rank'
+          alt={`rank${idx + 1}`}
           width={80}
           height={80}
           style={{ filter: currRank !== idx + 1 ? 'grayscale(100%) brightness(70%)' : undefined }}
@@ -41,9 +41,3 @@ export default function MetaHeader({
     </div>
   )
 }
-
-/**
-    7 - divine rank
-    7_pick	24309 - matches played
-    7_win	11682 - matches won
- */

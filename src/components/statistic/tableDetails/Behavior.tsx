@@ -50,17 +50,6 @@ export default function Behavior({ details, item }: ItemDescriptionInterface) {
           <div className={bkbpierceCondition}> {details[item].bkbpierce}</div>
         </div>
       )}
-      {details[item].behavior && details[item].dispellable && details[item].bkbpierce && (
-        <hr
-          style={{
-            width: '100%',
-            height: '1.5px',
-            background: '#6c7b7e',
-            border: 'none',
-            margin: '18px 0px 13px 0px',
-          }}
-        />
-      )}
     </>
   )
 }
