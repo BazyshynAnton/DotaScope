@@ -12,6 +12,7 @@ import styles from '@/styles/meta/Meta.module.scss'
 export default function Meta({ metaData }: { metaData: MetaData | string }) {
   const [isPub, setIsPub] = useState(true)
   const [currRank, setCurrRank] = useState(8)
+  const [tableSort, setTableSort] = useState({ winrate: true, pick: false })
 
   if (typeof metaData === 'string') throw new Error(metaData)
 
@@ -43,17 +44,13 @@ export default function Meta({ metaData }: { metaData: MetaData | string }) {
         <thead>
           <tr>
             <th>hero</th>
-            <th>winrate^</th>
-            <th>pickrate^</th>
+            <th>winrate</th>
+            <th>
+              <div style={{ width: 'max-content' }}>matches played</div>
+            </th>
           </tr>
         </thead>
-        <tbody>
-          {isPub && (
-            <>
-              <MetaPublic currRank={currRank} heroStats={heroStatsData} />
-            </>
-          )}
-        </tbody>
+        <tbody>{isPub && <MetaPublic currRank={currRank} heroStats={heroStatsData} />}</tbody>
       </table>
     </div>
   )

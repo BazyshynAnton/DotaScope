@@ -61,10 +61,19 @@
   margin-top: 2rem;
   width: min-content;
   background-color: $bgColor2;
-  th {
+
+  th,
+  div {
     font-size: 12px;
-    padding: 10px;
+  }
+
+  th {
+    padding: 5px 10px;
     text-transform: capitalize;
     color: $fontColor2;
+
+    &:not(:first-child) {
+      cursor: pointer;
+    }
   }
 }

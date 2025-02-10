@@ -1,8 +1,6 @@
-import { Image } from '@/shared/nextjsImports'
+import MetaTableBody from './MetaTableBody'
 
 import type { HeroStats } from '@/types/meta/metaData'
-
-import styles from '@/styles/meta/Meta.module.scss'
 
 export default function MetaPublic({
   currRank,
@@ -23,36 +21,20 @@ export default function MetaPublic({
     )
 
   return (
-    <div className={styles.metaPub}>
+    <>
       {sortedHeroes.map((hero) => {
         const winrate = ((hero[win] as number) / (hero[pick] as number)) * 100
 
         return (
-          <tr key={hero.name}>
-            <td>
-              <div>
-                <Image
-                  src={`${process.env.NEXT_PUBLIC_HERO_ICON_URL as string}${hero.name.replace('npc_dota_hero_', '')}.png`}
-                  alt={hero.name}
-                  width={54}
-                  height={30}
-                />
-                <p>{hero.localized_name}</p>
-              </div>
-            </td>
-            <td>
-              <div>
-                <p>{Math.round((winrate + Number.EPSILON) * 100) / 100}</p>
-              </div>
-            </td>
-            <td>
-              <div>
-                <p>{hero[pick]}</p>
-              </div>
-            </td>
-          </tr>
+          <MetaTableBody
+            key={hero.name}
+            heroName={hero.name}
+            heroLocalizedName={hero.localized_name}
+            winrate={winrate}
+            pick={hero[pick] as number}
+          />
         )
       })}
-    </div>
+    </>
   )
 }
