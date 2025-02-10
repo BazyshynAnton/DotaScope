@@ -45,7 +45,7 @@ export class PlayerRowUtility implements UPlayerRow {
     switch (slotType) {
       case 'main_slot': {
         for (let i = 0; i < slotSizes.Main; ++i) {
-          const icon = detailsAboutItems[`item_${i}`]?.img
+          const icon = detailsAboutItems[`item_${i}`]?.name
           if (typeof icon === 'string') {
             this.m_Items.push(icon)
           }
@@ -54,7 +54,7 @@ export class PlayerRowUtility implements UPlayerRow {
       }
       case 'backpack': {
         for (let i = 0; i < slotSizes.Backpack; ++i) {
-          const icon = detailsAboutItems[`backpack_${i}`]?.img
+          const icon = detailsAboutItems[`backpack_${i}`]?.name
           if (typeof icon === 'string') {
             this.m_Items.push(icon)
           }
@@ -158,7 +158,7 @@ export class PlayerRowUtility implements UPlayerRow {
           const res: ItemDetails = {}
 
           for (const [_, value] of Object.entries(detailsAboutItems)) {
-            if (item === value.img) {
+            if (item === value.name) {
               res[item] = value
               break
             }
@@ -216,7 +216,7 @@ export class PlayerRowUtility implements UPlayerRow {
       ],
       hint: [],
       id: 108,
-      img: 'ultimate_scepter',
+      name: 'ultimate_scepter',
       dname: "Aghanim's Scepter",
       cost: 4200,
       attrib: [
@@ -255,14 +255,14 @@ export class PlayerRowUtility implements UPlayerRow {
       ],
       hint: [],
       id: 609,
-      img: 'aghanims_shard',
+      name: 'aghanims_shard',
       dname: "Aghanim's Shard",
       cost: 1400,
       attrib: [],
       mc: false,
       cd: false,
       lore: 'With origins known only to a single wizard, fragments of this impossible crystal are nearly as coveted as the renowned scepter itself.',
-      components: null,
+      components: undefined,
     },
   }
 }

@@ -11,10 +11,11 @@ export default function NeutralItem({ itemDetails }: SlotInterface) {
   //
   // State for manage tooltip about neutral item.
   const [toolTipStatus, setToolTipStatus] = useState(false)
-  if (!itemDetails?.item_neutral.img) return <CannotFind />
+
+  if (!itemDetails?.item_neutral.name) return <CannotFind />
 
   // Initialize neutral item
-  const neutralItem: string = itemDetails.item_neutral.img
+  const neutralItem: string = itemDetails.item_neutral.name
 
   // Initialize utility for manage data in component
   const prrUtility = PlayerRowUtility.getInstance()

@@ -206,7 +206,7 @@ export class PlayerRowDetailsUtility implements UPlayerRowDetails {
       const itemValue = {
         abilities: value.abilities,
         hint: value.hint,
-        img: key,
+        name: key,
         id: value.id,
         dname: value.dname,
         cost: value.cost,
