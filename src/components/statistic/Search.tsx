@@ -52,7 +52,13 @@ export default function Search() {
             disabled={isDisabled}
             className={isDisabled ? styles.search__button_disabled : styles.search__button_enabled}
           >
-            <BsSearch />
+            <Image
+              src={'/pictures/dotaScopeIcons/gem_search.gif'}
+              alt='gem'
+              width={32}
+              height={32}
+              style={{ filter: isDisabled ? 'grayscale(100%) brightness(100%)' : '' }}
+            />
           </button>
         ) : (
           <div className={styles.search__button_disabled}>

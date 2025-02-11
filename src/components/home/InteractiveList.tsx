@@ -2,11 +2,11 @@ import ProMatchCard from './ProMatchCard'
 import DotaNewsCard from './DotaNewsCard'
 import ContentHeader from './ContentHeader'
 import DataLoader from '../loaders/DataLoader'
+import AppError from '../error/AppError'
 
 import { useAppSelector } from '@/hooks/useAppSelector'
 
 import styles from '@/styles/home/Home.module.scss'
-import AppError from '../error/AppError'
 
 export default function InteractiveList({
   type,
@@ -27,9 +27,7 @@ export default function InteractiveList({
       >
         {type === 'matchesList' ? (
           proMatches ? (
-            proMatches.map((match, idx) => {
-              return <ProMatchCard key={match.match_id} proMatch={match} />
-            })
+            proMatches.map((match) => <ProMatchCard key={match.match_id} proMatch={match} />)
           ) : (
             <Loader />
           )

@@ -4,19 +4,26 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
 $border1: 4px solid #ffffff00;
 $bgColor: #242f39;
 
-.headerContainer {
+.headerWrapper {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: max-content;
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 5px 10px;
+  justify-content: center;
+  height: max-content;
   background-color: $bgColor;
   border-bottom: $border;
   z-index: 100;
+}
+
+.headerContainer {
+  padding: 0px 30px;
+  max-width: 1400px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .headerContent {
@@ -29,8 +36,7 @@ $bgColor: #242f39;
 .headerLink,
 .activeHeaderLink {
   position: relative;
-  padding: 3px 7px;
-  font-size: 19px;
+  padding: 7px;
   font-weight: 400;
   text-transform: capitalize;
   color: $fontColor1;
@@ -97,7 +103,7 @@ $bgColor: #242f39;
   position: absolute;
   width: 100vw;
   height: 100vh;
-  top: 55px;
+  top: 46px;
   left: 0px;
   background: $bgColor;
   display: flex;
@@ -108,13 +114,6 @@ $bgColor: #242f39;
   padding: 20px;
 }
 
-@media (min-width: 1920px) {
-  .headerLink,
-  .activeHeaderLink {
-    font-size: 1.3rem;
-  }
-}
-
 @media (max-width: 550px) {
   .headerContainer {
     justify-content: flex-start;
@@ -122,7 +121,6 @@ $bgColor: #242f39;
 
   .headerLink,
   .activeHeaderLink {
-    font-size: 1.1rem;
     border-bottom: none;
   }
 

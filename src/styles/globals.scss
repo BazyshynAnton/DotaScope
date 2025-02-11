@@ -28,7 +28,6 @@ li {
 a {
   text-decoration: none;
   color: #3b82f6;
-  @include adaptive-font(0.7, 1.1, 120);
 }
 
 .wrapper {
@@ -50,23 +49,29 @@ td {
 }
 
 h3 {
-  @include adaptive-font(1, 1.4, 120);
+  @include adaptive-font(1, 1.1, 120);
 }
 
 h4,
 p,
-span {
-  @include adaptive-font(0.7, 1.1, 120);
+a,
+span,
+input,
+input::placeholder {
+  @include adaptive-font(0.7, 0.9, 120);
 }
 
 @media (min-width: 1920px) {
   h3 {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
   }
 
   h4,
   p,
-  span {
-    font-size: 1.1rem;
+  a,
+  span,
+  input,
+  input::placeholder {
+    font-size: 0.9rem;
   }
 }

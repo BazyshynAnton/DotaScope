@@ -21,7 +21,6 @@ export default function HeaderBigScreen() {
             transition: 'all 0.15s ease-in-out',
             padding: '5px 20px',
             background: '#ffffff14',
-            borderRadius: '4px',
             zIndex: 1,
           }}
         />

@@ -43,7 +43,7 @@ export default function ResultOfMatch() {
             color: sideColor,
           }}
         >
-          TEAM {teamName} {'WIN'}
+          TEAM {teamName} {'W0N'}
         </h4>
         <div className={styles.scoreAndTime}>
           <p className={styles.scoreAndTime__radiantScore}>{resultOfMatch?.radiantScore}</p>

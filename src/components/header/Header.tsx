@@ -24,8 +24,10 @@ export default function Header() {
   }, [])
 
   return (
-    <div className={styles.headerContainer}>
-      {!smallHeader ? <HeaderBigScreen /> : <HeaderSmallScreen />}
+    <div className={styles.headerWrapper}>
+      <div className={styles.headerContainer}>
+        {!smallHeader ? <HeaderBigScreen /> : <HeaderSmallScreen />}
+      </div>
     </div>
   )
 }
