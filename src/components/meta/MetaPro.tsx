@@ -4,17 +4,15 @@ import { sortHeroes } from './Meta'
 
 import type { HeroStats } from '@/types/meta/metaData'
 
-export default function MetaPublic({
-  currRank,
+export default function MetaPro({
   heroStats,
   tableSort,
 }: {
-  currRank: number
   heroStats: HeroStats[]
   tableSort: { keyToSort: string; direction: boolean }
 }) {
-  const pick = `${currRank}_pick` as keyof HeroStats
-  const win = `${currRank}_win` as keyof HeroStats
+  const win = 'pro_win' as keyof HeroStats
+  const pick = 'pro_pick' as keyof HeroStats
 
   const sortedHeroes: HeroStats[] = sortHeroes(heroStats, { win, pick }, tableSort)
 

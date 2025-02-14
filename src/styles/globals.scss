@@ -49,7 +49,7 @@ td {
 }
 
 h3 {
-  @include adaptive-font(1, 1.1, 120);
+  @include adaptive-font(1, 1, 120);
 }
 
 h4,
@@ -63,7 +63,7 @@ input::placeholder {
 
 @media (min-width: 1920px) {
   h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   h4,

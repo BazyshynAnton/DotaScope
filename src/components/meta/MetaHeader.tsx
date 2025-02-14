@@ -32,8 +32,8 @@ export default function MetaHeader({
           key={rank}
           src={rank}
           alt={`rank${idx + 1}`}
-          width={80}
-          height={80}
+          width={70}
+          height={70}
           style={{ filter: currRank !== idx + 1 ? 'grayscale(100%) brightness(70%)' : undefined }}
           onClick={handleImageClick(idx + 1)}
         />

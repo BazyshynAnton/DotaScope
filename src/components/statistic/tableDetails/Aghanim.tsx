@@ -49,7 +49,6 @@ export default function Aghanim({ player }: { player: Player }) {
           gap: '0.1rem',
           alignItems: 'center',
           justifyContent: 'center',
-          cursor: 'help',
         }}
       >
         <Image
@@ -61,6 +60,7 @@ export default function Aghanim({ player }: { player: Player }) {
           height={38}
           onMouseEnter={() => handleMouseEnterAghanim(0)}
           onMouseLeave={() => handleMouseLeaveAghanim(0)}
+          style={{ cursor: 'help' }}
         />
         <Image
           src={`/pictures/dotaItemIcons/${player.aghanims_shard === 1 ? 'shard_1' : 'shard_0'}.png`}
@@ -69,6 +69,7 @@ export default function Aghanim({ player }: { player: Player }) {
           height={24}
           onMouseEnter={() => handleMouseEnterAghanim(1)}
           onMouseLeave={() => handleMouseLeaveAghanim(1)}
+          style={{ cursor: 'help' }}
         />
       </div>
     </>

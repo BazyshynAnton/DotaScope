@@ -57,7 +57,7 @@ function TableHeaderCell({
         id={str}
         content={title}
         place='top'
-        style={{ color: '#ffffffde', background: '#242f39' }}
+        style={{ color: '#ffffffde', backgroundColor: '#5e5e5e' }}
       />
     </th>
   )

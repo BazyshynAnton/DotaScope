@@ -6,6 +6,7 @@ export async function fetchMetaData(): Promise<MetaData | string> {
   try {
     const heroStatsData = await fetchHelper<HeroStats[]>(
       process.env.NEXT_PRIVATE_HERO_STATS_URL as string,
+      'no-cache',
     )
     if (heroStatsData instanceof Error) throw heroStatsData
 

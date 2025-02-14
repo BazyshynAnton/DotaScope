@@ -192,6 +192,7 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
 .slots__mainSlot,
 .slots__backpack {
   img {
+    cursor: help;
     border: $border;
   }
 }
@@ -200,7 +201,6 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
 .slots__backpack {
   display: flex;
   gap: 3px;
-  cursor: help;
 }
 
 .neutral {
@@ -213,5 +213,8 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   overflow: hidden;
   border: $border;
-  cursor: help;
+
+  img {
+    cursor: help;
+  }
 }
