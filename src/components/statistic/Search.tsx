@@ -4,8 +4,6 @@ import { useAppDispatch, useAppSelector } from '@/shared/reduxImports'
 import { setMatchData, setSearch } from '@/store/statisticSlice'
 import { fetchMatchData } from '@/utils/statistic/matchDataUtility'
 
-import { BsSearch } from 'react-icons/bs'
-
 import type { ChangeEvent, FormEvent } from 'react'
 
 import styles from '@/styles/statistic/Search.module.scss'
@@ -67,6 +65,7 @@ export default function Search() {
               alt='gem'
               width={32}
               height={32}
+              style={{ filter: 'grayscale(100%) brightness(100%)' }}
             />
           </div>
         )}

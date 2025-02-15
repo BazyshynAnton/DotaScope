@@ -26,6 +26,7 @@ export default function Header() {
   return (
     <div className={styles.headerWrapper}>
       <div className={styles.headerContainer}>
+        <h3 style={{ color: '#ffffffde' }}>DOTASCOPE</h3>
         {!smallHeader ? <HeaderBigScreen /> : <HeaderSmallScreen />}
       </div>
     </div>

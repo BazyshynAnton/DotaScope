@@ -12,11 +12,11 @@ export default function About() {
           <br />
           &bull; full statistic about your match.
           <br />
-          &bull; accout authorization only by steam ID.(this feature under development)
-          <br />
-          &bull; current meta heroes with their winrates and builds.(this feature under development)
+          &bull; current meta heroes.
           <br />
           &bull; world{"'"}s leaderboard.(this feature under development)
+          <br />
+          &bull; accout authorization only by steam ID.(this feature under development)
           <br />
           <br />
           This project was motivated by the distractions on the same Dota2 data platforms, such as

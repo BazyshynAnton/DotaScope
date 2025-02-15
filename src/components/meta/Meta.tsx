@@ -5,6 +5,9 @@ import MetaPublic from './MetaPublic'
 
 import { useState } from '@/shared/reactImports'
 
+import { TbSortAscending } from 'react-icons/tb'
+import { TbSortDescending } from 'react-icons/tb'
+
 import type { HeroStats, MetaData } from '@/types/meta/metaData'
 
 import styles from '@/styles/meta/Meta.module.scss'
@@ -25,7 +28,7 @@ export default function Meta({ metaData }: { metaData: MetaData | string }) {
     setIsPub(condition)
   }
 
-  const handleTableSortClick = (keyToSort: string, direction: boolean) => () => {
+  const handleTableSortClick = (keyToSort: string) => () => {
     setTableSort({
       keyToSort,
       direction:
@@ -49,16 +52,24 @@ export default function Meta({ metaData }: { metaData: MetaData | string }) {
           <h3>professional</h3>
         </button>
       </div>
-      {/* TODO: <div>{matchCountPro}</div> */}
+      <p style={{ marginBottom: '12px' }}>Meta for the last 7 days</p>
       {isPub && <MetaHeader currRank={currRank} setCurrRank={setCurrRank} />}
       <div className={styles.tableWrapper}>
         <table className={styles.metaTable}>
           <thead>
             <tr>
               <th>hero</th>
-              <th onClick={handleTableSortClick('winrate', false)}>winrate</th>
-              <th onClick={handleTableSortClick('matchesPlayed', false)}>
-                <div style={{ width: 'max-content' }}>matches played</div>
+              <th onClick={handleTableSortClick('winrate')}>
+                <div style={{ width: '80px', ...tableHeaderCellStyles }}>
+                  winrate
+                  <SortType keyToSort='winrate' tableSort={tableSort} />
+                </div>
+              </th>
+              <th onClick={handleTableSortClick('matchesPlayed')}>
+                <div style={{ width: '104px', ...tableHeaderCellStyles }}>
+                  matches played
+                  <SortType keyToSort='matchesPlayed' tableSort={tableSort} />
+                </div>
               </th>
             </tr>
           </thead>
@@ -71,6 +82,28 @@ export default function Meta({ metaData }: { metaData: MetaData | string }) {
         </table>
       </div>
     </div>
+  )
+}
+
+function SortType({
+  keyToSort,
+  tableSort,
+}: {
+  keyToSort: string
+  tableSort: { keyToSort: string; direction: boolean }
+}) {
+  return (
+    <>
+      {keyToSort === tableSort.keyToSort ? (
+        tableSort.direction ? (
+          <TbSortAscending />
+        ) : (
+          <TbSortDescending />
+        )
+      ) : (
+        <></>
+      )}
+    </>
   )
 }
 
@@ -111,4 +144,11 @@ export function sortHeroes(
           return 0
       }
     })
+}
+
+const tableHeaderCellStyles: React.CSSProperties = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  minWidth: 'max-content',
 }

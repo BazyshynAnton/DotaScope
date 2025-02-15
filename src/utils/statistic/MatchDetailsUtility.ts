@@ -147,7 +147,14 @@ export class MatchDetailsUtility implements UMatchDetails {
     if (!temp) return ''
 
     const res = temp.toLowerCase().split('')
-    res[0] = res[0].toUpperCase()
+    res.forEach((el, idx) => {
+      if (idx === 0) {
+        return (res[idx] = res[idx].toUpperCase())
+      }
+      if (el === ' ') {
+        return (res[idx + 1] = res[idx + 1].toUpperCase())
+      }
+    })
     return res.join('')
   }
 
