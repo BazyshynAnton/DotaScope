@@ -2,7 +2,7 @@ import MetaTableBody from './MetaTableBody'
 
 import { sortHeroes } from './Meta'
 
-import type { HeroStats } from '@/types/meta/metaData'
+import type { HeroStats, TableSort } from '@/types/meta/metaData'
 
 export default function MetaPublic({
   currRank,
@@ -11,7 +11,7 @@ export default function MetaPublic({
 }: {
   currRank: number
   heroStats: HeroStats[]
-  tableSort: { keyToSort: string; direction: boolean }
+  tableSort: TableSort
 }) {
   const pick = `${currRank}_pick` as keyof HeroStats
   const win = `${currRank}_win` as keyof HeroStats

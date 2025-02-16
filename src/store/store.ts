@@ -1,12 +1,11 @@
 import homeSlice from './homeSlice'
 import statisticSlice from './statisticSlice'
-import metaSlice from './metaSlice'
 
 import { configureStore } from '@reduxjs/toolkit'
 
 export const makeStore = () => {
   return configureStore({
-    reducer: { homeSlice, statisticSlice, metaSlice },
+    reducer: { homeSlice, statisticSlice },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
   })
 }

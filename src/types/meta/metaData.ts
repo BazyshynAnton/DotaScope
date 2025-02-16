@@ -27,3 +27,8 @@ export interface HeroStats {
   '8_pick': number
   '8_win': number
 }
+
+export interface TableSort {
+  keyToSort: string
+  direction: boolean
+}

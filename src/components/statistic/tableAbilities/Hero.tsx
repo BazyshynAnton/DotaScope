@@ -19,14 +19,15 @@ export default function Hero({ playersTeam }: { playersTeam: Player[] }) {
   return (
     <>
       {playersTeam.map((player) => {
-        const detailsAboutHero = uRowDetails.findAppropriateHero(player, heroList, heroAbilities)
+        const heroDetails = uRowDetails.findAppropriateHero(player, heroList, heroAbilities)
+
         return (
           <tr key={player.hero_id} className={styles.tableBodyRow}>
             <td>
               <div className={styles.heroDataCell}>
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_HERO_ICON_URL}${detailsAboutHero.heroName}.png`}
-                  alt={detailsAboutHero.heroLocalizedName}
+                  src={`${process.env.NEXT_PUBLIC_HERO_ICON_URL}${heroDetails.name}.png`}
+                  alt={heroDetails.localizedName}
                   width={51}
                   height={30}
                 />

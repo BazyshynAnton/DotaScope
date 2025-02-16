@@ -1,15 +1,15 @@
 import { Image } from '@/shared/nextjsImports'
 import { PlayerRowDetailsUtility } from '@/utils/statistic/PlayerRowDetailsUtility'
 
-import type { DetailsAboutPlayer } from '@/types/statistic/playerRow'
+import type { PlayerDetails } from '@/types/statistic/playerRow'
 
 import styles from '@/styles/statistic/PlayerRow.module.scss'
 
 export default function RankAndAvatar({
-  detailsAboutPlayer,
+  playerDetails,
   uRowDetails,
 }: {
-  detailsAboutPlayer: DetailsAboutPlayer
+  playerDetails: PlayerDetails
   uRowDetails: PlayerRowDetailsUtility
 }) {
   return (
@@ -22,9 +22,9 @@ export default function RankAndAvatar({
           height={40}
           quality={100}
         />
-        {detailsAboutPlayer.leaderboard_rank_info !== null && (
+        {playerDetails.leaderboardRankInfo !== null && (
           <div className={styles.rankAndAvatar__rank__tier}>
-            {detailsAboutPlayer.leaderboard_rank_info}
+            {playerDetails.leaderboardRankInfo}
           </div>
         )}
       </div>

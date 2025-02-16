@@ -1,8 +1,8 @@
 import type { FacetGradientColor, PlayerColors } from '@/types/statistic/matchDetails'
 import type { Player, HeroList, PlayerProfile } from '@/types/statistic/matchData'
 import type {
-  DetailsAboutHero,
-  DetailsAboutPlayer,
+  HeroDetails,
+  PlayerDetails,
   Items,
   ItemDetails,
   UPlayerRowDetails,
@@ -32,16 +32,17 @@ export class PlayerRowDetailsUtility implements UPlayerRowDetails {
    * @param {HeroList[]} heroList The list of available heroes
    * with their details.
    * @param {any} heroAbilities The object of hero abilities.
-   * @returns {DetailsAboutHero} The detailed information about the hero.
+   * @returns The detailed information about the hero.
    */
   public findAppropriateHero(
     player: Player,
     heroList: HeroList[],
     heroAbilities: any,
-  ): DetailsAboutHero {
+  ): HeroDetails {
+    // reset
     this.mHeroDetails = {
-      heroName: '',
-      heroLocalizedName: '',
+      name: '',
+      localizedName: '',
       heroVariant: {
         icon: '',
         color: '',
@@ -75,13 +76,9 @@ export class PlayerRowDetailsUtility implements UPlayerRowDetails {
    * @param {PlayerProfile[]} playersProfiles A list of player profiles retrieved from external sources.
    * @returns {DetailsAboutPlayer} The detailed information about the player.
    */
-  public findAppropriatePlayer(
-    player: Player,
-    playersProfiles: PlayerProfile[],
-  ): DetailsAboutPlayer {
+  public findAppropriatePlayer(player: Player, playersProfiles: PlayerProfile[]): PlayerDetails {
     //
     // If player is not Anonymous -> find player data
-
     if ('account_id' in player) {
       playersProfiles.some((playerProfile) => {
         if ('profile' in playerProfile) {
@@ -90,13 +87,13 @@ export class PlayerRowDetailsUtility implements UPlayerRowDetails {
             this.mPlayerDetails.profileInfo.avatar = playerProfile.profile.avatar
 
             // profile url
-            this.mPlayerDetails.profileInfo.profileurl = playerProfile.profile.profileurl
-
-            // rank
-            this.mPlayerDetails.leaderboard_rank_info = playerProfile.leaderboard_rank
+            this.mPlayerDetails.profileInfo.profileUrl = playerProfile.profile.profileurl
 
             // rank tier
-            this.mPlayerDetails.rank_tier_info = playerProfile.rank_tier
+            this.mPlayerDetails.rankTierInfo = playerProfile.rank_tier
+
+            // rank
+            this.mPlayerDetails.leaderboardRankInfo = playerProfile.leaderboard_rank
 
             return true // break the loop
           }
@@ -120,9 +117,9 @@ export class PlayerRowDetailsUtility implements UPlayerRowDetails {
   public findPlayerRankIcon(): string {
     const imagePath = '/pictures/dotaPlayerRankIcons/'
 
-    const leaderboardRank = this.mPlayerDetails.leaderboard_rank_info
+    const leaderboardRank = this.mPlayerDetails.leaderboardRankInfo
 
-    const rankTier = this.mPlayerDetails.rank_tier_info
+    const rankTier = this.mPlayerDetails.rankTierInfo
 
     if (rankTier && leaderboardRank) {
       if (leaderboardRank <= 10 && leaderboardRank >= 1) {
@@ -283,9 +280,9 @@ export class PlayerRowDetailsUtility implements UPlayerRowDetails {
   }
 
   // Hero details
-  private mHeroDetails: DetailsAboutHero = {
-    heroName: '',
-    heroLocalizedName: '',
+  private mHeroDetails: HeroDetails = {
+    name: '',
+    localizedName: '',
     heroVariant: {
       icon: '',
       color: '',
@@ -296,13 +293,13 @@ export class PlayerRowDetailsUtility implements UPlayerRowDetails {
   }
 
   // Player details
-  private mPlayerDetails: DetailsAboutPlayer = {
+  private mPlayerDetails: PlayerDetails = {
     profileInfo: {
       avatar: '',
-      profileurl: '',
+      profileUrl: '',
     },
-    rank_tier_info: null,
-    leaderboard_rank_info: null,
+    rankTierInfo: null,
+    leaderboardRankInfo: null,
   }
 
   // Player's item details
@@ -418,9 +415,9 @@ export class PlayerRowDetailsUtility implements UPlayerRowDetails {
       const hero = heroList[i]
 
       if (player.hero_id === hero.id) {
-        this.mHeroDetails.heroName = hero.name
-        this.mHeroDetails.heroName = this.mHeroDetails.heroName.replace('npc_dota_hero_', '')
-        this.mHeroDetails.heroLocalizedName = hero.localized_name
+        this.mHeroDetails.name = hero.name
+        this.mHeroDetails.name = this.mHeroDetails.name.replace('npc_dota_hero_', '')
+        this.mHeroDetails.localizedName = hero.localized_name
         this.mCurrentHero = hero.name
       }
     }

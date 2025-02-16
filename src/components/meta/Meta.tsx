@@ -2,23 +2,23 @@
 
 import MetaHeader from './MetaHeader'
 import MetaPublic from './MetaPublic'
+import MetaPro from './MetaPro'
 
 import { useState } from '@/shared/reactImports'
 
 import { TbSortAscending } from 'react-icons/tb'
 import { TbSortDescending } from 'react-icons/tb'
 
-import type { HeroStats, MetaData } from '@/types/meta/metaData'
+import type { HeroStats, MetaData, TableSort } from '@/types/meta/metaData'
 
 import styles from '@/styles/meta/Meta.module.scss'
-import MetaPro from './MetaPro'
 
 export default function Meta({ metaData }: { metaData: MetaData | string }) {
   const [isPub, setIsPub] = useState(true)
   const [currRank, setCurrRank] = useState(8)
 
   // true - ascending  , false - descending
-  const [tableSort, setTableSort] = useState({ keyToSort: 'winrate', direction: false })
+  const [tableSort, setTableSort] = useState<TableSort>({ keyToSort: 'winrate', direction: false })
 
   if (typeof metaData === 'string') throw new Error(metaData)
 
@@ -85,13 +85,7 @@ export default function Meta({ metaData }: { metaData: MetaData | string }) {
   )
 }
 
-function SortType({
-  keyToSort,
-  tableSort,
-}: {
-  keyToSort: string
-  tableSort: { keyToSort: string; direction: boolean }
-}) {
+function SortType({ keyToSort, tableSort }: { keyToSort: string; tableSort: TableSort }) {
   return (
     <>
       {keyToSort === tableSort.keyToSort ? (
@@ -110,7 +104,7 @@ function SortType({
 export function sortHeroes(
   heroStats: HeroStats[],
   data: { win: keyof HeroStats; pick: keyof HeroStats },
-  condition: { keyToSort: string; direction: boolean },
+  condition: TableSort,
 ) {
   const { win, pick } = data
 

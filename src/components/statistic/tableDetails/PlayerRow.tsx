@@ -7,7 +7,7 @@ import { useAppSelector } from '@/shared/reduxImports'
 import { PlayerRowDetailsUtility } from '@/utils/statistic/PlayerRowDetailsUtility'
 
 import type { Player } from '@/types/statistic/matchData'
-import type { DetailsAboutHero, DetailsAboutPlayer, ItemDetails } from '@/types/statistic/playerRow'
+import type { HeroDetails, PlayerDetails, ItemDetails } from '@/types/statistic/playerRow'
 
 import styles from '@/styles/statistic/PlayerRow.module.scss'
 
@@ -26,14 +26,14 @@ export default function PlayerRow({ playersTeam }: { playersTeam: Player[] }) {
         const uRowDetails = new PlayerRowDetailsUtility()
 
         // Find details about hero
-        const detailsAboutHero: DetailsAboutHero = uRowDetails.findAppropriateHero(
+        const heroDetails: HeroDetails = uRowDetails.findAppropriateHero(
           player,
           heroList,
           heroAbilities,
         )
 
         // Find details about player
-        const detailsAboutPlayer: DetailsAboutPlayer = uRowDetails.findAppropriatePlayer(
+        const playerDetails: PlayerDetails = uRowDetails.findAppropriatePlayer(
           player,
           playersProfiles,
         )
@@ -45,8 +45,8 @@ export default function PlayerRow({ playersTeam }: { playersTeam: Player[] }) {
           <tr key={player.hero_id} className={styles.playerRow}>
             <td className={styles.playerRow__playerDataCell}>
               <div className={styles.playerRow__playerDataCell__inCell}>
-                <HeroAndNickname detailsAboutHero={detailsAboutHero} player={player} />
-                <RankAndAvatar detailsAboutPlayer={detailsAboutPlayer} uRowDetails={uRowDetails} />
+                <HeroAndNickname heroDetails={heroDetails} player={player} />
+                <RankAndAvatar playerDetails={playerDetails} uRowDetails={uRowDetails} />
               </div>
             </td>
             <PlayerStatistic player={player} />

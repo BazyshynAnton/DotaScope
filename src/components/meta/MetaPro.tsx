@@ -2,14 +2,14 @@ import MetaTableBody from './MetaTableBody'
 
 import { sortHeroes } from './Meta'
 
-import type { HeroStats } from '@/types/meta/metaData'
+import type { HeroStats, TableSort } from '@/types/meta/metaData'
 
 export default function MetaPro({
   heroStats,
   tableSort,
 }: {
   heroStats: HeroStats[]
-  tableSort: { keyToSort: string; direction: boolean }
+  tableSort: TableSort
 }) {
   const win = 'pro_win' as keyof HeroStats
   const pick = 'pro_pick' as keyof HeroStats

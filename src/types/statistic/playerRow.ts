@@ -1,9 +1,9 @@
 import { HeroList, Player, PlayerProfile } from './matchData'
 
 export interface UPlayerRowDetails {
-  findAppropriateHero(player: Player, heroList: HeroList[], heroAbilities: any): DetailsAboutHero
+  findAppropriateHero(player: Player, heroList: HeroList[], heroAbilities: any): HeroDetails
 
-  findAppropriatePlayer(player: Player, playersProfiles: PlayerProfile[]): DetailsAboutPlayer
+  findAppropriatePlayer(player: Player, playersProfiles: PlayerProfile[]): PlayerDetails
 
   findPlayerRankIcon(): string
 
@@ -32,9 +32,9 @@ export interface UPlayerRow {
   ): ItemDetails | null
 }
 
-export interface DetailsAboutHero {
-  heroName: string
-  heroLocalizedName: string
+export interface HeroDetails {
+  name: string
+  localizedName: string
   heroVariant: {
     icon: string
     color: string
@@ -44,13 +44,13 @@ export interface DetailsAboutHero {
   playerColor: string
 }
 
-export interface DetailsAboutPlayer {
+export interface PlayerDetails {
   profileInfo: {
     avatar: string
-    profileurl: string
+    profileUrl: string
   }
-  rank_tier_info: number | null
-  leaderboard_rank_info: number | null
+  rankTierInfo: number | null
+  leaderboardRankInfo: number | null
 }
 
 export interface Items {

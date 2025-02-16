@@ -1,29 +1,42 @@
-import { Image } from '@/shared/nextjsImports'
+import FacetDescription from './FacetDescription'
 
-import type { DetailsAboutHero } from '@/types/statistic/playerRow'
+import { Image } from '@/shared/nextjsImports'
+import { useState } from '@/shared/reactImports'
+
+import type { HeroDetails } from '@/types/statistic/playerRow'
 import type { Player } from '@/types/statistic/matchData'
 
 import styles from '@/styles/statistic/PlayerRow.module.scss'
 
 export default function HeroAndNickname({
-  detailsAboutHero,
+  heroDetails,
   player,
 }: {
-  detailsAboutHero: DetailsAboutHero
+  heroDetails: HeroDetails
   player: Player
 }) {
+  const [isFacetTooltip, setIsFacetTooltip] = useState(false)
+
+  const handleFacetEnter = () => {
+    console.log(heroDetails.localizedName)
+    setIsFacetTooltip(true)
+  }
+  const handleFacetLeave = () => {
+    setIsFacetTooltip(false)
+  }
+
   return (
     <div className={styles.heroAndNickname}>
       <div className={styles.heroAndNickname__hero}>
         <div
           className={styles.heroAndNickname__hero__icon}
           style={{
-            borderRight: `3px solid ${detailsAboutHero.playerColor}`,
+            borderRight: `3px solid ${heroDetails.playerColor}`,
           }}
         >
           <Image
-            src={`${process.env.NEXT_PUBLIC_HERO_ICON_URL}${detailsAboutHero.heroName}.png`}
-            alt={detailsAboutHero.heroLocalizedName}
+            src={`${process.env.NEXT_PUBLIC_HERO_ICON_URL}${heroDetails.name}.png`}
+            alt={heroDetails.localizedName}
             width={54}
             height={30}
           />
@@ -40,16 +53,21 @@ export default function HeroAndNickname({
         <div className={styles.heroAndNickname__hero__level}>{player.level}</div>
         <span
           style={{
-            background: `${detailsAboutHero.heroVariant.color}`,
+            background: `${heroDetails.heroVariant.color}`,
           }}
+          onMouseEnter={handleFacetEnter}
+          onMouseLeave={handleFacetLeave}
         >
-          {detailsAboutHero.heroVariant.icon && (
-            <Image
-              src={`${process.env.NEXT_PUBLIC_HERO_FACET_ICON_URL}${detailsAboutHero.heroVariant.icon}.png`}
-              alt={detailsAboutHero.heroVariant.icon}
-              width={72}
-              height={72}
-            />
+          {heroDetails.heroVariant.icon && (
+            <>
+              <Image
+                src={`${process.env.NEXT_PUBLIC_HERO_FACET_ICON_URL}${heroDetails.heroVariant.icon}.png`}
+                alt={heroDetails.heroVariant.icon}
+                width={72}
+                height={72}
+              />
+              {isFacetTooltip && <FacetDescription heroDetails={heroDetails} />}
+            </>
           )}
         </span>
       </div>

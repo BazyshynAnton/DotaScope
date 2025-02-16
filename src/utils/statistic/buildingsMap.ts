@@ -1,5 +1,5 @@
 import type { LanePositions, PlayerLane } from '@/types/statistic/buildingsMap'
-import { HeroList, Objectives, Player } from '@/types/statistic/matchData'
+import type { HeroList, Objectives, Player } from '@/types/statistic/matchData'
 
 export const findKilledBuildings = (objectives: Objectives[] | undefined): Objectives[] | null => {
   if (!objectives) return null
