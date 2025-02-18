@@ -38,6 +38,7 @@ export interface HeroDetails {
   heroVariant: {
     icon: string
     color: string
+    colorSingle: string
     title: string
     description: string
   }

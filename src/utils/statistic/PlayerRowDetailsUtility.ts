@@ -46,6 +46,7 @@ export class PlayerRowDetailsUtility implements UPlayerRowDetails {
       heroVariant: {
         icon: '',
         color: '',
+        colorSingle: '',
         title: '',
         description: '',
       },
@@ -286,6 +287,7 @@ export class PlayerRowDetailsUtility implements UPlayerRowDetails {
     heroVariant: {
       icon: '',
       color: '',
+      colorSingle: '',
       title: '',
       description: '',
     },
@@ -335,49 +337,56 @@ export class PlayerRowDetailsUtility implements UPlayerRowDetails {
 
   // Hero facet gradient colors
   private mFacetGradientColor: FacetGradientColor = {
+    colorRed0Single: '#4A2040',
+    colorRed1Single: '#452732',
+    colorRed2Single: '#4F2A25',
     colorRed0: 'linear-gradient(to right, #9F3C3C, #4A2040)',
-
     colorRed1: 'linear-gradient(to right, #954533, #452732)',
-
     colorRed2: 'linear-gradient(to right, #A3735E, #4F2A25)',
 
+    colorYellow0Single: '#6F3D21',
+    colorYellow1Single: '#604928',
+    colorYellow2Single: '#433828',
+    colorYellow3Single: '#4D352B',
     colorYellow0: 'linear-gradient(to right, #C8A45C, #6F3D21)',
-
     colorYellow1: 'linear-gradient(to right, #C6A158, #604928)',
-
     colorYellow2: 'linear-gradient(to right, #CAC194, #433828)',
-
     colorYellow3: 'linear-gradient(to right, #C3A99A, #4D352B)',
 
+    colorPurple0Single: '#412755',
+    colorPurple1Single: '#282752',
+    colorPurple2Single: '#261C44',
     colorPurple0: 'linear-gradient(to right, #B57789, #412755)',
-
     colorPurple1: 'linear-gradient(to right, #9C70A4, #282752)',
-
     colorPurple2: 'linear-gradient(to right, #675CAE, #261C44)',
 
+    colorBlue0Single: '#342D5B',
+    colorBlue1Single: '#2A385E',
+    colorBlue2Single: '#135459',
+    colorBlue3Single: '#385B59',
     colorBlue0: 'linear-gradient(to right, #727CB2, #342D5B)',
-
     colorBlue1: 'linear-gradient(to right, #547EA6, #2A385E)',
-
     colorBlue2: 'linear-gradient(to right, #6BAEBC, #135459)',
-
     colorBlue3: 'linear-gradient(to right, #94B5BA, #385B59)',
 
+    colorGreen0Single: '#2D5A18',
+    colorGreen1Single: '#29493A',
+    colorGreen2Single: '#2D5A18',
+    colorGreen3Single: '#223824',
+    colorGreen4Single: '#3F4129',
     colorGreen0: 'linear-gradient(to right, #A2B23E, #2D5A18)',
     colorGreen1: 'linear-gradient(to right, #7EC2B2, #29493A)',
-
     colorGreen2: 'linear-gradient(to right, #A2B23E, #2D5A18)',
-
     colorGreen3: 'linear-gradient(to right, #9A9F6A, #223824)',
-
     colorGreen4: 'linear-gradient(to right, #9FAD8E, #3F4129)',
 
+    colorGray0Single: '#1B1B21',
+    colorGray1Single: '#29272C',
+    colorGray2Single: '#3E464F',
+    colorGray3Single: '#4E5557',
     colorGray0: 'linear-gradient(to right, #565C61, #1B1B21)',
-
     colorGray1: 'linear-gradient(to right, #6A6D73, #29272C)',
-
     colorGray2: 'linear-gradient(to right, #95A9B1, #3E464F)',
-
     colorGray3: 'linear-gradient(to right, #ADB6BE, #4E5557)',
   }
 
@@ -475,6 +484,8 @@ export class PlayerRowDetailsUtility implements UPlayerRowDetails {
       let gradientId: number = value.facets[facetID].gradient_id
       this.mHeroDetails.heroVariant.color =
         this.mFacetGradientColor[`color${highLevelColor}${gradientId}`]
+      this.mHeroDetails.heroVariant.colorSingle =
+        this.mFacetGradientColor[`color${highLevelColor}${gradientId}Single`]
 
       this.mHeroDetails.heroVariant.title = value.facets[facetID].title
       this.mHeroDetails.heroVariant.description = value.facets[facetID].description

@@ -46,7 +46,7 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 3px;
     bottom: -7px;
     right: -7px;
-    z-index: 2;
+    z-index: 3;
 
     width: 20px;
     height: 20px;
@@ -105,12 +105,12 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
 
 // RankAndAvatar.tsx
 .rankAndAvatar {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
   gap: 8px;
-  z-index: 6;
+  z-index: 2;
 }
 
 .rankAndAvatar__rank {

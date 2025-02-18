@@ -18,7 +18,6 @@ export default function HeroAndNickname({
   const [isFacetTooltip, setIsFacetTooltip] = useState(false)
 
   const handleFacetEnter = () => {
-    console.log(heroDetails.localizedName)
     setIsFacetTooltip(true)
   }
   const handleFacetLeave = () => {
