@@ -6,7 +6,24 @@ import { MdArrowLeft } from 'react-icons/md'
 import type { HeroDetails } from '@/types/statistic/playerRow'
 
 export default function FacetDescription({ heroDetails }: { heroDetails: HeroDetails }) {
+  const [isBlurEffect, setIsBlurEffect] = useState(false)
   const [componentHeight, setComponentHeight] = useState<number | null>(null)
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsBlurEffect(window.innerWidth <= 790)
+      const updateWindowWidth = () => {
+        setIsBlurEffect(window.innerWidth <= 790)
+      }
+
+      updateWindowWidth()
+
+      window.addEventListener('resize', updateWindowWidth)
+
+      return () => window.removeEventListener('resize', updateWindowWidth)
+    }
+  }, [])
+
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -20,12 +37,11 @@ export default function FacetDescription({ heroDetails }: { heroDetails: HeroDet
       ref={ref}
       style={{
         top: 6 - (componentHeight || 0) / 2,
-        left: 20,
         ...facetDescStyle,
       }}
     >
-      <span>
-        <MdArrowLeft />
+      <span style={{ top: (componentHeight || 0) / 2 - 6, ...arrowWrapperStyle }}>
+        <MdArrowLeft style={arrowStyle} />
       </span>
       <div
         style={{
@@ -53,6 +69,7 @@ export default function FacetDescription({ heroDetails }: { heroDetails: HeroDet
 
 const facetDescStyle: React.CSSProperties = {
   position: 'absolute',
+  left: 26,
   width: 'max-content',
   height: 'max-content',
   background: '#152128',
@@ -75,4 +92,16 @@ const facetDescParagraphStyle: React.CSSProperties = {
   display: 'inline-block',
   textAlign: 'left',
   fontSize: '13px',
+}
+
+const arrowWrapperStyle: React.CSSProperties = {
+  position: 'absolute',
+  left: -11,
+  width: 'max-content',
+  zIndex: -1,
+}
+
+const arrowStyle: React.CSSProperties = {
+  transform: 'scale(2.5)',
+  color: '#152128',
 }
