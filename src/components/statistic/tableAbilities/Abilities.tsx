@@ -15,11 +15,10 @@ const isTooltipDefault = new Array<boolean>(25).fill(false)
 
 export default function Abilities({ player }: { player: Player }) {
   const { abilityIDs } = useAppSelector((store) => store.statisticSlice)
+  const [isTooltip, setIsTooltip] = useState<Array<boolean>>(isTooltipDefault)
   const dispatch = useAppDispatch()
 
   const uAbilityDetails = AbilityDetailsUtility.getInstance()
-
-  const [isTooltip, setIsTooltip] = useState<Array<boolean>>(isTooltipDefault)
 
   const tooltipRef = useRef<HTMLDivElement>(null)
 

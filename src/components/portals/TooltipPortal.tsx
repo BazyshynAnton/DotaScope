@@ -1,10 +1,10 @@
 'use client'
 
-export default function TooltipItemPortal() {
-  return <div id='tooltip_item_portal' style={tooltipItemPortalContainer}></div>
+export default function TooltipPortal() {
+  return <div id='tooltip_portal' style={tooltipPortalContainer}></div>
 }
 
-const tooltipItemPortalContainer: React.CSSProperties = {
+const tooltipPortalContainer: React.CSSProperties = {
   position: 'fixed',
   display: 'flex',
   justifyContent: 'center',

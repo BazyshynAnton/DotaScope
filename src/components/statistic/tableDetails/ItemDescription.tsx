@@ -72,7 +72,7 @@ function MobilePortal({ details, item }: ItemDescriptionInterface) {
         <ItemContent details={details} item={item} />
       </div>
     </div>,
-    document.getElementById('tooltip_item_portal') as Element | DocumentFragment,
+    document.getElementById('tooltip_portal') as Element | DocumentFragment,
   )
 }
 
@@ -103,6 +103,6 @@ function DesktopPortal({ details, item }: ItemDescriptionInterface) {
     >
       <ItemContent details={details} item={item} />
     </div>,
-    document.getElementById('tooltip_item_portal') as Element | DocumentFragment,
+    document.getElementById('tooltip_portal') as Element | DocumentFragment,
   )
 }

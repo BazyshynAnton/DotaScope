@@ -34,10 +34,14 @@ export const statisticSlice = createSlice({
     setMatchData: (state, action) => {
       if (typeof action.payload !== 'string') {
         if (state.matchDetails?.match_id !== action.payload.matchDetailsData?.match_id) {
-          state.matchDetails = action.payload.matchDetailsData
-          state.playersProfiles = action.payload.playerProfilesData
+          // check patch
+          state.error =
+            action.payload.matchDetailsData.patch < 55 ? 'unsupported Dota2 version' : null
 
-          state.error = null
+          if (!state.error) {
+            state.matchDetails = action.payload.matchDetailsData
+            state.playersProfiles = action.payload.playerProfilesData
+          }
         }
       } else {
         state.error = action.payload

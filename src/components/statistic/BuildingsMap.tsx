@@ -16,12 +16,21 @@ export default function BuildingsMap() {
     <div className={styles.buildingsMap}>
       <h4>buildings map</h4>
       <div className={styles.buildingsMap__mapStatus}>
-        <Image
-          src={process.env.NEXT_PUBLIC_DOTA_MAP_IMG_URL as string}
-          alt='Dota2 map'
-          width={350}
-          height={350}
-        />
+        {matchDetails.patch === 56 ? (
+          <Image
+            src={process.env.NEXT_PUBLIC_DOTA_MAP_IMG_URL as string}
+            alt='Dota2 7.37 map'
+            width={350}
+            height={350}
+          />
+        ) : (
+          <Image
+            src='pictures/dotaScopeIcons/temp_dota738_map.jpg'
+            alt='Dota2 7.38 map'
+            width={350}
+            height={350}
+          />
+        )}
         {buildings.map((b, idx) => {
           const isKilled = killedBuildings?.some((kb) => kb.key === b.key)
           const filter = isKilled ? 'grayscale(100%) brightness(70%)' : 'contrast(150%)'

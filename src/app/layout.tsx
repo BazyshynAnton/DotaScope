@@ -1,6 +1,6 @@
 import Header from '@/components/header/Header'
 import Footer from '@/components/footer/Footer'
-import TooltipItemPortal from '@/components/portals/TooltipItemPortal'
+import TooltipPortal from '@/components/portals/TooltipPortal'
 import TooltipAbilityPortal from '@/components/portals/TooltipAbilityPortal'
 import StoreProvider from '@/store/StoreProvider'
 
@@ -38,7 +38,7 @@ export default function RootLayout({
           <Header />
           <div className='wrapper'>
             {children}
-            <TooltipItemPortal />
+            <TooltipPortal />
             <TooltipAbilityPortal />
           </div>
           <Footer />
