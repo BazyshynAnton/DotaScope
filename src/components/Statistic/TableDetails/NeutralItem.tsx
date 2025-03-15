@@ -1,5 +1,5 @@
 import ItemDescription from './ItemDescription';
-import CannotFind from './CannotFind';
+import CannotFindItems from './CannotFindItems';
 
 import { Image } from '@/shared/nextjs-imports';
 import { React, useState } from '@/shared/react-imports';
@@ -12,7 +12,7 @@ export default function NeutralItem({ itemDetails }: SlotInterface) {
   // State for manage tooltip about neutral item.
   const [toolTipStatus, setToolTipStatus] = useState(false);
 
-  if (!itemDetails?.item_neutral.name) return <CannotFind />;
+  if (!itemDetails?.item_neutral.name) return <CannotFindItems slotType="neutral" stopAt={1} />;
 
   // Initialize neutral item
   const neutralItem: string = itemDetails.item_neutral.name;

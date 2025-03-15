@@ -1,5 +1,5 @@
 import ItemDescription from './ItemDescription';
-import CannotFind from './CannotFind';
+import CannotFindItems from './CannotFindItems';
 
 import { Image } from '@/shared/nextjs-imports';
 import { React, useState } from '@/shared/react-imports';
@@ -28,7 +28,7 @@ export default function MainSlotItems({ itemDetails, player }: SlotInterface) {
   }>(initialStateMainSlot);
 
   // Check data
-  if (!itemDetails) return <CannotFind />;
+  if (!itemDetails) return <CannotFindItems slotType="mainAndBackPack" stopAt={6} />;
 
   // Initialize utility for manage data in component
   const prrUtility = PlayerRowUtility.getInstance();
