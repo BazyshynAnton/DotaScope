@@ -59,7 +59,7 @@ export default function Abilities({ details, item }: ItemDescriptionInterface) {
                         className={styles.abilities_active_passive__header__manaAndCooldown_image}
                       >
                         <Image
-                          src="/pictures/dotaIcons/ability_manacost.png"
+                          src="/pictures/dota-icons/ability-manacost.png"
                           alt=""
                           width={20}
                           height={20}
@@ -75,7 +75,7 @@ export default function Abilities({ details, item }: ItemDescriptionInterface) {
                         className={styles.abilities_active_passive__header__manaAndCooldown_image}
                       >
                         <Image
-                          src="/pictures/dotaIcons/ability_cooldown.png"
+                          src="/pictures/dota-icons/ability-cooldown.png"
                           alt=""
                           width={20}
                           height={20}

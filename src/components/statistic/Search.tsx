@@ -52,7 +52,7 @@ export default function Search() {
             className={isDisabled ? styles.search__button_disabled : styles.search__button_enabled}
           >
             <Image
-              src={'/pictures/dotaScopeIcons/gem_search.gif'}
+              src={'/pictures/dota-scope-icons/gem-search.gif'}
               alt="gem"
               width={32}
               height={32}
@@ -62,7 +62,7 @@ export default function Search() {
         ) : (
           <div className={styles.search__button_disabled}>
             <Image
-              src={'/pictures/dotaScopeIcons/gem_search.gif'}
+              src={'/pictures/dota-scope-icons/gem-search.gif'}
               alt="gem"
               width={32}
               height={32}

@@ -17,7 +17,7 @@ export default function Tier({ details, item }: ItemDescriptionInterface) {
         </div>
       ) : (
         <div className={styles.nameAndCostWrapper__nameAndCost__cost}>
-          <Image src={`/pictures/dotaIcons/gold_symbol.webp`} alt="" width={20} height={20} />
+          <Image src={`/pictures/dota-icons/gold-symbol.webp`} alt="gold" width={20} height={20} />
           <div>{details[item].cost}</div>
         </div>
       )}

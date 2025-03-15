@@ -52,10 +52,10 @@ export default function Aghanim({ player }: { player: Player }) {
         }}
       >
         <Image
-          src={`/pictures/dotaItemIcons/${
-            player.aghanims_scepter === 1 ? 'scepter_1' : 'scepter_0'
+          src={`/pictures/dota-item-icons/${
+            player.aghanims_scepter === 1 ? 'scepter-1' : 'scepter-0'
           }.png`}
-          alt=""
+          alt={player.aghanims_scepter === 1 ? 'scepter-1' : 'scepter-0'}
           width={37}
           height={38}
           onMouseEnter={() => handleMouseEnterAghanim(0)}
@@ -63,8 +63,8 @@ export default function Aghanim({ player }: { player: Player }) {
           style={{ cursor: 'help' }}
         />
         <Image
-          src={`/pictures/dotaItemIcons/${player.aghanims_shard === 1 ? 'shard_1' : 'shard_0'}.png`}
-          alt=""
+          src={`/pictures/dota-item-icons/${player.aghanims_shard === 1 ? 'shard-1' : 'shard-0'}.png`}
+          alt={player.aghanims_shard === 1 ? 'shard-1' : 'shard-0'}
           width={45}
           height={24}
           onMouseEnter={() => handleMouseEnterAghanim(1)}

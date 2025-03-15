@@ -69,7 +69,7 @@ export default function Abilities({ player }: { player: Player }) {
                   src={
                     !talentTree
                       ? `${process.env.NEXT_PUBLIC_HERO_ABILITY_ICON_URL}${abilityKey}.png`
-                      : '/pictures/dotaAbilityIcons/talent_tree.svg'
+                      : '/pictures/dota-ability-icons/talent-tree.svg'
                   }
                   alt={abilityKey}
                   width={24}

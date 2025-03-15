@@ -55,9 +55,9 @@ export default function BackpackItems({ itemDetails, player }: SlotInterface) {
               src={
                 item !== 'empty_slot'
                   ? `${process.env.NEXT_PUBLIC_ITEM_ICON_URL}${item.includes('recipe') ? 'recipe' : item}.png`
-                  : 'pictures/dotaItemIcons/empty_slot.webp'
+                  : 'pictures/dota-item-icons/empty-slot.webp'
               }
-              alt=""
+              alt={item}
               width={37}
               height={27}
               quality={100}

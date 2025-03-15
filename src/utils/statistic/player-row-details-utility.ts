@@ -116,7 +116,7 @@ export class PlayerRowDetailsUtility implements UPlayerRowDetails {
    * @returns {string} The file path to the player's rank icon.
    */
   public findPlayerRankIcon(): string {
-    const imagePath = '/pictures/dotaPlayerRankIcons/';
+    const imagePath = '/pictures/dota-player-rank-icons/';
 
     const leaderboardRank = this.mPlayerDetails.leaderboardRankInfo;
 
@@ -153,7 +153,7 @@ export class PlayerRowDetailsUtility implements UPlayerRowDetails {
 
     if (avatar !== '') return avatar;
 
-    return '/pictures/dotaPlayerIcons/anonymous.jpg';
+    return '/pictures/dota-player-icons/anonymous.jpg';
   }
 
   /**

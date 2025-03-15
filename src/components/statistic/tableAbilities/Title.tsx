@@ -19,7 +19,7 @@ export default function Title({ abilityKey }: { abilityKey: string }) {
           src={
             !talentTree
               ? `${process.env.NEXT_PUBLIC_HERO_ABILITY_ICON_URL}${abilityKey}.png`
-              : '/pictures/dotaAbilityIcons/talent_tree.svg'
+              : '/pictures/dota-ability-icons/talent-tree.svg'
           }
           alt={name}
           width={52}

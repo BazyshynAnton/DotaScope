@@ -7,7 +7,7 @@ export default function InDevelopment() {
     <div style={dev}>
       <p>This page is still in development.</p>
       <Image
-        src="/pictures/dotaScopeIcons/pudge_chuckle.webp"
+        src="/pictures/dota-scope-icons/pudge-chuckle.webp"
         alt="chuckle"
         width={22}
         height={22}

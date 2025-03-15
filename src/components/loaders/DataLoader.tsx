@@ -4,7 +4,13 @@ export default function DataLoader() {
   return (
     <div style={loaderContainer}>
       <p>Loading...</p>
-      <Image src="/pictures/dotaScopeIcons/tango.gif" alt="tango" width={22} height={22} priority />
+      <Image
+        src="/pictures/dota-scope-icons/tango.gif"
+        alt="tango"
+        width={22}
+        height={22}
+        priority
+      />
     </div>
   );
 }

@@ -40,9 +40,9 @@ export default function NeutralItem({ itemDetails }: SlotInterface) {
         src={
           neutralItem !== 'empty_slot'
             ? `${process.env.NEXT_PUBLIC_ITEM_ICON_URL}${neutralItem}.png`
-            : 'pictures/dotaItemIcons/empty_slot.webp'
+            : 'pictures/dota-item-icons/empty-slot.webp'
         }
-        alt=""
+        alt={neutralItem}
         width={39}
         height={32}
         quality={100}

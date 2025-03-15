@@ -16,13 +16,13 @@ export default function Cost({ abilityKey }: { abilityKey: string }) {
         <div className={styles.cost}>
           {cost.mc && (
             <div className={styles.mana}>
-              <CostImage type={'ability_manacost'} />
+              <CostImage type={'ability-manacost'} />
               {cost.mc}
             </div>
           )}
           {cost.cd && (
             <div className={styles.cooldown}>
-              <CostImage type={'ability_cooldown'} />
+              <CostImage type={'ability-cooldown'} />
               {cost.cd}
             </div>
           )}
@@ -33,5 +33,5 @@ export default function Cost({ abilityKey }: { abilityKey: string }) {
 }
 
 function CostImage({ type }: { type: string }) {
-  return <Image src={`/pictures/dotaIcons/${type}.png`} alt={type} width={15} height={15} />;
+  return <Image src={`/pictures/dota-icons/${type}.png`} alt={type} width={15} height={15} />;
 }
