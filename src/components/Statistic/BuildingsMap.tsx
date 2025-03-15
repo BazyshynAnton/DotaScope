@@ -18,7 +18,7 @@ export default function BuildingsMap() {
       <div className={styles.buildingsMap__mapStatus}>
         {matchDetails.patch >= 57 ? (
           <Image
-            src="pictures/dotaScopeIcons/temp_dota738_map.jpg"
+            src="pictures/dota-scope-icons/temp-dota-738-map.jpg"
             alt="Dota2 7.38 map"
             width={350}
             height={350}
