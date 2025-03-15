@@ -1,0 +1,76 @@
+@use '../variables/font-colors.scss';
+@use '../mixins/scroll-x.scss';
+
+$border: 1px solid rgba(255, 255, 255, 0.1);
+
+.builds {
+  width: 100%;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.builds__header {
+  font-weight: 600;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.builds__header_radiant {
+  color: font-colors.$radiantColor;
+}
+.builds__header_dire {
+  color: font-colors.$direColor;
+}
+
+// table
+.table {
+  width: 100%;
+  font-size: 13px;
+  background-color: #242f39;
+  th {
+    padding: 5px 0px;
+    width: 40px;
+    color: font-colors.$fontColor2;
+  }
+}
+
+// .tableHeadRow {
+// }
+
+.heroDataCell,
+.abilityDataCell {
+  width: fit-content;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  img {
+    object-fit: contain;
+  }
+}
+.heroDataCell {
+  img {
+    width: auto;
+    height: 24px;
+  }
+}
+
+.abilityDataCell {
+  position: relative;
+  img {
+    width: auto;
+    height: 24px;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 1435px) {
+  .builds__tableWrapper {
+    @include scroll-x.scrollX;
+  }
+
+  .table {
+    width: 1430px;
+  }
+}

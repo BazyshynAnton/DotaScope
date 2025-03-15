@@ -1,13 +1,13 @@
-import { AbilityDetailsUtility } from '@/utils/statistic/AbilityDetailsUtility'
+import { AbilityDetailsUtility } from '@/utils/statistic/ability-details-utility';
+import { useAppSelector } from '@/hooks/use-app-selector';
 
-import styles from '@/styles/statistic/AbilityDescription.module.scss'
-import { useAppSelector } from '@/hooks/useAppSelector'
+import styles from '@/styles/statistic/ability-description.module.scss';
 
 export default function Attributes({ abilityKey }: { abilityKey: string }) {
-  const { abilities } = useAppSelector((store) => store.statisticSlice)
+  const { abilities } = useAppSelector((store) => store.statisticSlice);
 
-  const uAbilityDetails = AbilityDetailsUtility.getInstance()
-  const attribs = uAbilityDetails.findAbilityAttributes(abilityKey, abilities)
+  const uAbilityDetails = AbilityDetailsUtility.getInstance();
+  const attribs = uAbilityDetails.findAbilityAttributes(abilityKey, abilities);
 
   return (
     <div className={styles.attributes}>
@@ -16,8 +16,8 @@ export default function Attributes({ abilityKey }: { abilityKey: string }) {
           <div key={idx} className={styles.attributes__header}>
             {attrib.header} <div>{attrib.value}</div>
           </div>
-        )
+        );
       })}
     </div>
-  )
+  );
 }

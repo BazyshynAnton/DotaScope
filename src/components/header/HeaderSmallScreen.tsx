@@ -1,15 +1,15 @@
-import Links from './Links'
+import Links from './Links';
 
-import { useState } from '@/shared/reactImports'
+import { useState } from '@/shared/react-imports';
 
-import styles from '@/styles/header/Header.module.scss'
+import styles from '@/styles/header/header.module.scss';
 
 export default function HeaderSmallScreen() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleOpenMenuClick = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
 
   return (
     <>
@@ -22,10 +22,10 @@ export default function HeaderSmallScreen() {
         <span></span>
       </div>
       {isOpen && (
-        <div className={styles.menu}>
+        <nav className={styles.menu}>
           <Links setIsOpen={setIsOpen} />
-        </div>
+        </nav>
       )}
     </>
-  )
+  );
 }

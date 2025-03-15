@@ -1,5 +1,5 @@
-@import '../variables/fontColors.scss';
-@import '../mixins/fontsize.scss';
+@use '../variables/font-colors.scss';
+@use '../mixins/fontsize.scss';
 
 $border: 1px solid rgba(255, 255, 255, 0.1);
 
@@ -12,10 +12,11 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer__dscope {
-  color: $fontColor1;
+  color: font-colors.$fontColor1;
   text-align: center;
-  h3 {
-    color: $fontColor2;
+  h1 {
+    @include fontsize.adaptiveFont(1, 1, 120);
+    color: font-colors.$fontColor2;
     text-transform: uppercase;
   }
 }
@@ -28,11 +29,19 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   gap: 0.5rem;
 
   a {
-    color: $fontColor1;
+    color: font-colors.$fontColor1;
   }
 
   a:hover {
     color: #3b82f6;
+  }
+}
+
+@media (max-width: 1920px) {
+  .footer__dscope {
+    h1 {
+      font-size: 1rem;
+    }
   }
 }
 

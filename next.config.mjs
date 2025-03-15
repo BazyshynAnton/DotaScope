@@ -4,6 +4,6 @@ const nextConfig = {
     domains: ['avatars.steamstatic.com'],
     unoptimized: true,
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;

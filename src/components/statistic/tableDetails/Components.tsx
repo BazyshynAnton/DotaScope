@@ -1,23 +1,23 @@
-import { Image } from '@/shared/nextjsImports'
-import { PlayerRowDetailsUtility } from '@/utils/statistic/PlayerRowDetailsUtility'
-import { useAppSelector } from '@/hooks/useAppSelector'
+import { Image } from '@/shared/nextjs-imports';
+import { PlayerRowDetailsUtility } from '@/utils/statistic/player-row-details-utility';
+import { useAppSelector } from '@/hooks/use-app-selector';
 
-import type { ItemDescriptionInterface } from '@/types/statistic/playerRow'
+import type { ItemDescriptionInterface } from '@/types/statistic/player-row';
 
-import styles from '@/styles/statistic/ItemDescription.module.scss'
+import styles from '@/styles/statistic/item-description.module.scss';
 
 export default function Components({ details, item }: ItemDescriptionInterface) {
-  const { items } = useAppSelector((store) => store.statisticSlice)
+  const { items } = useAppSelector((store) => store.statisticSlice);
 
   if (!details || !items) {
-    throw Error('[DATA] Cannot get data about Item Details')
+    throw Error('[DATA] Cannot get data about Item Details');
   }
 
-  let recipe = null
-  let recipeCost = null
+  let recipe = null;
+  let recipeCost = null;
   if (items[`recipe_${item}`] && items[`recipe_${item}`].cost) {
-    recipe = 'recipe'
-    recipeCost = items[`recipe_${item}`].cost
+    recipe = 'recipe';
+    recipeCost = items[`recipe_${item}`].cost;
   }
 
   return (
@@ -27,8 +27,8 @@ export default function Components({ details, item }: ItemDescriptionInterface) 
           <div style={{ display: 'inline' }}>Components:</div>
           <div className={styles.components__items}>
             {details[item].components.map((component, idx) => {
-              const rdUtility = new PlayerRowDetailsUtility()
-              const itemCost = rdUtility.findItemCostByKey(component, items)
+              const rdUtility = new PlayerRowDetailsUtility();
+              const itemCost = rdUtility.findItemCostByKey(component, items);
 
               return (
                 <div key={idx} className={styles.components__items__item}>
@@ -38,13 +38,13 @@ export default function Components({ details, item }: ItemDescriptionInterface) 
                         ? `${process.env.NEXT_PUBLIC_ITEM_ICON_URL}${component}.png`
                         : `${process.env.NEXT_PUBLIC_ITEM_ICON_URL}recipe.png`
                     }
-                    alt=''
+                    alt=""
                     width={34}
                     height={25}
                   />
                   <div>{itemCost}</div>
                 </div>
-              )
+              );
             })}
             {recipe && recipeCost && (
               <div className={styles.components__items__item}>
@@ -61,5 +61,5 @@ export default function Components({ details, item }: ItemDescriptionInterface) 
         </div>
       )}
     </>
-  )
+  );
 }

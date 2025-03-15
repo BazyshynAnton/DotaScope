@@ -1,19 +1,19 @@
-import Aghanim from './Aghanim'
-import BackpackItems from './BackpackItems'
-import MainSlotItems from './MainSlotItems'
-import NeutralItem from './NeutralItem'
+import Aghanim from './Aghanim';
+import BackpackItems from './BackpackItems';
+import MainSlotItems from './MainSlotItems';
+import NeutralItem from './NeutralItem';
 
-import type { Player } from '@/types/statistic/matchData'
-import type { ItemDetails } from '@/types/statistic/playerRow'
+import type { Player } from '@/types/statistic/match-data';
+import type { ItemDetails } from '@/types/statistic/player-row';
 
-import styles from '@/styles/statistic/PlayerRow.module.scss'
+import styles from '@/styles/statistic/player-row.module.scss';
 
 export default function PlayerItems({
   itemDetails,
   player,
 }: {
-  itemDetails: ItemDetails | null
-  player: Player
+  itemDetails: ItemDetails | null;
+  player: Player;
 }) {
   return (
     <td className={styles.playerDataCell__items}>
@@ -34,5 +34,5 @@ export default function PlayerItems({
         </div>
       </div>
     </td>
-  )
+  );
 }

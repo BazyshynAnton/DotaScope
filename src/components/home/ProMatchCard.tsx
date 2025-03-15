@@ -1,40 +1,40 @@
-import { Link } from '@/shared/nextjsImports'
-import { useAppDispatch } from '@/shared/reduxImports'
-import { setIsTableDataExist, setMatchData, setTableLoading } from '@/store/statisticSlice'
-import { fetchMatchData } from '@/utils/statistic/matchDataUtility'
-import { timeAgo } from '@/utils/sharedUtils'
+import { Link } from '@/shared/nextjs-imports';
+import { useAppDispatch } from '@/shared/redux-imports';
+import { setIsTableDataExist, setMatchData, setTableLoading } from '@/store/statistic-slice';
+import { fetchMatchData } from '@/utils/statistic/match-data-utility';
+import { timeAgo } from '@/utils/shared-utils';
 
-import type { ProMatch } from '@/types/home/homeData'
+import type { ProMatch } from '@/types/home/home-data';
 
-import styles from '@/styles/home/Home.module.scss'
+import styles from '@/styles/home/home.module.scss';
 
 export default function ProMatchCard({ proMatch }: { proMatch: ProMatch }) {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
-  const endTime = proMatch.start_time + proMatch.duration
-  const now = Math.floor(Date.now() / 1000)
-  const diffInSeconds = now - endTime
-  const matchDurationMinutes = Math.floor(proMatch.duration / 60)
-  const matchDurationSeconds = proMatch.duration % 60
+  const endTime = proMatch.start_time + proMatch.duration;
+  const now = Math.floor(Date.now() / 1000);
+  const diffInSeconds = now - endTime;
+  const matchDurationMinutes = Math.floor(proMatch.duration / 60);
+  const matchDurationSeconds = proMatch.duration % 60;
 
   const handleOverviewClick = async () => {
-    dispatch(setIsTableDataExist(true))
-    const mID = proMatch.match_id
-    const matchData = await fetchMatchData(mID)
-    dispatch(setMatchData(matchData))
-  }
+    dispatch(setIsTableDataExist(true));
+    const mID = proMatch.match_id;
+    const matchData = await fetchMatchData(mID);
+    dispatch(setMatchData(matchData));
+  };
 
   let formattedLeagueName =
     proMatch.league_name.length > 25
       ? proMatch.league_name.substring(0, 24) + '...'
-      : proMatch.league_name
-  const radiantName = proMatch.radiant_name ? proMatch.radiant_name : 'TBD'
-  const direName = proMatch.dire_name ? proMatch.dire_name : 'TBD'
+      : proMatch.league_name;
+  const radiantName = proMatch.radiant_name ? proMatch.radiant_name : 'TBD';
+  const direName = proMatch.dire_name ? proMatch.dire_name : 'TBD';
 
   return (
     <div className={styles.proMatchCard}>
-      <div className={styles.proMatch__nameAndTeams}>
-        <h4>{formattedLeagueName}</h4>
+      <section className={styles.proMatch__nameAndTeams}>
+        <h1>{formattedLeagueName}</h1>
         <div className={styles.teams}>
           <div>
             <span style={{ color: '#59ce8f' }}>Radiant: </span>
@@ -45,7 +45,7 @@ export default function ProMatchCard({ proMatch }: { proMatch: ProMatch }) {
             <span>{direName}</span>
           </div>
         </div>
-      </div>
+      </section>
       <div className={styles.proMatch__info}>
         <p>ID: {proMatch.match_id}</p>
         <p>
@@ -57,5 +57,5 @@ export default function ProMatchCard({ proMatch }: { proMatch: ProMatch }) {
         </Link>
       </div>
     </div>
-  )
+  );
 }

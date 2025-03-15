@@ -1,19 +1,19 @@
-'use client'
+'use client';
 
-import { Image } from '@/shared/nextjsImports'
+import { Image } from '@/shared/nextjs-imports';
 
 export default function InDevelopment() {
   return (
     <div style={dev}>
       <p>This page is still in development.</p>
       <Image
-        src='/pictures/dotaScopeIcons/pudge_chuckle.webp'
-        alt='chuckle'
+        src="/pictures/dotaScopeIcons/pudge_chuckle.webp"
+        alt="chuckle"
         width={22}
         height={22}
       />
     </div>
-  )
+  );
 }
 
 const dev: React.CSSProperties = {
@@ -25,4 +25,4 @@ const dev: React.CSSProperties = {
   alignItems: 'flex-end',
   gap: '0.3rem',
   color: '#ffffffb0',
-}
+};

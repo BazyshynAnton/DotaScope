@@ -1,17 +1,17 @@
-import { AbilityDetailsUtility } from '@/utils/statistic/AbilityDetailsUtility'
-import { useAppSelector } from '@/hooks/useAppSelector'
+import { AbilityDetailsUtility } from '@/utils/statistic/ability-details-utility';
+import { useAppSelector } from '@/hooks/use-app-selector';
 
-import styles from '@/styles/statistic/AbilityDescription.module.scss'
+import styles from '@/styles/statistic/ability-description.module.scss';
 
 export default function Behavior({ abilityKey }: { abilityKey: string }) {
-  const { abilities } = useAppSelector((store) => store.statisticSlice)
+  const { abilities } = useAppSelector((store) => store.statisticSlice);
 
-  const uAbilityDetails = AbilityDetailsUtility.getInstance()
-  const behavior = uAbilityDetails.findAbilityBehavior(abilityKey, abilities)
+  const uAbilityDetails = AbilityDetailsUtility.getInstance();
+  const behavior = uAbilityDetails.findAbilityBehavior(abilityKey, abilities);
 
-  let conditionBkbpierce = true
+  let conditionBkbpierce = true;
   if (Array.isArray(behavior.bkbpierce)) {
-    conditionBkbpierce = behavior.bkbpierce.length === 0
+    conditionBkbpierce = behavior.bkbpierce.length === 0;
   }
 
   return (
@@ -62,5 +62,5 @@ export default function Behavior({ abilityKey }: { abilityKey: string }) {
         </div>
       )}
     </div>
-  )
+  );
 }

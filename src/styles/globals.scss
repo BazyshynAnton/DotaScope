@@ -1,5 +1,5 @@
-@import 'variables/fontColors.scss';
-@import 'mixins/fontsize.scss';
+@use 'variables/font-colors.scss';
+@use 'mixins/fontsize.scss';
 
 *,
 *::before,
@@ -17,7 +17,7 @@ body {
   background-color: #1c242d;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.1) #1c242d;
-  color: $fontColor1;
+  color: font-colors.$fontColor1;
 }
 
 ul,
@@ -49,7 +49,7 @@ td {
 }
 
 h3 {
-  @include adaptive-font(1, 1, 120);
+  @include fontsize.adaptiveFont(1, 1, 120);
 }
 
 h4,
@@ -58,7 +58,7 @@ a,
 span,
 input,
 input::placeholder {
-  @include adaptive-font(0.7, 0.9, 120);
+  @include fontsize.adaptiveFont(0.7, 0.9, 120);
 }
 
 @media (min-width: 1920px) {

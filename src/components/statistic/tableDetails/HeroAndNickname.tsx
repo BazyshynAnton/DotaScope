@@ -1,28 +1,28 @@
-import FacetDescription from './FacetDescription'
+import FacetDescription from './FacetDescription';
 
-import { Image } from '@/shared/nextjsImports'
-import { useState } from '@/shared/reactImports'
+import { Image } from '@/shared/nextjs-imports';
+import { useState } from '@/shared/react-imports';
 
-import type { HeroDetails } from '@/types/statistic/playerRow'
-import type { Player } from '@/types/statistic/matchData'
+import type { HeroDetails } from '@/types/statistic/player-row';
+import type { Player } from '@/types/statistic/match-data';
 
-import styles from '@/styles/statistic/PlayerRow.module.scss'
+import styles from '@/styles/statistic/player-row.module.scss';
 
 export default function HeroAndNickname({
   heroDetails,
   player,
 }: {
-  heroDetails: HeroDetails
-  player: Player
+  heroDetails: HeroDetails;
+  player: Player;
 }) {
-  const [isFacetTooltip, setIsFacetTooltip] = useState(false)
+  const [isFacetTooltip, setIsFacetTooltip] = useState(false);
 
   const handleFacetEnter = () => {
-    setIsFacetTooltip(true)
-  }
+    setIsFacetTooltip(true);
+  };
   const handleFacetLeave = () => {
-    setIsFacetTooltip(false)
-  }
+    setIsFacetTooltip(false);
+  };
 
   return (
     <div className={styles.heroAndNickname}>
@@ -42,7 +42,7 @@ export default function HeroAndNickname({
           {player.leaver_status !== 0 && (
             <Image
               src={process.env.NEXT_PUBLIC_DISCONNECT_IMG_URL as string}
-              alt='disconnect'
+              alt="disconnect"
               width={51}
               height={14.9}
               style={{ position: 'absolute', top: 0, left: 0 }}
@@ -83,5 +83,5 @@ export default function HeroAndNickname({
         </div>
       </div>
     </div>
-  )
+  );
 }

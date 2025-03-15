@@ -1,7 +1,7 @@
-import AdvantageChart from './AdvantageChart'
-import BuildingsMap from './BuildingsMap'
+import AdvantageChart from './AdvantageChart';
+import BuildingsMap from './BuildingsMap';
 
-import styles from '@/styles/statistic/MapAndChart.module.scss'
+import styles from '@/styles/statistic/map-and-chart.module.scss';
 
 export default function MapAndChart() {
   return (
@@ -9,5 +9,5 @@ export default function MapAndChart() {
       <BuildingsMap />
       <AdvantageChart />
     </section>
-  )
+  );
 }

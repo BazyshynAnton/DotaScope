@@ -1,17 +1,17 @@
-'use client'
+'use client';
 
-import NameAndCost from './NameAndCost'
-import Behavior from './Behavior'
-import Attribute from './Attribute'
-import Abilities from './Abilities'
-import HintAndLore from './HintAndLore'
-import Components from './Components'
+import NameAndCost from './NameAndCost';
+import Behavior from './Behavior';
+import Attribute from './Attribute';
+import Abilities from './Abilities';
+import HintAndLore from './HintAndLore';
+import Components from './Components';
 
-import useMousePosition from '@/hooks/useMousePosition'
-import { ReactDOM, useEffect, useRef, useState } from '@/shared/reactImports'
-import type { ItemDescriptionInterface } from '@/types/statistic/playerRow'
+import useMousePosition from '@/hooks/use-mouse-position';
+import { ReactDOM, useEffect, useRef, useState } from '@/shared/react-imports';
+import type { ItemDescriptionInterface } from '@/types/statistic/player-row';
 
-import styles from '@/styles/statistic/ItemDescription.module.scss'
+import styles from '@/styles/statistic/item-description.module.scss';
 
 export default function ItemDescription({ details, item }: ItemDescriptionInterface) {
   //
@@ -19,32 +19,32 @@ export default function ItemDescription({ details, item }: ItemDescriptionInterf
     Using React Portal transfer this component to another
     component with id="tooltip_item_portal" on desktop.
   */
-  const [isBlurEffect, setIsBlurEffect] = useState(false)
+  const [isBlurEffect, setIsBlurEffect] = useState(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setIsBlurEffect(window.innerWidth <= 790)
+      setIsBlurEffect(window.innerWidth <= 790);
       const updateWindowWidth = () => {
-        setIsBlurEffect(window.innerWidth <= 790)
-      }
+        setIsBlurEffect(window.innerWidth <= 790);
+      };
 
-      updateWindowWidth()
+      updateWindowWidth();
 
-      window.addEventListener('resize', updateWindowWidth)
+      window.addEventListener('resize', updateWindowWidth);
 
-      return () => window.removeEventListener('resize', updateWindowWidth)
+      return () => window.removeEventListener('resize', updateWindowWidth);
     }
-  }, [])
+  }, []);
 
   return isBlurEffect ? (
     <MobilePortal details={details} item={item} />
   ) : (
     <DesktopPortal details={details} item={item} />
-  )
+  );
 }
 
 function ItemContent({ details, item }: ItemDescriptionInterface) {
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLDivElement>(null);
 
   return (
     <>
@@ -62,7 +62,7 @@ function ItemContent({ details, item }: ItemDescriptionInterface) {
         <Components details={details} item={item} />
       </div>
     </>
-  )
+  );
 }
 
 function MobilePortal({ details, item }: ItemDescriptionInterface) {
@@ -72,23 +72,23 @@ function MobilePortal({ details, item }: ItemDescriptionInterface) {
         <ItemContent details={details} item={item} />
       </div>
     </div>,
-    document.getElementById('tooltip_portal') as Element | DocumentFragment,
-  )
+    document.getElementById('tooltip_portal') as Element | DocumentFragment
+  );
 }
 
 function DesktopPortal({ details, item }: ItemDescriptionInterface) {
-  const [componentHeight, setComponentHeight] = useState<number | null>(null)
-  const ref = useRef<HTMLDivElement>(null)
+  const [componentHeight, setComponentHeight] = useState<number | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (ref.current) {
-      setComponentHeight(ref.current.offsetHeight)
+      setComponentHeight(ref.current.offsetHeight);
     }
-  }, [ref.current])
+  }, [ref.current]);
 
-  const mousePosition = useMousePosition()
+  const mousePosition = useMousePosition();
 
-  if (!mousePosition.x || !mousePosition.y) return
+  if (!mousePosition.x || !mousePosition.y) return;
 
   return ReactDOM.createPortal(
     <div
@@ -103,6 +103,6 @@ function DesktopPortal({ details, item }: ItemDescriptionInterface) {
     >
       <ItemContent details={details} item={item} />
     </div>,
-    document.getElementById('tooltip_portal') as Element | DocumentFragment,
-  )
+    document.getElementById('tooltip_portal') as Element | DocumentFragment
+  );
 }

@@ -1,0 +1,55 @@
+@use '../variables/font-colors.scss';
+
+.match {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.match__header {
+  margin-top: 2rem;
+
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.result {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-size: 1.25rem;
+  }
+}
+
+.scoreAndTime {
+  padding-top: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.scoreAndTime__radiantScore {
+  color: font-colors.$radiantColor;
+}
+.scoreAndTime__duration {
+  color: font-colors.$fontColor2;
+  font-weight: 400;
+  font-size: 1rem;
+}
+.scoreAndTime__direScore {
+  font-size: 16px;
+  color: font-colors.$direColor;
+}
+
+.scoreAndTime__radiantScore,
+.scoreAndTime__direScore {
+  font-size: 20px;
+}

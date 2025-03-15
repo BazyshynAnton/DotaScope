@@ -1,16 +1,16 @@
-import { Image } from '@/shared/nextjsImports'
-import { PlayerRowDetailsUtility } from '@/utils/statistic/PlayerRowDetailsUtility'
+import { Image } from '@/shared/nextjs-imports';
+import { PlayerRowDetailsUtility } from '@/utils/statistic/player-row-details-utility';
 
-import type { PlayerDetails } from '@/types/statistic/playerRow'
+import type { PlayerDetails } from '@/types/statistic/player-row';
 
-import styles from '@/styles/statistic/PlayerRow.module.scss'
+import styles from '@/styles/statistic/player-row.module.scss';
 
 export default function RankAndAvatar({
   playerDetails,
   uRowDetails,
 }: {
-  playerDetails: PlayerDetails
-  uRowDetails: PlayerRowDetailsUtility
+  playerDetails: PlayerDetails;
+  uRowDetails: PlayerRowDetailsUtility;
 }) {
   return (
     <div className={styles.rankAndAvatar}>
@@ -39,5 +39,5 @@ export default function RankAndAvatar({
         />
       </div>
     </div>
-  )
+  );
 }

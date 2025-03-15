@@ -1,39 +1,39 @@
-import { Image } from '@/shared/nextjsImports'
-import { useAppSelector } from '@/hooks/useAppSelector'
-import { buildings, findKilledBuildings, findPlayerLanes } from '@/utils/statistic/buildingsMap'
+import { Image } from '@/shared/nextjs-imports';
+import { useAppSelector } from '@/hooks/use-app-selector';
+import { buildings, findKilledBuildings, findPlayerLanes } from '@/utils/statistic/buildings-map';
 
-import styles from '@/styles/statistic/BuildingsMap.module.scss'
+import styles from '@/styles/statistic/buildings-map.module.scss';
 
 export default function BuildingsMap() {
-  const { matchDetails, heroList } = useAppSelector((store) => store.statisticSlice)
+  const { matchDetails, heroList } = useAppSelector((store) => store.statisticSlice);
 
-  if (!matchDetails || !heroList || !matchDetails.objectives || !matchDetails.players) return // maybe some temp component
+  if (!matchDetails || !heroList || !matchDetails.objectives || !matchDetails.players) return; // maybe some temp component
 
-  const killedBuildings = findKilledBuildings(matchDetails.objectives)
-  const playerLanes = findPlayerLanes(matchDetails.players, heroList)
+  const killedBuildings = findKilledBuildings(matchDetails.objectives);
+  const playerLanes = findPlayerLanes(matchDetails.players, heroList);
 
   return (
     <div className={styles.buildingsMap}>
       <h4>buildings map</h4>
       <div className={styles.buildingsMap__mapStatus}>
-        {matchDetails.patch === 56 ? (
+        {matchDetails.patch >= 57 ? (
           <Image
-            src={process.env.NEXT_PUBLIC_DOTA_MAP_IMG_URL as string}
-            alt='Dota2 7.37 map'
+            src="pictures/dotaScopeIcons/temp_dota738_map.jpg"
+            alt="Dota2 7.38 map"
             width={350}
             height={350}
           />
         ) : (
           <Image
-            src='pictures/dotaScopeIcons/temp_dota738_map.jpg'
-            alt='Dota2 7.38 map'
+            src={process.env.NEXT_PUBLIC_DOTA_MAP_IMG_URL as string}
+            alt="Dota2 7.37 map"
             width={350}
             height={350}
           />
         )}
         {buildings.map((b, idx) => {
-          const isKilled = killedBuildings?.some((kb) => kb.key === b.key)
-          const filter = isKilled ? 'grayscale(100%) brightness(70%)' : 'contrast(150%)'
+          const isKilled = killedBuildings?.some((kb) => kb.key === b.key);
+          const filter = isKilled ? 'grayscale(100%) brightness(70%)' : 'contrast(150%)';
 
           return (
             <span
@@ -48,7 +48,7 @@ export default function BuildingsMap() {
             >
               <Image
                 src={b.url}
-                alt='building'
+                alt="building"
                 width={b.width}
                 height={b.height}
                 style={{
@@ -56,29 +56,29 @@ export default function BuildingsMap() {
                 }}
               />
             </span>
-          )
+          );
         })}
         {playerLanes &&
           playerLanes.map((pl) => {
-            let flexDirection: React.CSSProperties['flexDirection'] = undefined
+            let flexDirection: React.CSSProperties['flexDirection'] = undefined;
 
             switch (pl.laneRole) {
               case 1:
               case 2: {
                 if (pl.isRadiant) {
-                  flexDirection = 'row-reverse'
+                  flexDirection = 'row-reverse';
                 } else {
-                  flexDirection = 'row'
+                  flexDirection = 'row';
                 }
-                break
+                break;
               }
               case 3: {
                 if (!pl.isRadiant) {
-                  flexDirection = 'column-reverse'
+                  flexDirection = 'column-reverse';
                 } else {
-                  flexDirection = 'column'
+                  flexDirection = 'column';
                 }
-                break
+                break;
               }
             }
 
@@ -97,14 +97,14 @@ export default function BuildingsMap() {
                     : 'drop-shadow(#df2e38 0px 0px 5px)',
                 }}
               >
-                <Image src={pl.firstHero.iconUrl as string} alt='hero' width={30} height={30} />
+                <Image src={pl.firstHero.iconUrl as string} alt="hero" width={30} height={30} />
                 {pl.secondHero && (
-                  <Image src={pl.secondHero.iconUrl as string} alt='hero' width={30} height={30} />
+                  <Image src={pl.secondHero.iconUrl as string} alt="hero" width={30} height={30} />
                 )}
               </div>
-            )
+            );
           })}
       </div>
     </div>
-  )
+  );
 }

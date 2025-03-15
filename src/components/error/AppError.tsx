@@ -1,8 +1,8 @@
-import { Image } from '@/shared/nextjsImports'
+import { Image } from '@/shared/nextjs-imports';
 
 export default function AppError() {
   return (
-    <div
+    <section
       style={{
         width: '100%',
         display: 'flex',
@@ -12,8 +12,8 @@ export default function AppError() {
         gap: '0.5rem',
       }}
     >
-      <h3>Error</h3>
-      <Image src='/pictures/dotaScopeIcons/cheeky.gif' alt='puck' width={22} height={22} />
-    </div>
-  )
+      <h1 style={{ fontSize: '1.188rem' }}>Error</h1>
+      <Image src="/pictures/dotaScopeIcons/cheeky.gif" alt="puck" width={22} height={22} />
+    </section>
+  );
 }

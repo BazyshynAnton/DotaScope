@@ -1,36 +1,36 @@
-import { Image } from '@/shared/nextjsImports'
-import { React, useEffect, useRef, useState } from '@/shared/reactImports'
+import { Image } from '@/shared/nextjs-imports';
+import { React, useEffect, useRef, useState } from '@/shared/react-imports';
 
-import { MdArrowLeft } from 'react-icons/md'
+import { MdArrowLeft } from 'react-icons/md';
 
-import type { HeroDetails } from '@/types/statistic/playerRow'
+import type { HeroDetails } from '@/types/statistic/player-row';
 
 export default function FacetDescription({ heroDetails }: { heroDetails: HeroDetails }) {
-  const [isBlurEffect, setIsBlurEffect] = useState(false)
-  const [componentHeight, setComponentHeight] = useState<number | null>(null)
+  const [isBlurEffect, setIsBlurEffect] = useState(false);
+  const [componentHeight, setComponentHeight] = useState<number | null>(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setIsBlurEffect(window.innerWidth <= 790)
+      setIsBlurEffect(window.innerWidth <= 790);
       const updateWindowWidth = () => {
-        setIsBlurEffect(window.innerWidth <= 790)
-      }
+        setIsBlurEffect(window.innerWidth <= 790);
+      };
 
-      updateWindowWidth()
+      updateWindowWidth();
 
-      window.addEventListener('resize', updateWindowWidth)
+      window.addEventListener('resize', updateWindowWidth);
 
-      return () => window.removeEventListener('resize', updateWindowWidth)
+      return () => window.removeEventListener('resize', updateWindowWidth);
     }
-  }, [])
+  }, []);
 
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (ref.current) {
-      setComponentHeight(ref.current.offsetHeight)
+      setComponentHeight(ref.current.offsetHeight);
     }
-  }, [ref.current])
+  }, [ref.current]);
 
   return (
     <div
@@ -64,7 +64,7 @@ export default function FacetDescription({ heroDetails }: { heroDetails: HeroDet
       </div>
       <p style={{ ...facetDescParagraphStyle }}>{heroDetails.heroVariant.description}</p>
     </div>
-  )
+  );
 }
 
 const facetDescStyle: React.CSSProperties = {
@@ -73,7 +73,7 @@ const facetDescStyle: React.CSSProperties = {
   width: 'max-content',
   height: 'max-content',
   background: '#152128',
-}
+};
 
 const facetTitleStyle: React.CSSProperties = {
   padding: '5px 15px 5px 5px',
@@ -83,7 +83,7 @@ const facetTitleStyle: React.CSSProperties = {
   alignItems: 'center',
   justifyContent: 'flex-start',
   color: '#ffffffde',
-}
+};
 
 const facetDescParagraphStyle: React.CSSProperties = {
   padding: '5px',
@@ -92,16 +92,16 @@ const facetDescParagraphStyle: React.CSSProperties = {
   display: 'inline-block',
   textAlign: 'left',
   fontSize: '13px',
-}
+};
 
 const arrowWrapperStyle: React.CSSProperties = {
   position: 'absolute',
   left: -11,
   width: 'max-content',
   zIndex: -1,
-}
+};
 
 const arrowStyle: React.CSSProperties = {
   transform: 'scale(2.5)',
   color: '#152128',
-}
+};

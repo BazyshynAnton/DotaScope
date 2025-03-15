@@ -1,40 +1,40 @@
-'use client'
+'use client';
 
-import MetaHeader from './MetaHeader'
-import MetaPublic from './MetaPublic'
-import MetaPro from './MetaPro'
+import MetaHeader from './MetaHeader';
+import MetaPublic from './MetaPublic';
+import MetaPro from './MetaPro';
 
-import { useState } from '@/shared/reactImports'
+import { useState } from '@/shared/react-imports';
 
-import { TbSortAscending } from 'react-icons/tb'
-import { TbSortDescending } from 'react-icons/tb'
+import { TbSortAscending } from 'react-icons/tb';
+import { TbSortDescending } from 'react-icons/tb';
 
-import type { HeroStats, MetaData, TableSort } from '@/types/meta/metaData'
+import type { HeroStats, MetaData, TableSort } from '@/types/meta/meta-data';
 
-import styles from '@/styles/meta/Meta.module.scss'
+import styles from '@/styles/meta/meta.module.scss';
 
 export default function Meta({ metaData }: { metaData: MetaData | string }) {
-  const [isPub, setIsPub] = useState(true)
-  const [currRank, setCurrRank] = useState(8)
+  const [isPub, setIsPub] = useState(true);
+  const [currRank, setCurrRank] = useState(8);
 
   // true - ascending  , false - descending
-  const [tableSort, setTableSort] = useState<TableSort>({ keyToSort: 'winrate', direction: false })
+  const [tableSort, setTableSort] = useState<TableSort>({ keyToSort: 'winrate', direction: false });
 
-  if (typeof metaData === 'string') throw new Error(metaData)
+  if (typeof metaData === 'string') throw new Error(metaData);
 
-  const { heroStatsData } = metaData
+  const { heroStatsData } = metaData;
 
   const handlePubClick = (condition: boolean) => () => {
-    setIsPub(condition)
-  }
+    setIsPub(condition);
+  };
 
   const handleTableSortClick = (keyToSort: string) => () => {
     setTableSort({
       keyToSort,
       direction:
         keyToSort === tableSort.keyToSort ? (tableSort.direction === false ? true : false) : false,
-    })
-  }
+    });
+  };
 
   return (
     <div className={styles.meta}>
@@ -62,13 +62,13 @@ export default function Meta({ metaData }: { metaData: MetaData | string }) {
               <th onClick={handleTableSortClick('winrate')}>
                 <div style={{ width: '80px', ...tableHeaderCellStyles }}>
                   winrate
-                  <SortType keyToSort='winrate' tableSort={tableSort} />
+                  <SortType keyToSort="winrate" tableSort={tableSort} />
                 </div>
               </th>
               <th onClick={handleTableSortClick('matchesPlayed')}>
                 <div style={{ width: '104px', ...tableHeaderCellStyles }}>
                   matches played
-                  <SortType keyToSort='matchesPlayed' tableSort={tableSort} />
+                  <SortType keyToSort="matchesPlayed" tableSort={tableSort} />
                 </div>
               </th>
             </tr>
@@ -82,7 +82,7 @@ export default function Meta({ metaData }: { metaData: MetaData | string }) {
         </table>
       </div>
     </div>
-  )
+  );
 }
 
 function SortType({ keyToSort, tableSort }: { keyToSort: string; tableSort: TableSort }) {
@@ -98,15 +98,15 @@ function SortType({ keyToSort, tableSort }: { keyToSort: string; tableSort: Tabl
         <></>
       )}
     </>
-  )
+  );
 }
 
 export function sortHeroes(
   heroStats: HeroStats[],
   data: { win: keyof HeroStats; pick: keyof HeroStats },
-  condition: TableSort,
+  condition: TableSort
 ) {
-  const { win, pick } = data
+  const { win, pick } = data;
 
   return heroStats
     .filter((hero) => (hero[pick] as number) > 0)
@@ -118,9 +118,9 @@ export function sortHeroes(
             return (
               ((a[win] as number) / (a[pick] as number)) * 100 -
               ((b[win] as number) / (b[pick] as number)) * 100
-            )
+            );
           } else if (condition.keyToSort === 'matchesPlayed') {
-            return (a[pick] as number) - (b[pick] as number)
+            return (a[pick] as number) - (b[pick] as number);
           }
         }
         //descending sort
@@ -129,15 +129,15 @@ export function sortHeroes(
             return (
               ((b[win] as number) / (b[pick] as number)) * 100 -
               ((a[win] as number) / (a[pick] as number)) * 100
-            )
+            );
           } else if (condition.keyToSort === 'matchesPlayed') {
-            return (b[pick] as number) - (a[pick] as number)
+            return (b[pick] as number) - (a[pick] as number);
           }
         }
         default:
-          return 0
+          return 0;
       }
-    })
+    });
 }
 
 const tableHeaderCellStyles: React.CSSProperties = {
@@ -145,4 +145,4 @@ const tableHeaderCellStyles: React.CSSProperties = {
   justifyContent: 'center',
   alignItems: 'center',
   minWidth: 'max-content',
-}
+};

@@ -1,31 +1,31 @@
-import { useAppSelector } from '@/hooks/useAppSelector'
-import { MatchDetailsUtility } from '@/utils/statistic/MatchDetailsUtility'
-import { timeAgo } from '@/utils/sharedUtils'
-import { ReactTooltip } from '@/shared/reactImports'
+import { useAppSelector } from '@/hooks/use-app-selector';
+import { MatchDetailsUtility } from '@/utils/statistic/match-details-utility';
+import { timeAgo } from '@/utils/shared-utils';
+import { ReactTooltip } from '@/shared/react-imports';
 
-import { IoMdDownload } from 'react-icons/io'
-import { IoMdWarning } from 'react-icons/io'
+import { IoMdDownload } from 'react-icons/io';
+import { IoMdWarning } from 'react-icons/io';
 
-import styles from '@/styles/statistic/MatchHeader.module.scss'
+import styles from '@/styles/statistic/match-header.module.scss';
 
 export default function MatchHeader() {
   const { matchDetails, region, gameMode, lobbyType, leagues } = useAppSelector(
-    (store) => store.statisticSlice,
-  )
+    (store) => store.statisticSlice
+  );
 
-  if (!matchDetails || !region || !gameMode || !lobbyType || !leagues) return
+  if (!matchDetails || !region || !gameMode || !lobbyType || !leagues) return;
 
-  const uMatchData = MatchDetailsUtility.getInstance()
-  const mode = uMatchData.findGameMode(matchDetails, gameMode)
-  const league = uMatchData.findLeague(matchDetails, leagues)
-  const reg = uMatchData.findRegion(matchDetails, region)
-  const replay = matchDetails.replay_url ? matchDetails.replay_url : ''
+  const uMatchData = MatchDetailsUtility.getInstance();
+  const mode = uMatchData.findGameMode(matchDetails, gameMode);
+  const league = uMatchData.findLeague(matchDetails, leagues);
+  const reg = uMatchData.findRegion(matchDetails, region);
+  const replay = matchDetails.replay_url ? matchDetails.replay_url : '';
 
   // time
-  const duration = `${Math.floor(matchDetails.duration / 60)}:${(matchDetails.duration % 60).toString().padStart(2, '0')}`
-  const endTime = matchDetails.start_time + matchDetails.duration
-  const currentTime = Math.floor(Date.now() / 1000)
-  const diffInSeconds = currentTime - endTime
+  const duration = `${Math.floor(matchDetails.duration / 60)}:${(matchDetails.duration % 60).toString().padStart(2, '0')}`;
+  const endTime = matchDetails.start_time + matchDetails.duration;
+  const currentTime = Math.floor(Date.now() / 1000);
+  const diffInSeconds = currentTime - endTime;
 
   return (
     <div className={styles.matchHeader}>
@@ -37,18 +37,18 @@ export default function MatchHeader() {
               {replay ? (
                 <>
                   <IoMdDownload />
-                  <a href={replay} target='_blank'>
+                  <a href={replay} target="_blank">
                     replay
                   </a>
                 </>
               ) : (
                 <>
                   <IoMdWarning />
-                  <p data-tooltip-id='warning'>replay</p>
+                  <p data-tooltip-id="warning">replay</p>
                   <ReactTooltip
-                    id='warning'
-                    place='right'
-                    content='Replay is not available'
+                    id="warning"
+                    place="right"
+                    content="Replay is not available"
                     style={{
                       textTransform: 'none',
                       fontWeight: 'bold',
@@ -95,5 +95,5 @@ export default function MatchHeader() {
         )}
       </div>
     </div>
-  )
+  );
 }

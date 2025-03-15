@@ -1,13 +1,13 @@
-import type { Metadata } from 'next'
+import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'DotaScope | Players',
-}
+};
 
 export default function PlayersLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
-  return <>{children}</>
+  return <>{children}</>;
 }

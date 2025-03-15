@@ -1,4 +1,4 @@
-import { Image } from '@/shared/nextjsImports'
+import { Image } from '@/shared/nextjs-imports';
 
 export default function MetaTableBody({
   heroName,
@@ -6,10 +6,10 @@ export default function MetaTableBody({
   winrate,
   pick,
 }: {
-  heroName: string
-  heroLocalizedName: string
-  winrate: number
-  pick: number
+  heroName: string;
+  heroLocalizedName: string;
+  winrate: number;
+  pick: number;
 }) {
   return (
     <tr>
@@ -57,5 +57,5 @@ export default function MetaTableBody({
         </div>
       </td>
     </tr>
-  )
+  );
 }

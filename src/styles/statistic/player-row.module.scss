@@ -1,0 +1,220 @@
+@use '../variables/font-colors.scss';
+
+$border: 1px solid rgba(255, 255, 255, 0.1);
+
+// PlayerRow.tsx
+.playerRow {
+  position: relative;
+  width: 100%;
+  height: max-content;
+  text-align: left;
+  cursor: default;
+
+  td {
+    position: relative;
+    text-align: right;
+  }
+}
+
+.playerRow__playerDataCell {
+  width: max-content;
+}
+
+.playerRow__playerDataCell__inCell {
+  padding: 10px;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// HeroAndNickName.tsx
+.heroAndNickname {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.heroAndNickname__hero {
+  position: relative;
+
+  span {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+    bottom: -7px;
+    right: -7px;
+    z-index: 10;
+
+    width: 20px;
+    height: 20px;
+
+    img {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.heroAndNickname__hero__icon {
+  height: 30px;
+  img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.heroAndNickname__hero__level {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: font-colors.$fontColor2;
+  background-color: #000000be;
+
+  cursor: default;
+}
+
+.heroAndNickname__nickname {
+  display: flex;
+  flex-direction: column;
+}
+
+.heroAndNickname__nickname_radiant {
+  color: font-colors.$radiantColor;
+}
+
+.heroAndNickname__nickname_dire {
+  color: font-colors.$direColor;
+}
+
+.heroAndNickname__nickname_radiant,
+.heroAndNickname__nickname_dire {
+  text-align: left;
+}
+
+// RankAndAvatar.tsx
+.rankAndAvatar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  z-index: 2;
+}
+
+.rankAndAvatar__rank {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.rankAndAvatar__rank__tier {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #00000069;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.rankAndAvatar__avatar {
+  width: 24px;
+  height: 24px;
+  img {
+    border: $border;
+  }
+}
+
+// PlayerStatistic.tsx
+.playerDataCell__statistic {
+  position: relative;
+  width: 100%;
+  padding: 0px 10px;
+  text-align: center;
+  color: font-colors.$fontColor1;
+}
+
+// PlayerItems.tsx
+.playerDataCell__items__wrapper {
+  padding: 10px 0px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.slots {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 250px;
+}
+
+.mainAndBackpackItemWrapper {
+  position: relative;
+  width: 37px;
+  height: 27px;
+}
+
+.purchaseTime {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+
+  text-align: center;
+  font-size: 10px;
+
+  background-color: rgba(0, 0, 0, 0.6);
+  color: font-colors.$fontColor1;
+
+  pointer-events: none;
+  z-index: 2;
+}
+
+.slots__mainSlot,
+.slots__backpack {
+  img {
+    cursor: help;
+    border: $border;
+  }
+}
+
+.slots__mainSlot,
+.slots__backpack {
+  display: flex;
+  gap: 3px;
+}
+
+.neutral {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  border: $border;
+
+  img {
+    cursor: help;
+  }
+}

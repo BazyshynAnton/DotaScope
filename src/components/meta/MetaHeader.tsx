@@ -1,7 +1,7 @@
-import { Image } from '@/shared/nextjsImports'
-import { Dispatch, SetStateAction } from 'react'
+import { Image } from '@/shared/nextjs-imports';
+import { Dispatch, SetStateAction } from 'react';
 
-import styles from '@/styles/meta/Meta.module.scss'
+import styles from '@/styles/meta/meta.module.scss';
 
 const ranks = [
   process.env.NEXT_PUBLIC_1_RANK_ICON_URL as string,
@@ -12,18 +12,18 @@ const ranks = [
   process.env.NEXT_PUBLIC_6_RANK_ICON_URL as string,
   process.env.NEXT_PUBLIC_7_RANK_ICON_URL as string,
   process.env.NEXT_PUBLIC_8_RANK_ICON_URL as string,
-]
+];
 
 export default function MetaHeader({
   currRank,
   setCurrRank,
 }: {
-  currRank: number
-  setCurrRank: Dispatch<SetStateAction<number>>
+  currRank: number;
+  setCurrRank: Dispatch<SetStateAction<number>>;
 }) {
   const handleImageClick = (rankNumber: number) => () => {
-    setCurrRank(rankNumber)
-  }
+    setCurrRank(rankNumber);
+  };
 
   return (
     <div className={styles.metaHeader}>
@@ -39,5 +39,5 @@ export default function MetaHeader({
         />
       ))}
     </div>
-  )
+  );
 }

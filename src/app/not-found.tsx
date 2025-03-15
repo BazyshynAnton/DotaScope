@@ -1,6 +1,6 @@
-'use client'
+'use client';
 
-import { Image } from '@/shared/nextjsImports'
+import { Image } from '@/shared/nextjs-imports';
 
 export default function NotFound() {
   return (
@@ -17,7 +17,7 @@ export default function NotFound() {
     >
       <h2>404 |</h2>
       <p>Page Not Found.</p>
-      <Image src='/pictures/dotaScopeIcons/huh.gif' alt='invoker' width={22} height={22} priority />
+      <Image src="/pictures/dotaScopeIcons/huh.gif" alt="invoker" width={22} height={22} priority />
     </div>
-  )
+  );
 }

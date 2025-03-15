@@ -1,25 +1,25 @@
-import ProMatchCard from './ProMatchCard'
-import DotaNewsCard from './DotaNewsCard'
-import ContentHeader from './ContentHeader'
-import DataLoader from '../loaders/DataLoader'
-import AppError from '../error/AppError'
+import ProMatchCard from './ProMatchCard';
+import DotaNewsCard from './DotaNewsCard';
+import ContentHeader from './ContentHeader';
+import DataLoader from '../Loaders/DataLoader';
+import AppError from '../Error/AppError';
 
-import { useAppSelector } from '@/hooks/useAppSelector'
+import { useAppSelector } from '@/hooks/use-app-selector';
 
-import styles from '@/styles/home/Home.module.scss'
+import styles from '@/styles/home/home.module.scss';
 
 export default function InteractiveList({
   type,
   listHeader,
 }: {
-  type: string
-  listHeader: string
+  type: string;
+  listHeader: string;
 }) {
-  const { proMatches, dotaNews } = useAppSelector((store) => store.homeSlice)
-  const news = dotaNews?.appnews.newsitems
+  const { proMatches, dotaNews } = useAppSelector((store) => store.homeSlice);
+  const news = dotaNews?.appnews.newsitems;
 
   return (
-    <div className={type === 'matchesList' ? styles.proMatches : styles.dotaNews}>
+    <section className={type === 'matchesList' ? styles.proMatches : styles.dotaNews}>
       <ContentHeader headerTitle={listHeader} />
 
       <div
@@ -27,7 +27,9 @@ export default function InteractiveList({
       >
         {type === 'matchesList' ? (
           proMatches ? (
-            proMatches.map((match) => <ProMatchCard key={match.match_id} proMatch={match} />)
+            proMatches.map((match, idx) => {
+              if (idx <= 15) return <ProMatchCard key={match.match_id} proMatch={match} />;
+            })
           ) : (
             <Loader />
           )
@@ -37,14 +39,14 @@ export default function InteractiveList({
           <Loader />
         )}
       </div>
-    </div>
-  )
+    </section>
+  );
 }
 
 function Loader() {
-  const { error } = useAppSelector((store) => store.homeSlice)
+  const { error } = useAppSelector((store) => store.homeSlice);
 
-  if (error !== null) console.error(error)
+  if (error !== null) console.error(error);
 
   return (
     <div
@@ -59,5 +61,5 @@ function Loader() {
     >
       {!error ? <DataLoader /> : <AppError />}
     </div>
-  )
+  );
 }

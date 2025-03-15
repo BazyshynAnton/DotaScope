@@ -1,17 +1,17 @@
-'use client'
+'use client';
 
-import Cost from './Cost'
-import Attributes from './Attributes'
-import Title from './Title'
-import Behavior from './Behavior'
-import Description from './Description'
+import Cost from './Cost';
+import Attributes from './Attributes';
+import Title from './Title';
+import Behavior from './Behavior';
+import Description from './Description';
 
-import { ReactDOM } from '@/shared/reactImports'
+import { ReactDOM } from '@/shared/react-imports';
 
-import styles from '@/styles/statistic/AbilityDescription.module.scss'
+import styles from '@/styles/statistic/ability-description.module.scss';
 
 export default function AbilityDescription({ abilityKey }: { abilityKey: string }) {
-  const talentTree: boolean = abilityKey.includes('special_bonus')
+  const talentTree: boolean = abilityKey.includes('special_bonus');
 
   return ReactDOM.createPortal(
     <div className={styles.abilityTooltip}>
@@ -25,6 +25,6 @@ export default function AbilityDescription({ abilityKey }: { abilityKey: string 
         </div>
       )}
     </div>,
-    document.getElementById('tooltip_ability_portal') as Element | DocumentFragment,
-  )
+    document.getElementById('tooltip_ability_portal') as Element | DocumentFragment
+  );
 }

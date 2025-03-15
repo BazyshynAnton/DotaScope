@@ -1,64 +1,64 @@
-import AbilityDescription from './AbilityDescription'
+import AbilityDescription from './AbilityDescription';
 
-import { AbilityDetailsUtility } from '@/utils/statistic/AbilityDetailsUtility'
-import { Image } from '@/shared/nextjsImports'
-import { useEffect, useRef, useState } from '@/shared/reactImports'
-import { useAppDispatch } from '@/hooks/useAppDispatch'
-import { setTooltipAbilityPortal } from '@/store/statisticSlice'
-import { useAppSelector } from '@/hooks/useAppSelector'
+import { AbilityDetailsUtility } from '@/utils/statistic/ability-details-utility';
+import { Image } from '@/shared/nextjs-imports';
+import { useEffect, useRef, useState } from '@/shared/react-imports';
+import { useAppDispatch } from '@/hooks/use-app-dispatch';
+import { setTooltipAbilityPortal } from '@/store/statistic-slice';
+import { useAppSelector } from '@/hooks/use-app-selector';
 
-import type { Player } from '@/types/statistic/matchData'
+import type { Player } from '@/types/statistic/match-data';
 
-import styles from '@/styles/statistic/TableAbilities.module.scss'
+import styles from '@/styles/statistic/table-abilities.module.scss';
 
-const isTooltipDefault = new Array<boolean>(25).fill(false)
+const isTooltipDefault = new Array<boolean>(25).fill(false);
 
 export default function Abilities({ player }: { player: Player }) {
-  const { abilityIDs } = useAppSelector((store) => store.statisticSlice)
-  const [isTooltip, setIsTooltip] = useState<Array<boolean>>(isTooltipDefault)
-  const dispatch = useAppDispatch()
+  const { abilityIDs } = useAppSelector((store) => store.statisticSlice);
+  const [isTooltip, setIsTooltip] = useState<Array<boolean>>(isTooltipDefault);
+  const dispatch = useAppDispatch();
 
-  const uAbilityDetails = AbilityDetailsUtility.getInstance()
+  const uAbilityDetails = AbilityDetailsUtility.getInstance();
 
-  const tooltipRef = useRef<HTMLDivElement>(null)
+  const tooltipRef = useRef<HTMLDivElement>(null);
 
-  const abilityBuild = uAbilityDetails.setAbilityBuild(player.ability_upgrades_arr)
+  const abilityBuild = uAbilityDetails.setAbilityBuild(player.ability_upgrades_arr);
 
   const handleTrueClick = (idx: number) => () => {
-    const updatedTooltip: Array<boolean> = JSON.parse(JSON.stringify(isTooltip))
+    const updatedTooltip: Array<boolean> = JSON.parse(JSON.stringify(isTooltip));
 
     for (let i = 0; i < updatedTooltip.length; ++i) {
       if (i === idx) {
-        updatedTooltip[i] = true
+        updatedTooltip[i] = true;
       } else {
-        updatedTooltip[i] = false
+        updatedTooltip[i] = false;
       }
     }
 
-    setIsTooltip(updatedTooltip)
-    dispatch(setTooltipAbilityPortal(true))
-  }
+    setIsTooltip(updatedTooltip);
+    dispatch(setTooltipAbilityPortal(true));
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (tooltipRef.current && !tooltipRef.current.contains(event.target as Node)) {
-        setIsTooltip(isTooltipDefault)
-        dispatch(setTooltipAbilityPortal(false))
+        setIsTooltip(isTooltipDefault);
+        dispatch(setTooltipAbilityPortal(false));
       }
-    }
+    };
 
-    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [dispatch])
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [dispatch]);
 
   return (
     <>
       {abilityBuild.map((abilityID, idx) => {
-        const abilityKey = uAbilityDetails.findAbilityKey(abilityID, abilityIDs)
+        const abilityKey = uAbilityDetails.findAbilityKey(abilityID, abilityIDs);
 
-        const talentTree: boolean = abilityKey.includes('special_bonus')
+        const talentTree: boolean = abilityKey.includes('special_bonus');
 
         return (
           <td key={idx}>
@@ -81,8 +81,8 @@ export default function Abilities({ player }: { player: Player }) {
               <div className={styles.abilityDataCell}></div>
             )}
           </td>
-        )
+        );
       })}
     </>
-  )
+  );
 }

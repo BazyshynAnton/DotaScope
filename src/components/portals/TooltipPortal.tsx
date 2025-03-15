@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
 export default function TooltipPortal() {
-  return <div id='tooltip_portal' style={tooltipPortalContainer}></div>
+  return <div id="tooltip_portal" style={tooltipPortalContainer}></div>;
 }
 
 const tooltipPortalContainer: React.CSSProperties = {
@@ -15,4 +15,4 @@ const tooltipPortalContainer: React.CSSProperties = {
   right: 0,
   pointerEvents: 'none',
   zIndex: 9999,
-}
+};

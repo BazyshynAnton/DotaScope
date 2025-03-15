@@ -1,33 +1,33 @@
-import { ReactTooltip } from '@/shared/reactImports'
+import { ReactTooltip } from '@/shared/react-imports';
 
-import styles from '@/styles/statistic/TableDetails.module.scss'
+import styles from '@/styles/statistic/table-details.module.scss';
 
 export default function HeaderCells() {
   return (
     <>
       <TableHeaderCell str={'PLAYER'} title={''} />
-      <TableHeaderCell str={'K'} title={'Hero Kills'} styleFlag='kda' />
-      <TableHeaderCell str={'D'} title={'Hero Deaths'} styleFlag='kda' />
-      <TableHeaderCell str={'A'} title={'Hero Assists'} styleFlag='kda' />
+      <TableHeaderCell str={'K'} title={'Hero Kills'} styleFlag="kda" />
+      <TableHeaderCell str={'D'} title={'Hero Deaths'} styleFlag="kda" />
+      <TableHeaderCell str={'A'} title={'Hero Assists'} styleFlag="kda" />
       <TableHeaderCell
         str={'LH'}
         title={'Number of creeps killed by hero'}
-        styleFlag='lhDnGpmXpm'
+        styleFlag="lhDnGpmXpm"
       />
       <TableHeaderCell
         str={'DN'}
         title={'Number of creeps denied by hero'}
-        styleFlag='lhDnGpmXpm'
+        styleFlag="lhDnGpmXpm"
       />
-      <TableHeaderCell str={'NET'} title={'Net Worth'} styleFlag='netHdTdHh' />
-      <TableHeaderCell str={'GPM'} title={'Gold Per Minute'} styleFlag='lhDnGpmXpm' />
-      <TableHeaderCell str={'XPM'} title={'Experience Per Minute'} styleFlag='lhDnGpmXpm' />
-      <TableHeaderCell str={'HD'} title={'Damage dealt to heroes'} styleFlag='netHdTdHh' />
-      <TableHeaderCell str={'TD'} title={'Damage dealt to buildings'} styleFlag='netHdTdHh' />
-      <TableHeaderCell str={'HH'} title={'Health restored to heroes'} styleFlag='netHdTdHh' />
+      <TableHeaderCell str={'NET'} title={'Net Worth'} styleFlag="netHdTdHh" />
+      <TableHeaderCell str={'GPM'} title={'Gold Per Minute'} styleFlag="lhDnGpmXpm" />
+      <TableHeaderCell str={'XPM'} title={'Experience Per Minute'} styleFlag="lhDnGpmXpm" />
+      <TableHeaderCell str={'HD'} title={'Damage dealt to heroes'} styleFlag="netHdTdHh" />
+      <TableHeaderCell str={'TD'} title={'Damage dealt to buildings'} styleFlag="netHdTdHh" />
+      <TableHeaderCell str={'HH'} title={'Health restored to heroes'} styleFlag="netHdTdHh" />
       <TableHeaderCell str={'ITEMS'} title={'Items built'} />
     </>
-  )
+  );
 }
 
 function TableHeaderCell({
@@ -35,9 +35,9 @@ function TableHeaderCell({
   title,
   styleFlag,
 }: {
-  str: string
-  title: string
-  styleFlag?: string
+  str: string;
+  title: string;
+  styleFlag?: string;
 }) {
   return (
     <th
@@ -56,9 +56,9 @@ function TableHeaderCell({
       <ReactTooltip
         id={str}
         content={title}
-        place='top'
+        place="top"
         style={{ color: '#ffffffde', backgroundColor: '#5e5e5e' }}
       />
     </th>
-  )
+  );
 }

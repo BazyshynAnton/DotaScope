@@ -1,13 +1,13 @@
-import DScope from './DScope'
-import BazyshynDev from './BazyshynDev'
+import DScope from './DScope';
+import BazyshynDev from './BazyshynDev';
 
-import styles from '@/styles/footer/Footer.module.scss'
+import styles from '@/styles/footer/footer.module.scss';
 
 export default function Footer() {
   return (
-    <div className={styles.footer}>
+    <footer className={styles.footer}>
       <DScope />
       <BazyshynDev />
-    </div>
-  )
+    </footer>
+  );
 }

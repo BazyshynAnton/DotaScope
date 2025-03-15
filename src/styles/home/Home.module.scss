@@ -1,6 +1,5 @@
-@import '../variables/fontColors.scss';
-@import '../mixins/animation.scss';
-@import '../mixins/fontsize.scss';
+@use '../variables/font-colors.scss';
+@use '../mixins/fontsize.scss';
 
 $border: 1px solid rgba(255, 255, 255, 0.1);
 
@@ -28,8 +27,12 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
 
 .contentHeader {
   padding: 4px 10px;
-  color: $fontColor2;
+  color: font-colors.$fontColor2;
   border-bottom: $border;
+
+  h1 {
+    @include fontsize.adaptiveFont(1, 1, 120);
+  }
 }
 
 .content {
@@ -55,12 +58,18 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   background-color: #242f39;
 }
 
+.about__content {
+  h2 {
+    @include fontsize.adaptiveFont(0.7, 0.9, 120);
+  }
+}
+
 .about__content,
 .proMatchCard,
 .dotaNewsCard {
   padding: 10px 20px;
   width: 100%;
-  color: $fontColor1;
+  color: font-colors.$fontColor1;
 }
 
 .dotaNews__content {
@@ -72,7 +81,7 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.15s ease-in-out;
   cursor: default;
   &:hover {
-    background-color: $hoverBg1;
+    background-color: font-colors.$hoverBg1;
   }
 }
 
@@ -84,19 +93,26 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   gap: 0.3rem;
   border: $border;
 
-  h4 {
+  h1 {
     a {
-      color: $fontColor1;
+      color: font-colors.$fontColor1;
     }
   }
 
   &:hover {
-    h4 {
+    h1 {
       a {
         cursor: pointer;
         color: #3b82f6;
       }
     }
+  }
+}
+
+.dotaNewsCard,
+.proMatch__nameAndTeams {
+  h1 {
+    @include fontsize.adaptiveFont(0.7, 0.9, 120);
   }
 }
 
@@ -116,7 +132,7 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
 .proMatchCard {
   width: 100%;
   a {
-    color: $fontColor1;
+    color: font-colors.$fontColor1;
   }
 
   &:hover {
@@ -138,6 +154,27 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+@media (max-width: 1920px) {
+  .contentHeader {
+    h1 {
+      font-size: 1rem;
+    }
+  }
+
+  .about__content {
+    h2 {
+      font-size: 0.9rem;
+    }
+  }
+
+  .dotaNewsCard,
+  .proMatch__nameAndTeams {
+    h1 {
+      font-size: 0.9rem;
+    }
+  }
 }
 
 @media (max-width: 1190px) {
@@ -183,7 +220,7 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
 
 @keyframes idColor {
   0% {
-    color: $fontColor1;
+    color: font-colors.$fontColor1;
   }
   100% {
     color: #3b82f6;

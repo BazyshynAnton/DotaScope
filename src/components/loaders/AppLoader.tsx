@@ -1,11 +1,11 @@
-import styles from '@/styles/loaders/AppLoader.module.scss'
+import styles from '@/styles/loaders/app-loader.module.scss';
 
 export default function AppLoader() {
   return (
     <div style={appLoader}>
       <div className={styles.loadingLine} />
     </div>
-  )
+  );
 }
 
 const appLoader: React.CSSProperties = {
@@ -17,4 +17,4 @@ const appLoader: React.CSSProperties = {
   display: 'flex',
   alignItems: 'center',
   background: '#1c242d',
-}
+};

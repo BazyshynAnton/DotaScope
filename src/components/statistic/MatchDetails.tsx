@@ -1,36 +1,36 @@
-import TableDetails from './tableDetails/TableDetails'
-import ResultOfMatch from './ResultOfMatch'
-import PicksBans from './PicksBans'
-import TableAbilities from './tableAbilities/TableAbilities'
-import MapAndChart from './MapAndChart'
+import TableDetails from './TableDetails/TableDetails';
+import ResultOfMatch from './ResultOfMatch';
+import PicksBans from './PicksBans';
+import TableAbilities from './TableAbilities/TableAbilities';
+import MapAndChart from './MapAndChart';
 
-import { MatchDetailsUtility } from '@/utils/statistic/MatchDetailsUtility'
-import { useEffect, useState } from '@/shared/reactImports'
-import { useAppDispatch, useAppSelector } from '@/shared/reduxImports'
-import { setTableLoading } from '@/store/statisticSlice'
+import { MatchDetailsUtility } from '@/utils/statistic/match-details-utility';
+import { useEffect, useState } from '@/shared/react-imports';
+import { useAppDispatch, useAppSelector } from '@/shared/redux-imports';
+import { setTableLoading } from '@/store/statistic-slice';
 
-import type { PlayersByTeam } from '@/types/statistic/matchDetails'
+import type { PlayersByTeam } from '@/types/statistic/match-details';
 
-import styles from '@/styles/statistic/MatchDetails.module.scss'
+import styles from '@/styles/statistic/match-details.module.scss';
 
 export default function MatchDetails() {
-  const { matchDetails } = useAppSelector((store) => store.statisticSlice)
-  const dispatch = useAppDispatch()
+  const { matchDetails } = useAppSelector((store) => store.statisticSlice);
+  const dispatch = useAppDispatch();
 
-  const [playersByTeam, setPlayersByTeam] = useState<PlayersByTeam>()
+  const [playersByTeam, setPlayersByTeam] = useState<PlayersByTeam>();
 
   useEffect(() => {
     if (matchDetails) {
-      const uMatchData = MatchDetailsUtility.getInstance()
-      setPlayersByTeam(uMatchData.filterPlayersByTeam(matchDetails))
+      const uMatchData = MatchDetailsUtility.getInstance();
+      setPlayersByTeam(uMatchData.filterPlayersByTeam(matchDetails));
     }
-  }, [matchDetails])
+  }, [matchDetails]);
 
   if (!playersByTeam) {
-    dispatch(setTableLoading(true))
-    return
+    dispatch(setTableLoading(true));
+    return;
   } else {
-    setTableLoading(false)
+    setTableLoading(false);
   }
 
   return (
@@ -46,5 +46,5 @@ export default function MatchDetails() {
       <TableAbilities playersTeam={playersByTeam?.playersDire} />
       <MapAndChart />
     </div>
-  )
+  );
 }

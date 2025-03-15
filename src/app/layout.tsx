@@ -1,21 +1,21 @@
-import Header from '@/components/header/Header'
-import Footer from '@/components/footer/Footer'
-import TooltipPortal from '@/components/portals/TooltipPortal'
-import TooltipAbilityPortal from '@/components/portals/TooltipAbilityPortal'
-import StoreProvider from '@/store/StoreProvider'
+import Header from '@/components/Header/Header';
+import Footer from '@/components/Footer/Footer';
+import TooltipPortal from '@/components/Portals/TooltipPortal';
+import TooltipAbilityPortal from '@/components/Portals/TooltipAbilityPortal';
+import StoreProvider from '@/store/StoreProvider';
 
-import { Exo_2 } from 'next/font/google'
+import { Exo_2 } from 'next/font/google';
 
-import type { Metadata } from 'next'
+import type { Metadata } from 'next';
 
-import '@/styles/globals.scss'
-import EarlyAccess from '@/components/inDevelopment/EarlyAccess'
+import '@/styles/globals.scss';
+import EarlyAccess from '@/components/InDevelopment/EarlyAccess';
 
 const exo2 = Exo_2({
   weight: ['400', '500', '700', '900'],
   style: ['normal'],
   subsets: ['latin'],
-})
+});
 
 export const metadata: Metadata = {
   title: 'DotaScope',
@@ -24,27 +24,27 @@ export const metadata: Metadata = {
     icon: ['/favicon/favicon.ico?v=4'],
     shortcut: ['/favicon/apple-touch-icon.png'],
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <StoreProvider>
-      <html lang='en'>
+      <html lang="en">
         <body className={exo2.className}>
           <Header />
-          <div className='wrapper'>
+          <main className="wrapper">
             {children}
             <TooltipPortal />
             <TooltipAbilityPortal />
-          </div>
+          </main>
           <Footer />
           <EarlyAccess /> {/* temporary */}
         </body>
       </html>
     </StoreProvider>
-  )
+  );
 }

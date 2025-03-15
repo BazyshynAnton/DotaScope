@@ -1,6 +1,6 @@
-import type { Player } from '@/types/statistic/matchData'
+import type { Player } from '@/types/statistic/match-data';
 
-import styles from '@/styles/statistic/PlayerRow.module.scss'
+import styles from '@/styles/statistic/player-row.module.scss';
 
 export default function PlayerStatistic({ player }: { player: Player }) {
   return (
@@ -17,7 +17,7 @@ export default function PlayerStatistic({ player }: { player: Player }) {
       <PlayerDataCell statistic={player.tower_damage} />
       <PlayerDataCell statistic={player.hero_healing} />
     </>
-  )
+  );
 }
 
 function PlayerDataCell({ statistic }: { statistic: string | number }) {
@@ -25,5 +25,5 @@ function PlayerDataCell({ statistic }: { statistic: string | number }) {
     <td>
       <div className={styles.playerDataCell__statistic}>{statistic}</div>
     </td>
-  )
+  );
 }

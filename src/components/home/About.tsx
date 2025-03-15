@@ -1,11 +1,11 @@
-import ContentHeader from './ContentHeader'
+import ContentHeader from './ContentHeader';
 
-import styles from '@/styles/home/Home.module.scss'
+import styles from '@/styles/home/home.module.scss';
 
 export default function About() {
   return (
-    <div className={styles.about}>
-      <ContentHeader headerTitle='About' />
+    <article className={styles.about}>
+      <ContentHeader headerTitle="About" />
       <div className={styles.about__content}>
         <p>
           DotaScope is an minimalistic Dota2 data platform with many features:
@@ -28,7 +28,7 @@ export default function About() {
           <br />
         </p>
         <br />
-        <h4>Warning:</h4>
+        <h2>Warning:</h2>
         <p>
           I am not responsible for profanity. <br />
           We all need to understand that no one can stop players from using profanity. Therefore,
@@ -40,10 +40,10 @@ export default function About() {
           Bug report.
           <br />
           If you find an error, please let me know{' - '}
-          <a href='mailto:dota.scope@gmail.com'>dota.scope@gmail.com</a>
+          <a href="mailto:dota.scope@gmail.com">dota.scope@gmail.com</a>
           <br />
         </p>
       </div>
-    </div>
-  )
+    </article>
+  );
 }

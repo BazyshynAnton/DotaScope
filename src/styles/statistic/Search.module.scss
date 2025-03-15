@@ -1,4 +1,4 @@
-@import '../variables/fontColors.scss';
+@use '../variables/font-colors.scss';
 
 $border: 1px solid rgba(255, 255, 255, 0.1);
 
@@ -7,9 +7,9 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 3rem;
   width: 100%;
 
-  span {
+  label {
     display: inline-block;
-    color: $fontColor2;
+    color: font-colors.$fontColor2;
     padding-bottom: 5px;
   }
 }
@@ -29,7 +29,7 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   color: inherit;
   outline: none;
   transition: all 110ms ease-in-out;
-  color: $fontColor1;
+  color: font-colors.$fontColor1;
 
   &::placeholder {
     color: #ffffff65;
@@ -69,11 +69,11 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .search__button_enabled {
-  color: $fontColor2;
+  color: font-colors.$fontColor2;
   cursor: pointer;
 }
 
 .search__button_disabled {
-  color: $fontColor1;
+  color: font-colors.$fontColor1;
   cursor: no-drop;
 }

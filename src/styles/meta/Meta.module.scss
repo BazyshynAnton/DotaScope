@@ -1,5 +1,5 @@
-@import '../variables/fontColors.scss';
-@import '../mixins/scrollX.scss';
+@use '../variables/font-colors.scss';
+@use '../mixins/scroll-x.scss';
 
 .meta {
   width: 100%;
@@ -20,8 +20,8 @@
   gap: 0.5rem;
 
   button {
-    color: $fontColor2;
-    background: none;
+    color: font-colors.$fontColor2;
+    background: none; // SEE
     padding: 10px;
     text-transform: uppercase;
     cursor: pointer;
@@ -31,7 +31,7 @@
     transition: all 0.15s ease-in-out;
 
     &:hover {
-      border-bottom: 1.5px solid $fontColor2;
+      border-bottom: 1.5px solid font-colors.$fontColor2;
     }
   }
 }
@@ -51,12 +51,12 @@
   }
 
   img {
-    background-color: $bgColor2;
+    background-color: font-colors.$bgColor2;
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.15s ease-in-out;
     cursor: pointer;
     &:hover {
-      filter: none !important;
+      filter: none !important; // SEE
     }
   }
 }
@@ -64,7 +64,7 @@
 .metaTable {
   margin-top: 2rem;
   width: min-content;
-  background-color: $bgColor2;
+  background-color: font-colors.$bgColor2;
 
   th,
   div {
@@ -74,7 +74,7 @@
   th {
     padding: 5px 10px;
     text-transform: capitalize;
-    color: $fontColor2;
+    color: font-colors.$fontColor2;
 
     &:not(:first-child) {
       cursor: pointer;
@@ -85,6 +85,6 @@
 @media (max-width: 435px) {
   .tableWrapper {
     width: 100%;
-    @include scrollX;
+    @include scroll-x.scrollX;
   }
 }

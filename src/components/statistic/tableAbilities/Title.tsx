@@ -1,16 +1,16 @@
-import { Image } from '@/shared/nextjsImports'
-import { AbilityDetailsUtility } from '@/utils/statistic/AbilityDetailsUtility'
-import { useAppSelector } from '@/hooks/useAppSelector'
+import { Image } from '@/shared/nextjs-imports';
+import { AbilityDetailsUtility } from '@/utils/statistic/ability-details-utility';
+import { useAppSelector } from '@/hooks/use-app-selector';
 
-import styles from '@/styles/statistic/AbilityDescription.module.scss'
+import styles from '@/styles/statistic/ability-description.module.scss';
 
 export default function Title({ abilityKey }: { abilityKey: string }) {
-  const { abilities } = useAppSelector((store) => store.statisticSlice)
+  const { abilities } = useAppSelector((store) => store.statisticSlice);
 
-  const uAbilityDetails = AbilityDetailsUtility.getInstance()
-  const name = uAbilityDetails.findAbilityRealName(abilityKey, abilities)
+  const uAbilityDetails = AbilityDetailsUtility.getInstance();
+  const name = uAbilityDetails.findAbilityRealName(abilityKey, abilities);
 
-  const talentTree: boolean = abilityKey.includes('special_bonus')
+  const talentTree: boolean = abilityKey.includes('special_bonus');
 
   return (
     <>
@@ -30,5 +30,5 @@ export default function Title({ abilityKey }: { abilityKey: string }) {
         </div>
       </div>
     </>
-  )
+  );
 }

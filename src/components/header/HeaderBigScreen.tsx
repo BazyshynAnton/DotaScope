@@ -1,15 +1,15 @@
-import Links from './Links'
+import Links from './Links';
 
-import { useState } from '@/shared/reactImports'
+import { useState } from '@/shared/react-imports';
 
-import styles from '@/styles/header/Header.module.scss'
+import styles from '@/styles/header/header.module.scss';
 
 export default function HeaderBigScreen() {
-  const [isBackground, setIsBackground] = useState(false)
-  const [componentStyles, setComponentStyles] = useState<ComponentStyles>(initComponentStyles)
+  const [isBackground, setIsBackground] = useState(false);
+  const [componentStyles, setComponentStyles] = useState<ComponentStyles>(initComponentStyles);
 
   return (
-    <div className={styles.headerContent}>
+    <nav className={styles.headerContent}>
       {isBackground && (
         <span
           style={{
@@ -26,8 +26,8 @@ export default function HeaderBigScreen() {
         />
       )}
       <Links setComponentStyles={setComponentStyles} setIsBackground={setIsBackground} />
-    </div>
-  )
+    </nav>
+  );
 }
 
 const initComponentStyles: ComponentStyles = {
@@ -35,11 +35,11 @@ const initComponentStyles: ComponentStyles = {
   height: null,
   offsetTop: null,
   offsetLeft: null,
-}
+};
 
 export interface ComponentStyles {
-  width: number | null
-  height: number | null
-  offsetTop: number | null
-  offsetLeft: number | null
+  width: number | null;
+  height: number | null;
+  offsetTop: number | null;
+  offsetLeft: number | null;
 }

@@ -1,19 +1,19 @@
-import type { ItemDescriptionInterface } from '@/types/statistic/playerRow'
+import type { ItemDescriptionInterface } from '@/types/statistic/player-row';
 
-import styles from '@/styles/statistic/ItemDescription.module.scss'
+import styles from '@/styles/statistic/item-description.module.scss';
 
 export default function Attribute({ details, item }: ItemDescriptionInterface) {
   if (!details) {
-    throw Error('[DATA] Cannot get data about Item Details')
+    throw Error('[DATA] Cannot get data about Item Details');
   }
 
   return (
     <div className={styles.attrib}>
       {details[item].attrib?.map((att) => {
-        if (!att.display) return
+        if (!att.display) return;
 
         // Erase {value} from string
-        const partsOfString = att.display.split('{value}')
+        const partsOfString = att.display.split('{value}');
 
         return (
           <div key={att.key} className={styles.attrib__text}>
@@ -21,8 +21,8 @@ export default function Attribute({ details, item }: ItemDescriptionInterface) {
             <div style={{ color: '#ffffffde' }}>{att.value}</div>
             <div>{partsOfString[1]}</div>
           </div>
-        )
+        );
       })}
     </div>
-  )
+  );
 }

@@ -1,45 +1,45 @@
-import HeroAndNickname from './HeroAndNickname'
-import RankAndAvatar from './RankAndAvatar'
-import PlayerStatistic from './PlayerStatistic'
-import PlayerItems from './PlayerItems'
+import HeroAndNickname from './HeroAndNickname';
+import RankAndAvatar from './RankAndAvatar';
+import PlayerStatistic from './PlayerStatistic';
+import PlayerItems from './PlayerItems';
 
-import { useAppSelector } from '@/shared/reduxImports'
-import { PlayerRowDetailsUtility } from '@/utils/statistic/PlayerRowDetailsUtility'
+import { useAppSelector } from '@/shared/redux-imports';
+import { PlayerRowDetailsUtility } from '@/utils/statistic/player-row-details-utility';
 
-import type { Player } from '@/types/statistic/matchData'
-import type { HeroDetails, PlayerDetails, ItemDetails } from '@/types/statistic/playerRow'
+import type { Player } from '@/types/statistic/match-data';
+import type { HeroDetails, PlayerDetails, ItemDetails } from '@/types/statistic/player-row';
 
-import styles from '@/styles/statistic/PlayerRow.module.scss'
+import styles from '@/styles/statistic/player-row.module.scss';
 
 export default function PlayerRow({ playersTeam }: { playersTeam: Player[] }) {
   const { heroList, playersProfiles, heroAbilities, items } = useAppSelector(
-    (store) => store.statisticSlice,
-  )
+    (store) => store.statisticSlice
+  );
 
-  if (!heroList || !playersProfiles || !items) return
+  if (!heroList || !playersProfiles || !items) return;
 
   return (
     <>
       {playersTeam.map((player) => {
         //
         // Initialize helper class
-        const uRowDetails = new PlayerRowDetailsUtility()
+        const uRowDetails = new PlayerRowDetailsUtility();
 
         // Find details about hero
         const heroDetails: HeroDetails = uRowDetails.findAppropriateHero(
           player,
           heroList,
-          heroAbilities,
-        )
+          heroAbilities
+        );
 
         // Find details about player
         const playerDetails: PlayerDetails = uRowDetails.findAppropriatePlayer(
           player,
-          playersProfiles,
-        )
+          playersProfiles
+        );
 
         // Find details about items
-        const itemDetails: ItemDetails | null = uRowDetails.findAppropriateItems(player, items)
+        const itemDetails: ItemDetails | null = uRowDetails.findAppropriateItems(player, items);
 
         return (
           <tr key={player.hero_id} className={styles.playerRow}>
@@ -52,8 +52,8 @@ export default function PlayerRow({ playersTeam }: { playersTeam: Player[] }) {
             <PlayerStatistic player={player} />
             <PlayerItems itemDetails={itemDetails} player={player} />
           </tr>
-        )
+        );
       })}
     </>
-  )
+  );
 }
