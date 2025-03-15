@@ -3,13 +3,13 @@ import Footer from '@/components/Footer/Footer';
 import TooltipPortal from '@/components/Portals/TooltipPortal';
 import TooltipAbilityPortal from '@/components/Portals/TooltipAbilityPortal';
 import StoreProvider from '@/store/StoreProvider';
+import EarlyAccess from '@/components/InDevelopment/EarlyAccess';
 
 import { Exo_2 } from 'next/font/google';
 
 import type { Metadata } from 'next';
 
 import '@/styles/globals.scss';
-import EarlyAccess from '@/components/InDevelopment/EarlyAccess';
 
 const exo2 = Exo_2({
   weight: ['400', '500', '700', '900'],
