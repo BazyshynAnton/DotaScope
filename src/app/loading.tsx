@@ -1,4 +1,4 @@
-import AppLoader from '@/components/Loaders_1/AppLoader';
+import AppLoader from '@/components/Loaders/AppLoader';
 
 export default function Loading() {
   return <AppLoader />;

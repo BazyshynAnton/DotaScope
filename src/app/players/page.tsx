@@ -1,4 +1,4 @@
-import InDevelopment from '@/components/InDevelopment_1/InDevelopment';
+import InDevelopment from '@/components/InDevelopment/InDevelopment';
 
 export default function PlayersPage() {
   return <InDevelopment />;
