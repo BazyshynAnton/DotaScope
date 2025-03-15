@@ -1,7 +1,7 @@
 import Header from '@/components/Header/Header';
 import Footer from '@/components/Footer/Footer';
-import TooltipPortal from '@/components/Portals_1/TooltipPortal';
-import TooltipAbilityPortal from '@/components/Portals_1/TooltipAbilityPortal';
+import TooltipPortal from '@/components/Portals/TooltipPortal';
+import TooltipAbilityPortal from '@/components/Portals/TooltipAbilityPortal';
 import StoreProvider from '@/store/StoreProvider';
 
 import { Exo_2 } from 'next/font/google';

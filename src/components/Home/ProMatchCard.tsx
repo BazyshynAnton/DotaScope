@@ -1,6 +1,6 @@
 import { Link } from '@/shared/nextjs-imports';
 import { useAppDispatch } from '@/shared/redux-imports';
-import { setIsTableDataExist, setMatchData, setTableLoading } from '@/store/statistic-slice';
+import { setIsTableDataExist, setMatchData } from '@/store/statistic-slice';
 import { fetchMatchData } from '@/utils/statistic/match-data-utility';
 import { timeAgo } from '@/utils/shared-utils';
 
