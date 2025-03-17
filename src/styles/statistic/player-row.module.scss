@@ -20,7 +20,7 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   width: max-content;
 }
 
-.playerRow__playerDataCell__inCell {
+.playerRow__inCell {
   padding: 10px;
   display: flex;
   gap: 1rem;
@@ -29,13 +29,13 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 // HeroAndNickName.tsx
-.heroAndNickname {
+.playerRow__heroAndNickname {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.heroAndNickname__hero {
+.hero {
   position: relative;
 
   span {
@@ -59,7 +59,7 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
 
-.heroAndNickname__hero__icon {
+.hero__icon {
   height: 30px;
   img {
     object-fit: contain;
@@ -68,7 +68,7 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
 
-.heroAndNickname__hero__level {
+.hero__level {
   position: absolute;
   top: 0;
   left: 0;
@@ -85,26 +85,26 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   cursor: default;
 }
 
-.heroAndNickname__nickname {
+.nickname {
   display: flex;
   flex-direction: column;
 }
 
-.heroAndNickname__nickname_radiant {
+.nickname_radiant {
   color: font-colors.$radiantColor;
 }
 
-.heroAndNickname__nickname_dire {
+.nickname_dire {
   color: font-colors.$direColor;
 }
 
-.heroAndNickname__nickname_radiant,
-.heroAndNickname__nickname_dire {
+.nickname_radiant,
+.nickname_dire {
   text-align: left;
 }
 
 // RankAndAvatar.tsx
-.rankAndAvatar {
+.playerRow__rankAndAvatar {
   position: relative;
   display: flex;
   align-items: center;
@@ -113,13 +113,13 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 2;
 }
 
-.rankAndAvatar__rank {
+.rank {
   position: relative;
   width: 40px;
   height: 40px;
 }
 
-.rankAndAvatar__rank__tier {
+.rank__tier {
   position: absolute;
   top: 0;
   left: 0;
@@ -132,7 +132,7 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   color: #fff;
 }
 
-.rankAndAvatar__avatar {
+.avatar {
   width: 24px;
   height: 24px;
   img {
@@ -141,7 +141,7 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 // PlayerStatistic.tsx
-.playerDataCell__statistic {
+.playerRow__statistic {
   position: relative;
   width: 100%;
   padding: 0px 10px;
@@ -150,7 +150,7 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 // PlayerItems.tsx
-.playerDataCell__items__wrapper {
+.itemsWrapper {
   padding: 10px 0px;
   width: 100%;
   display: flex;

@@ -59,7 +59,7 @@ export default function MainSlotItems({ itemDetails, player }: SlotInterface) {
               src={
                 item !== 'empty_slot'
                   ? `${process.env.NEXT_PUBLIC_ITEM_ICON_URL}${item}.png`
-                  : 'pictures/dota-item-icons/empty-slot.webp'
+                  : '/pictures/dota-item-icons/empty-slot.webp'
               }
               alt={item}
               width={37}

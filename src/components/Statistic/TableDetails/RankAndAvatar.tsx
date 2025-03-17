@@ -13,8 +13,8 @@ export default function RankAndAvatar({
   uRowDetails: PlayerRowDetailsUtility;
 }) {
   return (
-    <div className={styles.rankAndAvatar}>
-      <div className={styles.rankAndAvatar__rank}>
+    <div className={styles.playerRow__rankAndAvatar}>
+      <div className={styles.rank}>
         <Image
           src={uRowDetails.findPlayerRankIcon()}
           alt={"Player's Rank"}
@@ -23,12 +23,10 @@ export default function RankAndAvatar({
           quality={100}
         />
         {playerDetails.leaderboardRankInfo !== null && (
-          <div className={styles.rankAndAvatar__rank__tier}>
-            {playerDetails.leaderboardRankInfo}
-          </div>
+          <div className={styles.rank__tier}>{playerDetails.leaderboardRankInfo}</div>
         )}
       </div>
-      <div className={styles.rankAndAvatar__avatar}>
+      <div className={styles.avatar}>
         <Image
           src={uRowDetails.findPlayerAvatar()}
           alt={"Player's Avatar"}

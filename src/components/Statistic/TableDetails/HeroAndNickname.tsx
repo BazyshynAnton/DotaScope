@@ -25,10 +25,10 @@ export default function HeroAndNickname({
   };
 
   return (
-    <div className={styles.heroAndNickname}>
-      <div className={styles.heroAndNickname__hero}>
+    <div className={styles.playerRow__heroAndNickname}>
+      <div className={styles.hero}>
         <div
-          className={styles.heroAndNickname__hero__icon}
+          className={styles.hero__icon}
           style={{
             borderRight: `3px solid ${heroDetails.playerColor}`,
           }}
@@ -49,7 +49,7 @@ export default function HeroAndNickname({
             />
           )}
         </div>
-        <div className={styles.heroAndNickname__hero__level}>{player.level}</div>
+        <div className={styles.hero__level}>{player.level}</div>
         <span
           style={{
             background: `${heroDetails.heroVariant.color}`,
@@ -70,14 +70,8 @@ export default function HeroAndNickname({
           )}
         </span>
       </div>
-      <div className={styles.heroAndNickname__nickname}>
-        <div
-          className={
-            player.team_number === 0
-              ? styles.heroAndNickname__nickname_radiant
-              : styles.heroAndNickname__nickname_dire
-          }
-        >
+      <div className={styles.nickname}>
+        <div className={player.team_number === 0 ? styles.nickname_radiant : styles.nickname_dire}>
           {/* {player.personaname ? player.personaname : "Anonymous"} */}
           {player.personaname ? 'Player' : 'Anonymous'}
         </div>

@@ -17,8 +17,8 @@ export default function AppCrash({ error, reset }: { error: Error; reset: () => 
       <section style={{ display: 'flex', alignItems: 'flex-end', gap: '0.3rem' }}>
         <h1>Application Error</h1>
         <Image
-          src={'/pictures/dotaScopeIcons/enigma_error.gif'}
-          alt={'enigma_error'}
+          src={'/pictures/dota-scope-icons/enigma-error.gif'}
+          alt={'error icon'}
           width={22}
           height={22}
         />

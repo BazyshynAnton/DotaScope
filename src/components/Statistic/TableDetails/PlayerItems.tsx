@@ -16,8 +16,8 @@ export default function PlayerItems({
   player: Player;
 }) {
   return (
-    <td className={styles.playerDataCell__items}>
-      <div className={styles.playerDataCell__items__wrapper}>
+    <td className={styles.playerRow__items}>
+      <div className={styles.itemsWrapper}>
         <div className={styles.slots}>
           <div className={styles.slots__mainSlot}>
             <MainSlotItems itemDetails={itemDetails} player={player} />

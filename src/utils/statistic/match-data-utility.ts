@@ -19,7 +19,7 @@ import type { Items } from '@/types/statistic/player-row';
  *
  * If no match ID is provided, the function generates a default match ID.
  *
- * @param {number} [matchID=0] - The ID of the match.
+ * @param {number} [matchId=0] - The ID of the match.
  * Defaults to `0`, in which case the function retrieves a default match ID.
  * @returns `Promise<MatchData | string>` An object containing match details, hero list,
  * and player profiles, or an error message if an error occurs.
@@ -31,18 +31,18 @@ import type { Items } from '@/types/statistic/player-row';
  * - `matchDetailsData` (MatchDetails): Details about the specified match.
  * - `playerProfilesData` (PlayerProfile[]): Profile information of players in the match.
  */
-export async function fetchMatchData(matchID: number = 0): Promise<MatchData | string> {
+export async function fetchMatchData(matchId: number = 0): Promise<MatchData | string> {
   try {
-    if (matchID === 0) {
+    if (matchId === 0) {
       const response = await genDefaultMatchID();
       if (typeof response === 'number') {
-        matchID = response;
+        matchId = response;
       } else if (response instanceof Error) throw response;
     }
 
     // Get data about the Last Played Match using Opendota API
     const matchDetailsData = await fetchHelper<MatchDetails>(
-      (process.env.NEXT_PUBLIC_MATCH_DETAILS_URL as string) + matchID
+      (process.env.NEXT_PUBLIC_MATCH_DETAILS_URL as string) + matchId
     );
     if (matchDetailsData instanceof Error) throw matchDetailsData;
 

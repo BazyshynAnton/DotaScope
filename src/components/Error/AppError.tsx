@@ -13,7 +13,7 @@ export default function AppError() {
       }}
     >
       <h1 style={{ fontSize: '1.188rem' }}>Error</h1>
-      <Image src="/pictures/dotaScopeIcons/cheeky.gif" alt="puck" width={22} height={22} />
+      <Image src="/pictures/dota-scope-icons/cheeky.gif" alt="puck" width={22} height={22} />
     </section>
   );
 }

@@ -42,12 +42,12 @@ function TableHeaderCell({
   return (
     <th
       data-tooltip-id={str}
-      // className styleFlags:
-      // - kda stands for Kills, Deaths, Assists.
-      // - lhDhGpmXpm stands for Last hit, Denied,
-      // Gold Per Minute, Experience Per Minute.
-      // - netHdTdHh stands for Net Worh, Hero Damage,
-      // Tower Damage, Health restored to Heroes.
+      /*
+      className styleFlags:
+        - kda stands for Kills, Deaths, Assists.
+        - lhDhGpmXpm stands for Last hit, Gold Per Minute, Experience Per Minute.
+        - netHdTdHh stands for Net Worh, Hero Damage, Tower Damage, Health restored to Heroes.
+      */
       className={`${styleFlag === 'kda' && styles.kda} ${
         styleFlag === 'lhDnGpmXpm' && styles.lhDnGpmXpm
       } ${styleFlag === 'netHdTdHh' && styles.netHdTdHh}`}

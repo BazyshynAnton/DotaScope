@@ -23,7 +23,7 @@ export default function PlayerStatistic({ player }: { player: Player }) {
 function PlayerDataCell({ statistic }: { statistic: string | number }) {
   return (
     <td>
-      <div className={styles.playerDataCell__statistic}>{statistic}</div>
+      <div className={styles.playerRow__statistic}>{statistic}</div>
     </td>
   );
 }

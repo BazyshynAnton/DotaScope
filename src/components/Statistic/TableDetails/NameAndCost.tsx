@@ -13,7 +13,7 @@ export default function NameAndCost({ details, item }: ItemDescriptionInterface)
 
   return (
     <div className={styles.nameAndCostWrapper}>
-      <div className={styles.nameAndCostWrapper__itemPicture}>
+      <div className={styles.itemPicture}>
         <Image
           src={`${process.env.NEXT_PUBLIC_ITEM_ICON_URL}${item.includes('recipe') ? 'recipe' : item}.png`}
           alt={item}
@@ -21,8 +21,8 @@ export default function NameAndCost({ details, item }: ItemDescriptionInterface)
           height={70}
         />
       </div>
-      <div className={styles.nameAndCostWrapper__nameAndCost}>
-        <div className={styles.nameAndCostWrapper__nameAndCost__name}>
+      <div className={styles.nameAndCost}>
+        <div className={styles.nameAndCost__name}>
           <div>{details[item].dname}</div>
         </div>
         <Tier details={details} item={item} />

@@ -52,7 +52,7 @@ export default function ProMatchCard({ proMatch }: { proMatch: ProMatch }) {
           Duration: {`${matchDurationMinutes}:${matchDurationSeconds.toString().padStart(2, '0')}`}
         </p>
         <p>{timeAgo(diffInSeconds)}</p>
-        <Link href={'/statistic'} onClick={handleOverviewClick}>
+        <Link href={`/statistic/match?id=${proMatch.match_id}`} onClick={handleOverviewClick}>
           overview
         </Link>
       </div>

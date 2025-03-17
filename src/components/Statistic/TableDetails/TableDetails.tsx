@@ -10,9 +10,7 @@ import styles from '@/styles/statistic/table-details.module.scss';
 export default function TableDetails({ playersTeam }: { playersTeam: Player[] }) {
   const { matchDetails } = useAppSelector((store) => store.statisticSlice);
 
-  const teamHeaderCondition = playersTeam[0].isRadiant
-    ? styles.result__team__header_radiant
-    : styles.result__team__header_dire;
+  const teamHeaderCondition = playersTeam[0].isRadiant ? styles.result_radiant : styles.result_dire;
 
   const side = playersTeam[0].isRadiant ? 'radiant' : 'dire';
 
@@ -33,11 +31,11 @@ export default function TableDetails({ playersTeam }: { playersTeam: Player[] })
   return (
     <div className={styles.result}>
       <section className={styles.result__team}>
-        <h1 className={`${styles.result__team__header} ${teamHeaderCondition}`}>{teamName}</h1>
-        <div className={styles.result__team__tableWrapper}>
+        <h1 className={`${styles.result__header} ${teamHeaderCondition}`}>{teamName}</h1>
+        <div className={styles.result__tableWrapper}>
           <table className={styles.table}>
             <thead className={styles.table__thead}>
-              <tr className={styles.table__thead__headersTableRow}>
+              <tr className={styles.table__headersTableRow}>
                 <HeaderCells />
               </tr>
             </thead>

@@ -44,7 +44,7 @@ export default function PlayerRow({ playersTeam }: { playersTeam: Player[] }) {
         return (
           <tr key={player.hero_id} className={styles.playerRow}>
             <td className={styles.playerRow__playerDataCell}>
-              <div className={styles.playerRow__playerDataCell__inCell}>
+              <div className={styles.playerRow__inCell}>
                 <HeroAndNickname heroDetails={heroDetails} player={player} />
                 <RankAndAvatar playerDetails={playerDetails} uRowDetails={uRowDetails} />
               </div>

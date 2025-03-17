@@ -15,21 +15,21 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   gap: 0.5rem;
 }
 
-.result__team__header {
+.result__header {
   font-size: 1.25rem;
   font-weight: 600;
   text-transform: uppercase;
 }
 
-.result__team__header_radiant {
+.result_radiant {
   color: font-colors.$radiantColor;
 }
 
-.result__team__header_dire {
+.result_header_dire {
   color: font-colors.$direColor;
 }
 
-.result__team__tableWrapper {
+.result__tableWrapper {
   width: 100%;
 }
 
@@ -55,7 +55,7 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   width: 100%;
 }
 
-.table__thead__headersTableRow {
+.table__headersTableRow {
   height: 40px;
   th {
     text-align: center;
@@ -85,7 +85,7 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @media (max-width: 1435px) {
-  .result__team__tableWrapper {
+  .result__tableWrapper {
     @include scroll-x.scrollX;
   }
 

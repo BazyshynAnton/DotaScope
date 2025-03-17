@@ -28,7 +28,7 @@
   color: #ffffffde;
 }
 
-.nameAndCostWrapper__itemPicture {
+.itemPicture {
   height: 50px;
   img {
     width: 100%;
@@ -37,26 +37,26 @@
   }
 }
 
-.nameAndCostWrapper__nameAndCost {
+.nameAndCost {
   padding-left: 15px;
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
 }
 
-.nameAndCostWrapper__nameAndCost__name {
+.nameAndCost__name {
   font-weight: bold;
   font-size: 16px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
 }
 
-.nameAndCostWrapper__nameAndCost__cost,
-.nameAndCostWrapper__nameAndCost__tier {
+.nameAndCost__cost,
+.nameAndCost__tier {
   display: inline-block;
 }
 
-.nameAndCostWrapper__nameAndCost__cost {
+.nameAndCost__cost {
   display: flex;
   gap: 0.2rem;
   align-items: center;
@@ -69,7 +69,7 @@
   }
 }
 
-.nameAndCostWrapper__nameAndCost__tier {
+.nameAndCost__tier {
   font-size: 13px;
 }
 

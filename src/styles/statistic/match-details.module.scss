@@ -16,7 +16,7 @@
   width: 100%;
 }
 
-.result {
+.match__result {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,7 +27,7 @@
   }
 }
 
-.scoreAndTime {
+.match__scoreAndTime {
   padding-top: 13px;
   display: flex;
   justify-content: center;
@@ -36,20 +36,20 @@
   font-weight: 500;
 }
 
-.scoreAndTime__radiantScore {
+.match__radiantScore {
   color: font-colors.$radiantColor;
 }
-.scoreAndTime__duration {
+.match__duration {
   color: font-colors.$fontColor2;
   font-weight: 400;
   font-size: 1rem;
 }
-.scoreAndTime__direScore {
+.match__direScore {
   font-size: 16px;
   color: font-colors.$direColor;
 }
 
-.scoreAndTime__radiantScore,
-.scoreAndTime__direScore {
+.match__radiantScore,
+.match__direScore {
   font-size: 20px;
 }
