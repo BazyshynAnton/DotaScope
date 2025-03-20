@@ -1,0 +1,10 @@
+@mixin main-content-wrapper {
+  position: relative;
+
+  max-width: 1400px;
+  min-height: 100%;
+  width: 100%;
+  padding: 0px 30px;
+
+  margin: 0 auto;
+}

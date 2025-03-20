@@ -1,0 +1,51 @@
+@use 'color-vars.scss';
+@use 'mixins.scss';
+
+$size20px: 1.25rem;
+$size14px: 0.875rem;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+
+  background: color-vars.$background-second;
+}
+
+.header__content {
+  padding: 0px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  color: color-vars.$text-main;
+
+  @include mixins.main-content-wrapper;
+}
+
+.header__heading {
+  font-size: $size20px;
+  font-weight: 600;
+  color: inherit;
+}
+
+/*.header__navigation {}*/
+
+.header__linksList {
+  display: flex;
+}
+
+.header__link {
+  color: inherit;
+}
+
+.header__heading,
+.header__link {
+  padding: 7px;
+
+  font-size: $size14px;
+  text-transform: capitalize;
+}

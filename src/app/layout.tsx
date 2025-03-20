@@ -1,9 +1,4 @@
 import Header from '@/components/Header/Header';
-import Footer from '@/components/Footer/Footer';
-import TooltipPortal from '@/components/Portals/TooltipPortal';
-import TooltipAbilityPortal from '@/components/Portals/TooltipAbilityPortal';
-import StoreProvider from '@/store/StoreProvider';
-import EarlyAccess from '@/components/InDevelopment/EarlyAccess';
 
 import { Exo_2 } from 'next/font/google';
 
@@ -32,19 +27,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <StoreProvider>
-      <html lang="en">
-        <body className={exo2.className}>
-          <Header />
-          <main className="wrapper">
-            {children}
-            <TooltipPortal />
-            <TooltipAbilityPortal />
-          </main>
-          <Footer />
-          <EarlyAccess /> {/* temporary */}
-        </body>
-      </html>
-    </StoreProvider>
+    <html lang="en">
+      <body className={exo2.className}>
+        <Header />
+        <main className="main-wrapper">{children}</main>
+      </body>
+    </html>
   );
 }
