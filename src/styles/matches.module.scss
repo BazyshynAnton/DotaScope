@@ -1,0 +1,27 @@
+@use 'color-vars';
+
+$size128px: 8rem;
+
+.matches {
+  margin-top: $size128px;
+}
+
+.matches__search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.matches__input {
+  padding: 3px 4px;
+  width: 200px;
+  display: block;
+  border: none;
+  border-bottom: 1px solid color-vars.$border-second;
+  background: unset;
+  color: color-vars.$text-main;
+
+  &:focus {
+    outline: none;
+  }
+}
