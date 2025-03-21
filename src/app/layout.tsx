@@ -1,4 +1,5 @@
 import Header from '@/components/Header/Header';
+import Footer from '@/components/Footer/Footer';
 
 import { Exo_2 } from 'next/font/google';
 
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body className={exo2.className}>
         <Header />
         <main className="main-wrapper">{children}</main>
+        <Footer />
       </body>
     </html>
   );

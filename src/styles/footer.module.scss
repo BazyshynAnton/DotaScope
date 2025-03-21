@@ -1,0 +1,24 @@
+@use 'color-vars';
+
+$size32px: 2rem;
+$size14px: 0.875rem;
+
+.footer {
+  margin-top: $size32px;
+  padding: 20px;
+  width: 100%;
+}
+
+.footer__rights {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: color-vars.$text-main;
+}
+
+.footer__heading {
+  font-size: $size14px;
+  font-weight: 500;
+}

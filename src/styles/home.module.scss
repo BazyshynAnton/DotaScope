@@ -1,0 +1,38 @@
+@use 'color-vars';
+
+$size20px: 1.25rem;
+$size16px: 1rem;
+
+.home {
+  height: 100vh;
+  display: flex;
+  gap: 0.3rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: color-vars.$text-main;
+}
+
+.home__heading {
+  font-size: $size20px;
+  font-weight: 600;
+}
+
+.home__explanation {
+  font-size: $size16px;
+}
+
+.home__navigationLink {
+  margin-top: 12px;
+  padding: 7px;
+  border: 2px solid color-vars.$border-main;
+  opacity: 0.5;
+  background-color: color-vars.$background-second;
+  transition: all 0.15s ease-in-out;
+  color: inherit;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 1;
+  }
+}
