@@ -1,3 +1,5 @@
+'use client';
+
 import Search from './Search';
 
 import styles from '@/styles/matches.module.scss';

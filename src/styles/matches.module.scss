@@ -1,15 +1,24 @@
 @use 'color-vars';
 
 $size128px: 8rem;
+$size14px: 0.875rem;
 
 .matches {
   margin-top: $size128px;
+  font-size: $size14px;
 }
 
 .matches__search {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.matches__label {
+  color: color-vars.$text-main;
+  pointer-events: none;
+  transform: translateY(-26px);
+  transition: all 0.15s ease-in-out;
 }
 
 .matches__input {
@@ -19,9 +28,46 @@ $size128px: 8rem;
   border: none;
   border-bottom: 1px solid color-vars.$border-second;
   background: unset;
-  color: color-vars.$text-main;
+  color: color-vars.$text-second;
 
   &:focus {
     outline: none;
+    color: color-vars.$text-main;
   }
+
+  &:focus + .matches__label,
+  &:valid + .matches__label {
+    transform: translateY(-45px);
+  }
+
+  &::placeholder {
+    opacity: 0;
+  }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.matches__submitLink {
+  padding: 7px;
+  border: 2px solid color-vars.$border-main;
+  background-color: color-vars.$background-second;
+  transition: all 0.15s ease-in-out;
+  color: color-vars.$text-main;
+}
+
+.submitLink_disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.submitLink_active {
+  opacity: 1;
+  cursor: pointer;
 }
