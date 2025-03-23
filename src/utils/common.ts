@@ -4,10 +4,19 @@ export async function fetchHelper<T>(url: string, cache: RequestCache = 'force-c
   });
 
   if (!response.ok) {
-    throw new Error(`Failed to fetch: ${url}`);
+    throw new Error(`Failed to fetch: ${url} \nStatus: ${response.status}`);
   }
 
-  return await response.json();
+  const text = await response.text();
+
+  return text ? JSON.parse(text) : {};
+}
+
+export function timeDuration(duration: number) {
+  const matchDurationMinutes = Math.floor(duration / 60);
+  const matchDurationSeconds = duration % 60;
+
+  return `${matchDurationMinutes}:${matchDurationSeconds.toString().padStart(2, '0')}`;
 }
 
 export function timeAgo(seconds: number) {

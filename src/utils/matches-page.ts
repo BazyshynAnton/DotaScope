@@ -6,7 +6,7 @@ export async function fetchMatchesPageData(): Promise<MatchesPageData | string> 
   try {
     // TODO: change cache to 'no-cache'
     const proMatches = await fetchHelper<ProMatch[]>(
-      process.env.NEXT_PUBLIC_PRO_MATCHES_URL as string
+      process.env.NEXT_PRIVATE_PRO_MATCHES_URL as string
     );
 
     // store all IDs for an appropriate team in a map
@@ -22,14 +22,27 @@ export async function fetchMatchesPageData(): Promise<MatchesPageData | string> 
       }
     });
 
-    const teamsPromisses = [];
-    // TODO: iterate through the map and set the array of promisses and then use Promise all
-    //for(let [_, value] of teamIdStore){
+    const teams = await Promise.all(
+      Array.from(teamIdStore.values()).map(async (value) => {
+        return await fetchHelper<Team>(`${process.env.NEXT_PRIVATE_TEAM_URL}${value}`);
+      })
+    );
 
-    //}
-
-    return JSON.parse(JSON.stringify({ proMatches })) as MatchesPageData;
+    return { proMatches, teams } as MatchesPageData;
   } catch (error) {
     return errorToString(error);
   }
+}
+
+export function findLogoUrl(teamId: number, teams: Team[]) {
+  let logoUrl = '';
+
+  for (const team of teams) {
+    if (teamId === team.team_id) {
+      logoUrl = team.logo_url;
+      return logoUrl;
+    }
+  }
+
+  return logoUrl;
 }

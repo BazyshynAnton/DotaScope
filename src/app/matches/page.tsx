@@ -1,5 +1,9 @@
 import Matches from '@/components/Matches/Matches';
 
-export default function MatchesPage() {
-  return <Matches />;
+import { fetchMatchesPageData } from '@/utils/matches-page';
+
+export default async function MatchesPage() {
+  const matchesPageData = await fetchMatchesPageData();
+
+  return <Matches matchesPageData={matchesPageData} />;
 }

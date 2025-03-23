@@ -1,0 +1,61 @@
+@use 'color-vars';
+
+$size14px: 0.875rem;
+
+.table {
+  margin-top: 6rem;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: color-vars.$bg2;
+  font-size: $size14px;
+  color: color-vars.$text-main;
+}
+
+.table__head {
+}
+
+.table__headRow {
+  background: linear-gradient(to left, color-vars.$bg2, color-vars.$bg4);
+}
+
+.table__headCell {
+  padding: 5px 10px;
+  text-align: left;
+
+  &:nth-child(n + 2) {
+    text-align: center;
+  }
+
+  &:nth-child(4) {
+    color: color-vars.$text-radiant;
+  }
+  &:nth-child(5) {
+    color: color-vars.$text-dire;
+  }
+}
+
+.table__body {
+}
+
+.table__bodyRow {
+  &:nth-child(odd) {
+    background-color: color-vars.$bg1;
+  }
+}
+
+.table__bodyCell {
+  padding: 8px 10px;
+
+  &:nth-child(2),
+  &:nth-child(3) {
+    text-align: center;
+  }
+}
+
+.table,
+.table__headRow,
+.table__headCell,
+.table__bodyRow,
+.table__bodyCell {
+  border: 1px solid color-vars.$border-main;
+}

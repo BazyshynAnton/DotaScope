@@ -1,5 +1,13 @@
 export interface MatchesPageData {
   proMatches: ProMatch[];
+  teams: Team[];
+}
+
+export interface MatchesPageSlice {
+  proMatches: ProMatch[] | null;
+  teams: Team[] | null;
+
+  error: string | null;
 }
 
 export interface ProMatch {
