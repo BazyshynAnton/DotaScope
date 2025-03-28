@@ -1,5 +1,9 @@
 @use 'table.module.scss';
 
+.matchLink {
+  color: inherit;
+}
+
 .logoAndName {
   display: flex;
   gap: 0.3rem;

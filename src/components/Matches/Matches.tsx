@@ -16,7 +16,6 @@ export default function Matches({
 }: {
   matchesPageData: MatchesPageData | string;
 }) {
-  console.log(matchesPageData);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
