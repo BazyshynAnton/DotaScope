@@ -1,3 +1,5 @@
+'use client';
+
 import { Link } from '@/shared/nextjs-imports';
 import { useState } from '@/shared/react-imports';
 
@@ -5,7 +7,7 @@ import type { ChangeEvent } from 'react';
 
 import styles from '@/styles/matches.module.scss';
 
-export default function Search() {
+export default function MatchSearch() {
   const [userInput, setUserInput] = useState('');
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {

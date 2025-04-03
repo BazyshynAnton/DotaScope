@@ -1,4 +1,5 @@
 @use 'color-vars';
+@use 'mixins';
 
 $size128px: 8rem;
 $size14px: 0.875rem;
@@ -70,4 +71,14 @@ $size14px: 0.875rem;
 .submitLink_active {
   opacity: 1;
   cursor: pointer;
+}
+
+.matches__tableWrapper {
+  margin-top: 6rem;
+}
+
+@media (max-width: 900px) {
+  .matches__tableWrapper {
+    @include mixins.scroll-x;
+  }
 }

@@ -3,7 +3,6 @@
 $size14px: 0.875rem;
 
 .table {
-  margin-top: 6rem;
   width: 100%;
   border-collapse: collapse;
   background-color: color-vars.$bg2;
@@ -58,4 +57,10 @@ $size14px: 0.875rem;
 .table__bodyRow,
 .table__bodyCell {
   border: 1px solid color-vars.$border-main;
+}
+
+@media (max-width: 900px) {
+  .table {
+    width: 840px;
+  }
 }

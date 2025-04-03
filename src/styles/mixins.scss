@@ -8,3 +8,10 @@
 
   margin: 0 auto;
 }
+
+@mixin scroll-x {
+  overflow: scroll !important;
+  scrollbar-color: rgba(255, 255, 255, 0.1) #242f39;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+}

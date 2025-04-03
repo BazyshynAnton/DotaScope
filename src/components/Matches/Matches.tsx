@@ -1,9 +1,11 @@
 'use client';
 
-import Search from './Search';
+import MatchSearch from '@/components/MatchSearch/MatchSearch';
 import Table from '@/components/Table/Table';
+import Loader from '@/components/Loader/Loader';
 
 import { setMatchesPageData } from '@/store/matches-page-slice';
+import { useAppSelector } from '@/hooks/use-app-selector';
 import { useAppDispatch } from '@/hooks/use-app-dispatch';
 import { useEffect } from '@/shared/react-imports';
 
@@ -16,6 +18,7 @@ export default function Matches({
 }: {
   matchesPageData: MatchesPageData | string;
 }) {
+  const { proMatches } = useAppSelector((store) => store.matchesPageSlice);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -24,11 +27,17 @@ export default function Matches({
 
   return (
     <section className={styles.matches}>
-      <Search />
-      <Table
-        tableType="matches-page-table"
-        titles={['League', 'Match ID', 'Duration', 'Radiant', 'Dire']}
-      />
+      <MatchSearch />
+      <div className={styles.matches__tableWrapper}>
+        {proMatches ? (
+          <Table
+            tableType="matches-page-table"
+            titles={['League', 'Match ID', 'Duration', 'Radiant', 'Dire']}
+          />
+        ) : (
+          <Loader />
+        )}
+      </div>
     </section>
   );
 }
