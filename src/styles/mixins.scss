@@ -1,10 +1,12 @@
+@use 'sizes';
+
 @mixin main-content-wrapper {
   position: relative;
 
-  max-width: 1400px;
+  max-width: sizes.px-to-rem(1400);
   min-height: 100%;
   width: 100%;
-  padding: 0px 30px;
+  padding: 0rem sizes.px-to-rem(30);
 
   margin: 0 auto;
 }

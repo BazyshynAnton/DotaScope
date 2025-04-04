@@ -1,8 +1,6 @@
-@use 'color-vars.scss';
+@use 'sizes.scss';
+@use 'colors.scss';
 @use 'mixins.scss';
-
-$size20px: 1.25rem;
-$size14px: 0.875rem;
 
 .header {
   position: fixed;
@@ -10,22 +8,22 @@ $size14px: 0.875rem;
   left: 0;
   z-index: 10;
   width: 100%;
-  background: linear-gradient(to left, color-vars.$bg2, color-vars.$bg4);
-  /*background-color: color-vars.$bg2;*/
-  border-bottom: 1px solid color-vars.$border-main;
+  background: linear-gradient(to left, colors.$bg2, colors.$bg4);
+  /*background-color: colors.$bg2;*/
+  border-bottom: sizes.px-to-rem(1) solid colors.$border-main;
 }
 
 .header__content {
-  padding: 0px 20px;
+  padding: 0rem sizes.px-to-rem(20);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: color-vars.$text-main;
+  color: colors.$text-main;
   @include mixins.main-content-wrapper;
 }
 
 .header__heading {
-  font-size: $size20px;
+  font-size: sizes.px-to-rem(20);
   font-weight: 600;
   color: inherit;
 }
@@ -46,8 +44,10 @@ $size14px: 0.875rem;
 
 .header__heading,
 .header__link {
-  padding: 7px;
-  font-size: $size14px;
+  display: inline-flex;
+  align-items: center;
+  padding: sizes.px-to-rem(7);
+  font-size: sizes.px-to-rem(14);
   text-transform: capitalize;
 }
 
@@ -55,13 +55,14 @@ $size14px: 0.875rem;
   display: none;
 }
 
-@media (max-width: 400px) {
+/* 400px =  25rem */
+@media (max-width: 25rem) {
   .header__burger {
-    margin-left: 20px;
-    width: 33px;
-    height: 45px;
+    margin-left: sizes.px-to-rem(20);
+    width: sizes.px-to-rem(33);
+    height: sizes.px-to-rem(45);
     display: flex;
-    gap: 5px;
+    gap: sizes.px-to-rem(5);
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -70,9 +71,9 @@ $size14px: 0.875rem;
     span {
       position: relative;
       display: block;
-      width: 25px;
-      height: 2px;
-      background-color: color-vars.$bg3;
+      width: sizes.px-to-rem(25);
+      height: sizes.px-to-rem(2);
+      background-color: colors.$bg3;
     }
   }
 
@@ -81,9 +82,9 @@ $size14px: 0.875rem;
     &::after {
       position: absolute;
       content: '';
-      height: 33px;
-      width: 2px;
-      background-color: color-vars.$bg3;
+      height: sizes.px-to-rem(33);
+      width: sizes.px-to-rem(2);
+      background-color: colors.$bg3;
     }
 
     &::before {
@@ -100,8 +101,8 @@ $size14px: 0.875rem;
 
   .header__navigation {
     position: absolute;
-    top: 46px;
-    left: 0px;
+    top: sizes.px-to-rem(46);
+    left: 0rem;
     width: 100%;
   }
 
@@ -112,10 +113,10 @@ $size14px: 0.875rem;
   .header__linksList {
     width: 100%;
     height: 100vh;
-    padding: 10px 10px;
+    padding: sizes.px-to-rem(10);
     gap: 0.3rem;
     flex-direction: column;
-    background-color: color-vars.$bg2;
+    background-color: colors.$bg2;
   }
 
   .header__linksList_closed {

@@ -1,8 +1,10 @@
 import MatchSearch from '@/components/MatchSearch/MatchSearch';
 
+import styles from '@/styles/matches.module.scss';
+
 export default function MatchSearchPage() {
   return (
-    <section style={{ marginTop: '8rem', fontSize: '0.875rem' }}>
+    <section className={styles.matches}>
       <MatchSearch />
     </section>
   );

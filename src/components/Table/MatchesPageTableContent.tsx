@@ -3,13 +3,12 @@ import { useAppSelector } from '@/hooks/use-app-selector';
 import { timeDuration } from '@/utils/common';
 import { findLogoUrl } from '@/utils/matches-page';
 
+import { GiTrophy } from 'react-icons/gi';
+
 import styles from '@/styles/matches-table-content.module.scss';
 
 export function MatchesPageTableContent() {
   const { proMatches, teams } = useAppSelector((store) => store.matchesPageSlice);
-
-  console.log(proMatches);
-  console.log(teams);
 
   return (
     <>
@@ -19,8 +18,6 @@ export function MatchesPageTableContent() {
           const duration = timeDuration(match.duration);
           const radiantLogoUrl = findLogoUrl(match.radiant_team_id, teams);
           const direLogoUrl = findLogoUrl(match.dire_team_id, teams);
-
-          console.log(match.radiant_name, ' ', radiantLogoUrl);
 
           return (
             <tr key={match.match_id} className={styles.table__bodyRow}>
@@ -40,6 +37,7 @@ export function MatchesPageTableContent() {
                     height={19}
                   />
                   {match.radiant_name || 'TBD'}
+                  <GiTrophy className={styles.trophy} />
                 </div>
                 <div className={styles.radiantDraft}></div>
               </td>

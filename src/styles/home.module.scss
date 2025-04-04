@@ -1,7 +1,5 @@
-@use 'color-vars';
-
-$size20px: 1.25rem;
-$size16px: 1rem;
+@use 'sizes';
+@use 'colors';
 
 .home {
   height: 100vh;
@@ -10,25 +8,25 @@ $size16px: 1rem;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: color-vars.$text-main;
+  color: colors.$text-main;
   text-align: center;
 }
 
 .home__heading {
-  font-size: $size20px;
+  font-size: sizes.px-to-rem(20);
   font-weight: 600;
 }
 
 .home__explanation {
-  font-size: $size16px;
+  font-size: sizes.px-to-rem(16);
 }
 
 .home__navigationLink {
-  margin-top: 12px;
-  padding: 7px;
-  border: 2px solid color-vars.$border-main;
+  margin-top: sizes.px-to-rem(12);
+  padding: sizes.px-to-rem(7);
+  border: sizes.px-to-rem(2) solid colors.$border-main;
   opacity: 0.5;
-  background-color: color-vars.$bg2;
+  background-color: colors.$bg2;
   transition: all 0.15s ease-in-out;
   color: inherit;
   cursor: pointer;

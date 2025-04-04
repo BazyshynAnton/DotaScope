@@ -1,4 +1,4 @@
-@use 'color-vars.scss';
+@use 'colors.scss';
 @use 'mixins.scss';
 
 *,
@@ -14,7 +14,7 @@ html,
 body {
   position: relative;
   height: 100%;
-  background-color: color-vars.$bg1;
+  background-color: colors.$bg1;
 }
 
 a {

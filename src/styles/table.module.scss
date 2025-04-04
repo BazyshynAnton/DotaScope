@@ -1,24 +1,23 @@
-@use 'color-vars';
-
-$size14px: 0.875rem;
+@use 'sizes';
+@use 'colors';
 
 .table {
   width: 100%;
   border-collapse: collapse;
-  background-color: color-vars.$bg2;
-  font-size: $size14px;
-  color: color-vars.$text-main;
+  background-color: colors.$bg2;
+  font-size: sizes.px-to-rem(14);
+  color: colors.$text-main;
 }
 
 .table__head {
 }
 
 .table__headRow {
-  background: linear-gradient(to left, color-vars.$bg2, color-vars.$bg4);
+  background: linear-gradient(to left, colors.$bg2, colors.$bg4);
 }
 
 .table__headCell {
-  padding: 5px 10px;
+  padding: sizes.px-to-rem(5) sizes.px-to-rem(10);
   text-align: left;
 
   &:nth-child(n + 2) {
@@ -26,10 +25,10 @@ $size14px: 0.875rem;
   }
 
   &:nth-child(4) {
-    color: color-vars.$text-radiant;
+    color: colors.$text-radiant;
   }
   &:nth-child(5) {
-    color: color-vars.$text-dire;
+    color: colors.$text-dire;
   }
 }
 
@@ -38,12 +37,12 @@ $size14px: 0.875rem;
 
 .table__bodyRow {
   &:nth-child(odd) {
-    background-color: color-vars.$bg1;
+    background-color: colors.$bg1;
   }
 }
 
 .table__bodyCell {
-  padding: 8px 10px;
+  padding: sizes.px-to-rem(8) sizes.px-to-rem(10);
 
   &:nth-child(2),
   &:nth-child(3) {
@@ -56,11 +55,12 @@ $size14px: 0.875rem;
 .table__headCell,
 .table__bodyRow,
 .table__bodyCell {
-  border: 1px solid color-vars.$border-main;
+  border: sizes.px-to-rem(1) solid colors.$border-main;
 }
 
-@media (max-width: 900px) {
+/* 900px = 56.25rem */
+@media (max-width: 56.25rem) {
   .table {
-    width: 840px;
+    width: sizes.px-to-rem(840);
   }
 }

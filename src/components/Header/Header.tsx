@@ -64,8 +64,9 @@ export default function Header() {
               position: 'absolute',
               zIndex: 1,
 
-              width: movableBgStyles.width || 0,
-              height: '31.5px', // height doesn't change, keep it constant
+              width: `${movableBgStyles.width || 0}px`,
+              // 31.5px = 1.969rem
+              height: '1.969rem', // height doesn't change, keep it constant
 
               display: isBgAppear ? 'block' : 'none',
 

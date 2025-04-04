@@ -1,12 +1,10 @@
-@use 'color-vars';
+@use 'sizes';
+@use 'colors';
 @use 'mixins';
 
-$size128px: 8rem;
-$size14px: 0.875rem;
-
 .matches {
-  margin-top: $size128px;
-  font-size: $size14px;
+  padding-top: sizes.px-to-rem(128);
+  font-size: sizes.px-to-rem(14);
 }
 
 .matches__search {
@@ -16,29 +14,29 @@ $size14px: 0.875rem;
 }
 
 .matches__label {
-  color: color-vars.$text-main;
+  color: colors.$text-main;
   pointer-events: none;
-  transform: translateY(-26px);
+  transform: translateY(calc(sizes.px-to-rem(26) * -1));
   transition: all 0.15s ease-in-out;
 }
 
 .matches__input {
-  padding: 3px 4px;
-  width: 200px;
+  padding: sizes.px-to-rem(3) sizes.px-to-rem(4);
+  width: sizes.px-to-rem(200);
   display: block;
   border: none;
-  border-bottom: 1px solid color-vars.$border-second;
+  border-bottom: sizes.px-to-rem(1) solid colors.$border-second;
   background: unset;
-  color: color-vars.$text-second;
+  color: colors.$text-second;
 
   &:focus {
     outline: none;
-    color: color-vars.$text-main;
+    color: colors.$text-main;
   }
 
   &:focus + .matches__label,
   &:valid + .matches__label {
-    transform: translateY(-45px);
+    transform: translateY(calc(sizes.px-to-rem(45) * -1));
   }
 
   &::placeholder {
@@ -56,11 +54,11 @@ $size14px: 0.875rem;
 }
 
 .matches__submitLink {
-  padding: 7px;
-  border: 2px solid color-vars.$border-main;
-  background-color: color-vars.$bg2;
+  padding: sizes.px-to-rem(7);
+  border: sizes.px-to-rem(2) solid colors.$border-main;
+  background-color: colors.$bg2;
   transition: all 0.15s ease-in-out;
-  color: color-vars.$text-main;
+  color: colors.$text-main;
 }
 
 .submitLink_disabled {
@@ -77,7 +75,8 @@ $size14px: 0.875rem;
   margin-top: 6rem;
 }
 
-@media (max-width: 900px) {
+/* 900px = 56.25rem */
+@media (max-width: 56.25rem) {
   .matches__tableWrapper {
     @include mixins.scroll-x;
   }

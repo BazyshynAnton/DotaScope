@@ -1,11 +1,9 @@
-@use 'color-vars';
-
-$size32px: 2rem;
-$size14px: 0.875rem;
+@use 'sizes';
+@use 'colors';
 
 .footer {
-  margin-top: $size32px;
-  padding: 20px;
+  margin-top: sizes.px-to-rem(32);
+  padding: sizes.px-to-rem(20);
   width: 100%;
 }
 
@@ -15,10 +13,10 @@ $size14px: 0.875rem;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: color-vars.$text-main;
+  color: colors.$text-main;
 }
 
 .footer__heading {
-  font-size: $size14px;
+  font-size: sizes.px-to-rem(14);
   font-weight: 500;
 }
