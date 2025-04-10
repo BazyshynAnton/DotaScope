@@ -18,12 +18,16 @@ export default function Matches({
 }: {
   matchesPageData: MatchesPageData | string;
 }) {
-  const { proMatches } = useAppSelector((store) => store.matchesPageSlice);
+  const { proMatches, error } = useAppSelector((store) => store.matchesPageSlice);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(setMatchesPageData(matchesPageData));
   }, []);
+
+  if (error !== null) {
+    throw new Error(error);
+  }
 
   return (
     <section className={styles.matches}>

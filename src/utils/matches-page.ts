@@ -13,6 +13,7 @@ import type {
   GameMode,
   LobbyType,
   League,
+  DotaConstants,
 } from '@/types/matches-page';
 
 export async function fetchMatchesPageData(): Promise<MatchesPageData | string> {
@@ -104,6 +105,17 @@ export async function fetchDotaConstants() {
     );
 
     const leagues = await fetchHelper<League[]>(process.env.NEXT_PRIVATE_LEAGUES_URL as string);
+
+    return {
+      heroes,
+      abilities,
+      abilityIds,
+      items,
+      region,
+      gameMode,
+      lobbyType,
+      leagues,
+    } as DotaConstants;
   } catch (error) {
     return errorToString(error);
   }

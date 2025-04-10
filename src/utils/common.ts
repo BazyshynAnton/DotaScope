@@ -9,7 +9,7 @@ export async function fetchHelper<T>(url: string, cache: RequestCache = 'force-c
 
   const text = await response.text();
 
-  return text ? JSON.parse(text) : {};
+  return text ? JSON.parse(text) : ({} as T);
 }
 
 export function timeDuration(duration: number) {

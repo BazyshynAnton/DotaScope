@@ -29,33 +29,51 @@ export function MatchesPageTableContent() {
               </td>
               <td className={styles.table__bodyCell}>{duration}</td>
               <td className={styles.table__bodyCell}>
-                <div className={styles.logoAndName}>
-                  <Image
-                    src={radiantLogoUrl || '/pictures/dota-scope-icons/tbd.png'}
-                    alt="Logo"
-                    width={radiantLogoUrl ? 32 : 19}
-                    height={19}
-                  />
-                  {match.radiant_name || 'TBD'}
-                  <GiTrophy className={styles.trophy} />
-                </div>
-                <div className={styles.radiantDraft}></div>
+                <TeamSection
+                  teamLogoUrl={radiantLogoUrl}
+                  teamName={match.radiant_name}
+                  isTeamWin={match.radiant_win ? true : false}
+                />
               </td>
               <td className={styles.table__bodyCell}>
-                <div className={styles.logoAndName}>
-                  <Image
-                    src={direLogoUrl || '/pictures/dota-scope-icons/tbd.png'}
-                    alt="Logo"
-                    width={direLogoUrl ? 32 : 19}
-                    height={19}
-                  />
-                  {match.dire_name || 'TBD'}
-                </div>
-                <div className={styles.direDraft}></div>
+                <TeamSection
+                  teamLogoUrl={direLogoUrl}
+                  teamName={match.dire_name}
+                  isTeamWin={match.radiant_win ? false : true}
+                />
               </td>
             </tr>
           );
         })}
     </>
   );
+}
+
+function TeamSection({
+  teamLogoUrl,
+  teamName,
+  isTeamWin,
+}: {
+  teamLogoUrl: string;
+  teamName: string;
+  isTeamWin: boolean;
+}) {
+  return (
+    <>
+      <div className={styles.logoAndName}>
+        <Image
+          src={teamLogoUrl || '/pictures/dota-scope-icons/tbd.png'}
+          alt="Logo"
+          width={teamLogoUrl ? 32 : 19}
+          height={19}
+        />
+        <p>{teamName || 'TBD'}</p>
+        <Trophy isTeamWin={isTeamWin} />
+      </div>
+    </>
+  );
+}
+
+function Trophy({ isTeamWin }: { isTeamWin: boolean }) {
+  return <>{isTeamWin && <GiTrophy className={styles.trophy} />}</>;
 }

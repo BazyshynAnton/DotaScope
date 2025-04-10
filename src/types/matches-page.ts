@@ -39,9 +39,28 @@ export interface Team {
   logo_url: string;
 }
 
+// Match.tsx
 export interface MatchPageData {
   match: Match;
   playerProfiles: PlayerProfile[];
+}
+
+export interface MatchPageSlice {
+  matchData: MatchPageData | null;
+  constants: DotaConstants | null;
+
+  error: string | null;
+}
+
+export interface DotaConstants {
+  heroes: Hero[];
+  abilities: any;
+  abilityIds: any;
+  items: Items;
+  region: Region;
+  gameMode: GameMode;
+  lobbyType: LobbyType;
+  leagues: League[];
 }
 
 export interface Match {
@@ -186,8 +205,8 @@ export type Player = {
 };
 
 export type PicksAndBans = {
-  is_pick: boolean;
-  hero_id: number;
+  isPick: boolean;
+  heroId: number;
   team: number;
   order: number;
 };
@@ -280,4 +299,52 @@ export interface League {
   leagueid: number;
   tier: string;
   name: string;
+}
+
+export interface CMatchDetails {
+  findMatchResult(match: Match): MatchResult;
+
+  filterPlayersByTeam(match: Match): PlayersByTeam;
+
+  picksBans(match: Match, side: string): PicksAndBans[] | string;
+
+  findHeroInPickBans(heroes: Hero[], heroId: number): void | string;
+}
+
+export interface MatchResult {
+  result: boolean;
+  duration: string;
+  radiantScore: string;
+  direScore: string;
+}
+
+export interface PlayersByTeam {
+  radiant: Player[] | null;
+  dire: Player[] | null;
+}
+
+export interface PlayerColors {
+  radiant: {
+    teamNumber: number;
+
+    colors: Colors;
+  };
+
+  dire: {
+    teamNumber: number;
+
+    colors: Colors;
+  };
+}
+
+interface Colors {
+  '0': string;
+  '1': string;
+  '2': string;
+  '3': string;
+  '4': string;
+}
+
+export interface FacetGradientColor {
+  [ket: string]: string;
 }

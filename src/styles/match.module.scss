@@ -1,0 +1,16 @@
+@use 'sizes';
+@use 'colors';
+@use 'mixins';
+
+.match {
+  padding-top: sizes.px-to-rem(128);
+  font-size: sizes.px-to-rem(14);
+}
+
+.match__header {
+  margin-top: 6rem;
+  height: 100px;
+
+  background: linear-gradient(to left, colors.$bg2, colors.$bg4);
+  border: sizes.px-to-rem(1) solid colors.$border-main;
+}
