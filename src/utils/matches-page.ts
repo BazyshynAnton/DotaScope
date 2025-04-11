@@ -72,12 +72,13 @@ export async function fetchMatchPageData(matchId: number): Promise<MatchPageData
     }
 
     const playerProfiles = await Promise.all(
-      playerIds.map(
-        async (playerId) =>
-          await fetchHelper<PlayerProfile>(
-            `${process.env.NEXT_PRIVATE_PLAYER_PROFILE_URL}${playerId}`
-          )
-      )
+      playerIds.map(async (playerId) => {
+        return playerId !== undefined
+          ? await fetchHelper<PlayerProfile>(
+              `${process.env.NEXT_PRIVATE_PLAYER_PROFILE_URL}${playerId}`
+            )
+          : ({} as PlayerProfile);
+      })
     );
 
     return { match, playerProfiles } as MatchPageData;

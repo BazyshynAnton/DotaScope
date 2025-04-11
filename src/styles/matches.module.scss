@@ -14,7 +14,7 @@
 }
 
 .matches__label {
-  color: colors.$text-main;
+  color: colors.$text1;
   pointer-events: none;
   transform: translateY(calc(sizes.px-to-rem(26) * -1));
   transition: all 0.15s ease-in-out;
@@ -25,13 +25,13 @@
   width: sizes.px-to-rem(200);
   display: block;
   border: none;
-  border-bottom: sizes.px-to-rem(1) solid colors.$border-second;
+  border-bottom: sizes.px-to-rem(1) solid colors.$border2;
   background: unset;
-  color: colors.$text-second;
+  color: colors.$text2;
 
   &:focus {
     outline: none;
-    color: colors.$text-main;
+    color: colors.$text1;
   }
 
   &:focus + .matches__label,
@@ -55,10 +55,10 @@
 
 .matches__submitLink {
   padding: sizes.px-to-rem(7);
-  border: sizes.px-to-rem(2) solid colors.$border-main;
+  border: sizes.px-to-rem(2) solid colors.$border1;
   background-color: colors.$bg2;
   transition: all 0.15s ease-in-out;
-  color: colors.$text-main;
+  color: colors.$text1;
 }
 
 .submitLink_disabled {

@@ -10,7 +10,7 @@
   width: 100%;
   background: linear-gradient(to left, colors.$bg2, colors.$bg4);
   /*background-color: colors.$bg2;*/
-  border-bottom: sizes.px-to-rem(1) solid colors.$border-main;
+  border-bottom: sizes.px-to-rem(1) solid colors.$border1;
 }
 
 .header__content {
@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: colors.$text-main;
+  color: colors.$text1;
   @include mixins.main-content-wrapper;
 }
 

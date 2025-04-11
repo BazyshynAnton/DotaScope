@@ -28,89 +28,65 @@ export default function MatchHeader() {
   const matchDuration = `${Math.floor(match.duration / 60)}:${(match.duration % 60).toString().padStart(2, '0')}`;
   const matchEndTime = match.start_time + match.duration;
   const currentTime = Math.floor(Date.now() / 1000);
-  const timePast = currentTime - matchEndTime;
+  const timePastInSeconds = currentTime - matchEndTime;
+  const timePast = timeAgo(timePastInSeconds);
 
   return (
     <section className={styles.match__header}>
       <div className={styles.match__title}>
         {match.match_id && (
-          <div className="">
-            <p>Match ID: {match.match_id}</p>
-            <button
-              className={
-                matchReplay ? styles.match__replayBtn_available : styles.match__replayBtn_warning
-              }
-            >
-              {matchReplay ? (
-                <>
-                  <IoMdDownload />
-                  <a href={matchReplay} target="_blank">
-                    replay
-                  </a>
-                </>
-              ) : (
-                <>
-                  <IoMdWarning />
-                  <p data-tooltip-id="warning">replay</p>
-                  <ReactTooltip
-                    id="warning"
-                    place="right"
-                    content="Replay is not available"
-                    style={{
-                      textTransform: 'none',
-                      fontWeight: 'bold',
-                      color: '#ffab40',
-                      background: '#533814',
-                    }}
-                  />
-                </>
-              )}
-            </button>
+          <div className={styles.match__idAndReplay}>
+            <p className={styles.matchId}>Match ID: {match.match_id}</p>
+            <MatchReplayButton matchReplay={matchReplay} />
           </div>
         )}
       </div>
       <div className={styles.match__info}>
-        <>
-          {Object.entries({ matchMode, matchLeague, matchRegion, matchDuration, timePast }).map(
-            (el) => {
-              <div className="">
-                <p>{el[0] !== 'timePast' ? el[1] : timeAgo(el[1] as number)}</p>
-                <span></span>
-              </div>;
-            }
-          )}
-        </>
-        {/* {mode && (
-          <div>
-            <p>{mode}</p>
-            <span>game mode</span>
-          </div>
+        {[
+          [matchMode, 'GAME MODE'],
+          [matchLeague, 'LEAGUE'],
+          [matchRegion, 'REGION'],
+          [matchDuration, 'DURATION'],
+          [timePast, 'MATCH ENDED'],
+        ].map(
+          ([data, section]) =>
+            data && (
+              <div key={section} className={styles.details}>
+                <p className={styles.details__data}>{data}</p>
+                <span className={styles.details__section}>{section}</span>
+              </div>
+            )
         )}
-        {league && (
-          <div>
-            <p>{league}</p>
-            <span>league</span>
-          </div>
-        )}
-        {reg && (
-          <div>
-            <p>{reg}</p>
-            <span>region</span>
-          </div>
-        )}
-        {duration && (
-          <div>
-            <p>{duration}</p>
-            <span>duration</span>
-          </div>
-        )}
-        {diffInSeconds && (
-          <div>
-            <p>{timeAgo(diffInSeconds)}</p>
-            <span>match ended</span>
-          </div>
-        )} */}
       </div>
     </section>
+  );
+}
+
+function MatchReplayButton({ matchReplay }: { matchReplay: string }) {
+  return (
+    <button
+      data-tooltip-id={!matchReplay ? 'warning' : ''}
+      className={`${styles.replay} ${matchReplay ? styles.replay_available : styles.replay_warning}`}
+    >
+      {matchReplay ? (
+        <>
+          <IoMdDownload className={styles.replay__download} />
+          <a href={matchReplay} target="_blank" className={styles.replay__link}>
+            replay
+          </a>
+        </>
+      ) : (
+        <>
+          <IoMdWarning className={styles.replay__download} />
+          <p className={styles.replay__link}>replay</p>
+          <ReactTooltip
+            id="warning"
+            place="right"
+            content="Replay is not available"
+            className={styles.replay__tooltip}
+          />
+        </>
+      )}
+    </button>
   );
 }

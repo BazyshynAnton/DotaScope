@@ -6,7 +6,7 @@
   border-collapse: collapse;
   background-color: colors.$bg2;
   font-size: sizes.px-to-rem(14);
-  color: colors.$text-main;
+  color: colors.$text1;
 }
 
 .table__head {
@@ -55,7 +55,7 @@
 .table__headCell,
 .table__bodyRow,
 .table__bodyCell {
-  border: sizes.px-to-rem(1) solid colors.$border-main;
+  border: sizes.px-to-rem(1) solid colors.$border1;
 }
 
 /* 900px = 56.25rem */
