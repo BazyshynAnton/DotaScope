@@ -1,12 +1,12 @@
 import type { GameMode, Hero, League, Match, PicksAndBans, Region } from '@/types/matches-page';
-import type { MatchResult, PlayersByTeam, CMatchDetails } from '@/types/matches-page';
+import type { MatchResult, PlayersByTeam, CMatchOverview } from '@/types/matches-page';
 
-export class MatchDetails implements CMatchDetails {
-  public static getInstance(): MatchDetails {
-    if (!MatchDetails.instance) {
-      MatchDetails.instance = new MatchDetails();
+export class MatchOverview implements CMatchOverview {
+  public static getInstance(): MatchOverview {
+    if (!MatchOverview.instance) {
+      MatchOverview.instance = new MatchOverview();
     }
-    return MatchDetails.instance;
+    return MatchOverview.instance;
   }
 
   public findMatchResult(match: Match): MatchResult {
@@ -102,6 +102,6 @@ export class MatchDetails implements CMatchDetails {
     return resultedLeague;
   }
 
-  private static instance: MatchDetails;
+  private static instance: MatchOverview;
   private constructor() {}
 }

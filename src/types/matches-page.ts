@@ -63,6 +63,13 @@ export interface DotaConstants {
   leagues: League[];
 }
 
+export interface MatchResult {
+  result: boolean;
+  duration: string;
+  radiantScore: string;
+  direScore: string;
+}
+
 export interface Match {
   players: Player[];
 
@@ -301,7 +308,7 @@ export interface League {
   name: string;
 }
 
-export interface CMatchDetails {
+export interface CMatchOverview {
   findMatchResult(match: Match): MatchResult;
 
   filterPlayersByTeam(match: Match): PlayersByTeam;
@@ -309,13 +316,6 @@ export interface CMatchDetails {
   picksBans(match: Match, side: string): PicksAndBans[] | string;
 
   findHeroInPickBans(heroes: Hero[], heroId: number): void | string;
-}
-
-export interface MatchResult {
-  result: boolean;
-  duration: string;
-  radiantScore: string;
-  direScore: string;
 }
 
 export interface PlayersByTeam {

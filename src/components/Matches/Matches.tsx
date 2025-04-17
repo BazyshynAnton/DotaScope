@@ -1,7 +1,7 @@
 'use client';
 
 import MatchSearch from '@/components/MatchSearch/MatchSearch';
-import Table from '@/components/Table/Table';
+import Table, { TableType } from '@/components/Table/Table';
 import Loader from '@/components/Loader/Loader';
 
 import { setMatchesPageData } from '@/store/matches-page-slice';
@@ -35,7 +35,7 @@ export default function Matches({
       <div className={styles.matches__tableWrapper}>
         {proMatches ? (
           <Table
-            tableType="matches-page-table"
+            tableType={TableType.ProMatches}
             titles={['League', 'Match ID', 'Duration', 'Radiant', 'Dire']}
           />
         ) : (

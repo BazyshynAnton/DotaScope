@@ -39,6 +39,6 @@ export function timeAgo(seconds: number) {
 export function errorToString(error: any) {
   let message;
   if (error instanceof Error) message = error.message;
-  else message = String(error);
+  else message = error.toString();
   return message;
 }

@@ -2,7 +2,9 @@
 
 import MatchSearch from '@/components/MatchSearch/MatchSearch';
 import Loader from '@/components/Loader/Loader';
+import Table, { TableType } from '@/components/Table/Table';
 import MatchHeader from './MatchHeader';
+import MatchResult from './MatchResult';
 
 import { useEffect } from '@/shared/react-imports';
 import { useAppSelector } from '@/hooks/use-app-selector';
@@ -39,10 +41,37 @@ export default function Match({
         <>
           <MatchSearch />
           <MatchHeader />
+          <MatchResult />
+          <OverviewTable />
         </>
       ) : (
         <Loader />
       )}
+    </section>
+  );
+}
+
+function OverviewTable() {
+  return (
+    <section className={styles.match__overview}>
+      <Table
+        tableType={TableType.MatchOverview}
+        titles={[
+          'PLAYER',
+          'K/Hero Kills',
+          'D/Hero Deaths',
+          'A/Hero Assists',
+          'LH/Number of creeps killed by hero',
+          'DN/Number of creeps denied by hero',
+          'NET/Net Worth',
+          'GPM/Gold Per Minute',
+          'XPM/Experience Per Minute',
+          'HD/Damage dealt to heroes',
+          'TD/Damage dealt to buildings',
+          'HH/Health restored to heroes',
+          'ITEMS/Items built',
+        ]}
+      />
     </section>
   );
 }

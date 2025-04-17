@@ -1,12 +1,12 @@
 import { useAppSelector } from '@/hooks/use-app-selector';
-import { timeAgo } from '@/utils/common';
-import { MatchDetails } from '@/utils/match-details';
 import { ReactTooltip } from '@/shared/react-imports';
+import { timeAgo } from '@/utils/common';
+import { MatchOverview } from '@/utils/match-overview';
 
 import { IoMdDownload } from 'react-icons/io';
 import { IoMdWarning } from 'react-icons/io';
 
-import styles from '@/styles/match.module.scss';
+import styles from '@/styles/match-header.module.scss';
 
 export default function MatchHeader() {
   const { matchData, constants } = useAppSelector((store) => store.matchPageSlice);
@@ -18,7 +18,7 @@ export default function MatchHeader() {
   const { match } = matchData;
   const { gameMode, leagues, region } = constants;
 
-  const matchDetails = MatchDetails.getInstance();
+  const matchDetails = MatchOverview.getInstance();
   const matchMode = matchDetails.findGameMode(match, gameMode);
   const matchLeague = matchDetails.findLeague(match, leagues);
   const matchRegion = matchDetails.findRegion(match, region);

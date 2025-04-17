@@ -9,8 +9,8 @@
   color: colors.$text1;
 }
 
-.table__head {
-}
+// .table__head {
+// }
 
 .table__headRow {
   background: linear-gradient(to left, colors.$bg2, colors.$bg4);
@@ -32,8 +32,22 @@
   }
 }
 
-.table__body {
+.table__headCell_matchOverview {
+  text-align: center;
+
+  &:nth-child(4),
+  &:nth-child(5) {
+    color: inherit;
+  }
 }
+
+.table__matchOverviewTooltip {
+  color: colors.$text1 !important;
+  background-color: colors.$bg4 !important;
+}
+
+// .table__body {
+// }
 
 .table__bodyRow {
   &:nth-child(odd) {
