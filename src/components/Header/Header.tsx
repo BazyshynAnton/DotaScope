@@ -62,11 +62,11 @@ export default function Header() {
             className={styles.header__movableBg}
             style={{
               position: 'absolute',
+              top: 1,
               zIndex: 1,
 
               width: `${movableBgStyles.width || 0}px`,
-              // 31.5px = 1.969rem
-              height: '1.969rem', // height doesn't change, keep it constant
+              height: '100%',
 
               display: isBgAppear ? 'block' : 'none',
 
