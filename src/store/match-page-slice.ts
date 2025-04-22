@@ -1,6 +1,7 @@
 import { createSlice } from '@/shared/redux-imports';
 
-import type { MatchPageSlice } from '@/types/matches-page';
+import type { Match, MatchPageSlice } from '@/types/matches-page';
+import { MatchOverview } from '@/utils/match-overview';
 
 const initialState: MatchPageSlice = {
   matchData: null,
@@ -19,6 +20,13 @@ const matchPageSlice = createSlice({
           state.error = action.payload.match.patch < 55 ? 'Unsupported Dota 2 version' : null;
 
           state.matchData = !state.error ? action.payload : null;
+
+          if (state.matchData && typeof state.matchData !== 'string') {
+            const matchOverview = MatchOverview.getInstance();
+            state.matchData.playersByTeam = matchOverview.filterPlayersByTeam(
+              state.matchData.match as Match
+            );
+          }
         }
       } else {
         state.error = action.payload;

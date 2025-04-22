@@ -1,19 +1,19 @@
 import { fetchHelper, errorToString } from './common';
 
 import type {
-  MatchesPageData,
-  ProMatch,
   Team,
-  MatchPageData,
-  Match,
-  PlayerProfile,
   Hero,
+  Match,
   Items,
+  League,
   Region,
   GameMode,
+  ProMatch,
   LobbyType,
-  League,
   DotaConstants,
+  PlayerProfile,
+  MatchPageData,
+  MatchesPageData,
 } from '@/types/matches-page';
 
 export async function fetchMatchesPageData(): Promise<MatchesPageData | string> {

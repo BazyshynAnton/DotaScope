@@ -8,11 +8,21 @@ export enum TableType {
   MatchOverview,
 }
 
-export default function Table({ tableType, titles }: { tableType: TableType; titles: string[] }) {
+export default function Table({
+  tableType,
+  titles,
+  matchOverviewTableData,
+}: {
+  tableType: TableType;
+  titles: string[];
+  matchOverviewTableData?: {
+    isRadiant: boolean;
+  };
+}) {
   return (
     <table className={styles.table}>
       <TableHead tableType={tableType} titles={titles} />
-      <TableBody tableType={tableType} />
+      <TableBody tableType={tableType} matchOverviewTableData={matchOverviewTableData} />
     </table>
   );
 }

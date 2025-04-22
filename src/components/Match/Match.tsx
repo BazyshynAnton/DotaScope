@@ -1,6 +1,6 @@
 'use client';
 
-import MatchSearch from '@/components/MatchSearch/MatchSearch';
+// import MatchSearch from '@/components/MatchSearch/MatchSearch';
 import Loader from '@/components/Loader/Loader';
 import Table, { TableType } from '@/components/Table/Table';
 import MatchHeader from './MatchHeader';
@@ -23,7 +23,6 @@ export default function Match({
   dotaConstants: DotaConstants | string;
 }) {
   const { matchData, constants, error } = useAppSelector((store) => store.matchPageSlice);
-
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -39,21 +38,29 @@ export default function Match({
     <section className={styles.match}>
       {matchData && constants ? (
         <>
-          <MatchSearch />
+          {/* <MatchSearch /> Doesn't work */}
           <MatchHeader />
           <MatchResult />
-          <OverviewTable />
+          <MatchOverviewTable teamName={matchData.match.radiant_name} isRadiant={true} />
+          <MatchOverviewTable teamName={matchData.match.dire_name} isRadiant={false} />
         </>
       ) : (
-        <Loader />
+        <div className={styles.match__loader}>
+          <Loader />
+        </div>
       )}
     </section>
   );
 }
 
-function OverviewTable() {
+function MatchOverviewTable({ teamName, isRadiant }: { teamName: string; isRadiant: boolean }) {
   return (
     <section className={styles.match__overview}>
+      <h1
+        className={`${styles.match__teamName} ${isRadiant ? styles.match__teamName_radiant : styles.match__teamName_dire}`}
+      >
+        {teamName || `The ${isRadiant ? 'Radiant' : 'Dire'}`}
+      </h1>
       <Table
         tableType={TableType.MatchOverview}
         titles={[
@@ -71,6 +78,7 @@ function OverviewTable() {
           'HH/Health restored to heroes',
           'ITEMS/Items built',
         ]}
+        matchOverviewTableData={{ isRadiant }}
       />
     </section>
   );

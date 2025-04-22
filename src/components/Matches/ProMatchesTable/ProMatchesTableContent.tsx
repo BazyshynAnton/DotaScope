@@ -7,7 +7,7 @@ import { GiTrophy } from 'react-icons/gi';
 
 import styles from '@/styles/matches-table-content.module.scss';
 
-export function ProMatchesTableContent() {
+export default function ProMatchesTableContent() {
   const { proMatches, teams } = useAppSelector((store) => store.matchesPageSlice);
 
   return (

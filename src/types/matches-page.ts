@@ -43,6 +43,9 @@ export interface Team {
 export interface MatchPageData {
   match: Match;
   playerProfiles: PlayerProfile[];
+
+  // optional
+  playersByTeam?: PlayersByTeam | null;
 }
 
 export interface MatchPageSlice {
@@ -345,6 +348,6 @@ interface Colors {
   '4': string;
 }
 
-export interface FacetGradientColor {
+export interface FacetGradientColors {
   [ket: string]: string;
 }
