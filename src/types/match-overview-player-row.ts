@@ -35,7 +35,7 @@ export type AbilityIDs = {
 export interface PlayerHero {
   name: string;
   localizedName: string;
-  heroVariant: {
+  heroFacet: {
     icon: string;
     color: string;
     colorSingle: string;

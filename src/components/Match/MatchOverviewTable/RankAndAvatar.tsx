@@ -6,20 +6,17 @@ import styles from '@/styles/match-overview-table-content.module.scss';
 
 export default function RankAndAvatar({ playerDetails }: { playerDetails: PlayerDetails }) {
   const rankIcon = playerDetails.profileInfo.rankIcon;
-  console.log(rankIcon);
   const profilePicture = playerDetails.profileInfo.profilePicture;
   const rankTier = playerDetails.leaderboardRankInfo;
 
   return (
-    <div className={styles.playerRow__rankAndAvatar}>
+    <div className={styles.rankAndAvatar}>
       <div className={styles.rank}>
-        <Image src={rankIcon} alt={'Rank'} width={40} height={40} />
-        {playerDetails.leaderboardRankInfo !== null && (
-          <div className={styles.rank__tier}>{rankTier}</div>
-        )}
+        <Image src={rankIcon} alt={'Rank'} width={100} height={100} />
+        {rankTier !== null && <div className={styles.tier}>{rankTier}</div>}
       </div>
       <div className={styles.avatar}>
-        <Image src={profilePicture} alt={'Avatar'} width={24} height={24} />
+        <Image src={profilePicture} alt={'Avatar'} width={100} height={100} />
       </div>
     </div>
   );

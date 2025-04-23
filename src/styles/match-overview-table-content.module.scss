@@ -2,6 +2,13 @@
 @use 'colors';
 @use 'table.module.scss';
 
+.playerWrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .heroAndNickname {
   display: flex;
   gap: 1rem;
@@ -17,11 +24,11 @@
     bottom: sizes.px-to-rem(-7);
     right: sizes.px-to-rem(-7);
     z-index: 10;
+    width: sizes.px-to-rem(20);
+    height: sizes.px-to-rem(20);
     display: flex;
     justify-content: center;
     align-items: center;
-    width: sizes.px-to-rem(20);
-    height: sizes.px-to-rem(20);
 
     img {
       object-fit: contain;
@@ -74,4 +81,48 @@
 .nickname_radiant,
 .nickname_dire {
   text-align: left;
+}
+
+.rankAndAvatar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: sizes.px-to-rem(8);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.rank {
+  position: relative;
+  width: sizes.px-to-rem(40);
+  height: sizes.px-to-rem(40);
+  img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.tier {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000069;
+  color: #fff;
+}
+
+.avatar {
+  width: sizes.px-to-rem(24);
+  height: sizes.px-to-rem(24);
+  img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    border: sizes.px-to-rem(1) solid colors.$border1;
+  }
 }

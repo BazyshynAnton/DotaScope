@@ -32,7 +32,7 @@ export default function MatchOverviewTableContent({
           const playerHero = matchOverviewPlayerRow.findAppropriateHero(
             player,
             constants.heroes,
-            constants.abilities
+            constants.heroAbilities
           );
           // const playerItems = matchOverviewPlayerRow.findAppropriateItems(player, constants.items);
           const playerDetails = matchOverviewPlayerRow.findAppropriatePlayer(
@@ -43,8 +43,10 @@ export default function MatchOverviewTableContent({
           return (
             <tr key={player.account_id} className={styles.table__bodyRow}>
               <td className={styles.table__bodyCell}>
-                <HeroAndNickname player={player} playerHero={playerHero} />
-                <RankAndAvatar playerDetails={playerDetails} />
+                <div className={styles.playerWrapper}>
+                  <HeroAndNickname player={player} playerHero={playerHero} />
+                  <RankAndAvatar playerDetails={playerDetails} />
+                </div>
               </td>
             </tr>
           );

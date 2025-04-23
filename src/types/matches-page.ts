@@ -57,7 +57,7 @@ export interface MatchPageSlice {
 
 export interface DotaConstants {
   heroes: Hero[];
-  abilities: any;
+  heroAbilities: any;
   abilityIds: any;
   items: Items;
   region: Region;

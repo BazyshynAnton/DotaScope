@@ -19,7 +19,7 @@ export class MatchOverviewPlayerRow implements CMatchOverviewPlayerRow {
     this.mPlayerHero = {
       name: '',
       localizedName: '',
-      heroVariant: {
+      heroFacet: {
         icon: '',
         color: '',
         colorSingle: '',
@@ -48,9 +48,6 @@ export class MatchOverviewPlayerRow implements CMatchOverviewPlayerRow {
             // avatar
             this.mPlayerDetails.profileInfo.profilePicture = playerProfile.profile.avatar;
 
-            // rank icon
-            this.mPlayerDetails.profileInfo.rankIcon = this.findPlayerRankIcon();
-
             // profile url
             this.mPlayerDetails.profileInfo.profileUrl = playerProfile.profile.profileurl;
 
@@ -59,6 +56,9 @@ export class MatchOverviewPlayerRow implements CMatchOverviewPlayerRow {
 
             // rank
             this.mPlayerDetails.leaderboardRankInfo = playerProfile.leaderboard_rank;
+
+            // rank icon
+            this.mPlayerDetails.profileInfo.rankIcon = this.findPlayerRankIcon();
 
             return true; // break the loop
           }
@@ -73,6 +73,7 @@ export class MatchOverviewPlayerRow implements CMatchOverviewPlayerRow {
     const imagePath = '/pictures/dota-player-rank-icons/';
 
     const leaderboardRank = this.mPlayerDetails.leaderboardRankInfo;
+    console.log(leaderboardRank);
 
     const rankTier = this.mPlayerDetails.rankTierInfo;
 
@@ -220,7 +221,7 @@ export class MatchOverviewPlayerRow implements CMatchOverviewPlayerRow {
   private mPlayerHero: PlayerHero = {
     name: '',
     localizedName: '',
-    heroVariant: {
+    heroFacet: {
       icon: '',
       color: '',
       colorSingle: '',
@@ -361,6 +362,7 @@ export class MatchOverviewPlayerRow implements CMatchOverviewPlayerRow {
   private findHeroFacet(player: Player, heroAbilities: any): void {
     if (heroAbilities) {
       for (const [heroID, value] of Object.entries(heroAbilities)) {
+        // console.log(this.mCurrentHero, heroID);
         if (this.mCurrentHero === heroID) {
           switch (player.hero_variant) {
             case 1:
@@ -393,17 +395,17 @@ export class MatchOverviewPlayerRow implements CMatchOverviewPlayerRow {
 
   private setHeroFacet(value: any, facetID: number): void {
     if (value.facets[facetID]) {
-      this.mPlayerHero.heroVariant.icon = value.facets[facetID].icon;
+      this.mPlayerHero.heroFacet.icon = value.facets[facetID].icon;
 
       let highLevelColor: string = value.facets[facetID].color;
       let gradientId: number = value.facets[facetID].gradient_id;
-      this.mPlayerHero.heroVariant.color =
+      this.mPlayerHero.heroFacet.color =
         this.mFacetGradientColor[`color${highLevelColor}${gradientId}`];
-      this.mPlayerHero.heroVariant.colorSingle =
+      this.mPlayerHero.heroFacet.colorSingle =
         this.mFacetGradientColor[`color${highLevelColor}${gradientId}Single`];
 
-      this.mPlayerHero.heroVariant.title = value.facets[facetID].title;
-      this.mPlayerHero.heroVariant.description = value.facets[facetID].description;
+      this.mPlayerHero.heroFacet.title = value.facets[facetID].title;
+      this.mPlayerHero.heroFacet.description = value.facets[facetID].description;
     }
   }
 }

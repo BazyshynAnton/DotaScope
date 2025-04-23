@@ -40,16 +40,16 @@ export default function HeroAndNickname({
         <div className={styles.heroLevel}>{player.level}</div>
         <span
           style={{
-            background: `${playerHero.heroVariant.color}`,
+            background: `${playerHero.heroFacet.color}`,
           }}
           //   onMouseEnter={handleFacetEnter}
           //   onMouseLeave={handleFacetLeave}
         >
-          {playerHero.heroVariant.icon && (
+          {playerHero.heroFacet.icon && (
             <>
               <Image
-                src={`${process.env.NEXT_PUBLIC_HERO_FACET_ICON_URL}${playerHero.heroVariant.icon}.png`}
-                alt={playerHero.heroVariant.icon}
+                src={`${process.env.NEXT_PUBLIC_HERO_FACET_ICON_URL}${playerHero.heroFacet.icon}.png`}
+                alt={playerHero.heroFacet.icon}
                 width={72}
                 height={72}
               />
@@ -60,7 +60,7 @@ export default function HeroAndNickname({
       </div>
       <div className={styles.nickname}>
         <div className={player.team_number === 0 ? styles.nickname_radiant : styles.nickname_dire}>
-          {/* {player.personaname ? player.personaname : "Anonymous"} */}
+          {/* {player.personaname ? player.personaname : 'Anonymous'} */}
           {player.personaname ? 'Player' : 'Anonymous'}
         </div>
       </div>
