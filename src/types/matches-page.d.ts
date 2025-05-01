@@ -1,16 +1,16 @@
-export interface MatchesPageData {
+interface MatchesPageData {
   proMatches: ProMatch[];
   teams: Team[];
 }
 
-export interface MatchesPageSlice {
+interface MatchesPageSlice {
   proMatches: ProMatch[] | null;
   teams: Team[] | null;
 
   error: string | null;
 }
 
-export interface ProMatch {
+interface ProMatch {
   match_id: number;
   duration: number;
   start_time: number;
@@ -28,7 +28,7 @@ export interface ProMatch {
   version: number;
 }
 
-export interface Team {
+interface Team {
   team_id: number;
   rating: number;
   wins: number;
@@ -40,7 +40,7 @@ export interface Team {
 }
 
 // Match.tsx
-export interface MatchPageData {
+interface MatchPageData {
   match: Match;
   playerProfiles: PlayerProfile[];
 
@@ -48,14 +48,14 @@ export interface MatchPageData {
   playersByTeam?: PlayersByTeam | null;
 }
 
-export interface MatchPageSlice {
+interface MatchPageSlice {
   matchData: MatchPageData | null;
   constants: DotaConstants | null;
 
   error: string | null;
 }
 
-export interface DotaConstants {
+interface DotaConstants {
   heroes: Hero[];
   heroAbilities: any;
   abilityIds: any;
@@ -66,14 +66,14 @@ export interface DotaConstants {
   leagues: League[];
 }
 
-export interface MatchResult {
+interface MatchResult {
   result: boolean;
   duration: string;
   radiantScore: string;
   direScore: string;
 }
 
-export interface Match {
+interface Match {
   players: Player[];
 
   radiant_win: boolean;
@@ -116,7 +116,7 @@ export interface Match {
   replay_url?: string;
 }
 
-export type Player = {
+type Player = {
   account_id: number;
   player_slot: number;
   team_number: number;
@@ -214,39 +214,39 @@ export type Player = {
   };
 };
 
-export type PicksAndBans = {
+type PicksAndBans = {
   isPick: boolean;
   heroId: number;
   team: number;
   order: number;
 };
 
-export type Objectives = {
+type Objectives = {
   time: number;
   type: string;
   key?: string;
 };
 
-export interface PlayerProfile {
+interface PlayerProfile {
   error: any;
   profile: {
     account_id: number;
     avatar: string;
-    avatarmedium: string;
-    avatarfull: string;
-    profileurl: string;
+    avatarMedium: string;
+    avatarFull: string;
+    profileUrl: string;
   };
   rank_tier: number | null;
   leaderboard_rank: number | null;
 }
 
-export interface Hero {
+interface Hero {
   id: number;
   name: string;
   localized_name: string;
 }
 
-export interface Items {
+interface Items {
   [key: string]: {
     abilities?: Ability[];
     hint?: string[];
@@ -285,11 +285,11 @@ interface Attribute {
   value: string;
 }
 
-export interface Region {
+interface Region {
   [key: string]: string;
 }
 
-export interface GameMode {
+interface GameMode {
   [key: string]: {
     id: number;
     name: string;
@@ -297,7 +297,7 @@ export interface GameMode {
   };
 }
 
-export interface LobbyType {
+interface LobbyType {
   [key: string]: {
     id: number;
     name: string;
@@ -305,13 +305,13 @@ export interface LobbyType {
   };
 }
 
-export interface League {
+interface League {
   leagueid: number;
   tier: string;
   name: string;
 }
 
-export interface CMatchOverview {
+interface CMatchOverview {
   findMatchResult(match: Match): MatchResult;
 
   filterPlayersByTeam(match: Match): PlayersByTeam;
@@ -321,12 +321,12 @@ export interface CMatchOverview {
   findHeroInPickBans(heroes: Hero[], heroId: number): void | string;
 }
 
-export interface PlayersByTeam {
+interface PlayersByTeam {
   radiant: Player[] | null;
   dire: Player[] | null;
 }
 
-export interface PlayerColors {
+interface PlayerColors {
   radiant: {
     teamNumber: number;
 
@@ -348,6 +348,6 @@ interface Colors {
   '4': string;
 }
 
-export interface FacetGradientColors {
+interface FacetGradientColors {
   [ket: string]: string;
 }

@@ -1,6 +1,4 @@
-import { Hero, Player, PlayerProfile } from './matches-page';
-
-export interface CMatchOverviewPlayerRow {
+interface CMatchOverviewPlayerRow {
   findAppropriateHero(player: Player, heroes: Hero[], heroAbilities: any): PlayerHero;
 
   findAppropriatePlayer(player: Player, playersProfiles: PlayerProfile[]): PlayerDetails;
@@ -14,7 +12,7 @@ export interface CMatchOverviewPlayerRow {
   findItemCostByKey(key: string, items: Items): string;
 }
 
-export interface CPlayerRowHelper {
+interface CPlayerRowHelper {
   setItems(detailsAboutItems: PlayerItems, flag: string): void;
 
   handleMouseEnter(item: string, flag: string, idx?: number | string, setter?: any): void;
@@ -28,11 +26,11 @@ export interface CPlayerRowHelper {
   ): PlayerItems | null;
 }
 
-export type AbilityIDs = {
+type AbilityIDs = {
   [key: string]: string;
 };
 
-export interface PlayerHero {
+interface PlayerHero {
   name: string;
   localizedName: string;
   heroFacet: {
@@ -45,7 +43,7 @@ export interface PlayerHero {
   playerColor: string;
 }
 
-export interface PlayerDetails {
+interface PlayerDetails {
   profileInfo: {
     profilePicture: string;
     rankIcon: string;
@@ -55,7 +53,7 @@ export interface PlayerDetails {
   leaderboardRankInfo: number | null;
 }
 
-export interface Items {
+interface Items {
   [key: string]: {
     abilities?: Ability[];
     hint?: string[];
@@ -94,7 +92,7 @@ interface Ability {
   description: string;
 }
 
-export interface PlayerItems {
+interface PlayerItems {
   [key: string]: {
     abilities?: Ability[];
     hint?: string[];
@@ -115,13 +113,13 @@ export interface PlayerItems {
   };
 }
 
-export interface SlotInterface {
+interface SlotInterface {
   PlayerItems: PlayerItems | null;
   player?: Player;
 }
 
 // Types for ItemDescription component
-export interface ItemDescriptionInterface {
+interface ItemDescriptionInterface {
   details: PlayerItems | null;
   item: string;
 }

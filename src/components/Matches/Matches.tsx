@@ -9,8 +9,6 @@ import { useAppSelector } from '@/hooks/use-app-selector';
 import { useAppDispatch } from '@/hooks/use-app-dispatch';
 import { useEffect } from '@/shared/react-imports';
 
-import type { MatchesPageData } from '@/types/matches-page';
-
 import styles from '@/styles/matches.module.scss';
 
 export default function Matches({

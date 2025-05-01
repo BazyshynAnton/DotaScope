@@ -9,7 +9,9 @@ import { IoMdWarning } from 'react-icons/io';
 import styles from '@/styles/match-header.module.scss';
 
 export default function MatchHeader() {
-  const { matchData, constants } = useAppSelector((store) => store.matchPageSlice);
+  const { matchData, constants } = useAppSelector(
+    (store) => store.matchPageSlice as MatchPageSlice
+  );
 
   if (!matchData || !constants) {
     return;

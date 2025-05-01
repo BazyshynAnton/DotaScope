@@ -17,29 +17,30 @@
 
 .hero {
   position: relative;
+}
 
-  span {
-    position: absolute;
-    padding: sizes.px-to-rem(3);
-    bottom: sizes.px-to-rem(-7);
-    right: sizes.px-to-rem(-7);
-    z-index: 10;
-    width: sizes.px-to-rem(20);
-    height: sizes.px-to-rem(20);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.heroFacet {
+  position: absolute;
+  bottom: sizes.px-to-rem(-7);
+  right: sizes.px-to-rem(-7);
+  z-index: 10;
+  padding: sizes.px-to-rem(3);
+  width: sizes.px-to-rem(20);
+  height: sizes.px-to-rem(20);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 
-    img {
-      object-fit: contain;
-      width: 100%;
-      height: 100%;
-    }
+  > img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
   }
 }
 
 .heroIcon {
   height: sizes.px-to-rem(30);
+
   img {
     object-fit: contain;
     width: 100%;
@@ -96,6 +97,7 @@
   position: relative;
   width: sizes.px-to-rem(40);
   height: sizes.px-to-rem(40);
+
   img {
     object-fit: contain;
     width: 100%;
@@ -119,6 +121,7 @@
 .avatar {
   width: sizes.px-to-rem(24);
   height: sizes.px-to-rem(24);
+
   img {
     object-fit: contain;
     width: 100%;

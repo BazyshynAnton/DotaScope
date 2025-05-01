@@ -106,12 +106,6 @@ export default function Header() {
   );
 }
 
-interface MovableBgStyles {
-  width: number | null;
-  offsetTop: number | null;
-  offsetLeft: number | null;
-}
-
 const initialMovableBgStyles: MovableBgStyles = {
   width: null,
   offsetTop: null,

@@ -1,3 +1,4 @@
+@use 'sizes';
 @use 'colors.scss';
 @use 'mixins.scss';
 
@@ -32,4 +33,17 @@ button {
 
 .main-wrapper {
   @include mixins.main-content-wrapper;
+}
+
+// react tooltip
+.tooltip.tooltip {
+  padding: 0;
+  border: sizes.px-to-rem(2) solid colors.$border4;
+}
+
+.tooltip-arrow.tooltip-arrow {
+  z-index: -1;
+  width: sizes.px-to-rem(30);
+  height: sizes.px-to-rem(30);
+  background-color: colors.$bg9;
 }

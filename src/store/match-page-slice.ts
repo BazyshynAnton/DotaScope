@@ -1,6 +1,5 @@
 import { createSlice } from '@/shared/redux-imports';
 
-import type { Match, MatchPageSlice } from '@/types/matches-page';
 import { MatchOverview } from '@/utils/match-overview';
 
 const initialState: MatchPageSlice = {

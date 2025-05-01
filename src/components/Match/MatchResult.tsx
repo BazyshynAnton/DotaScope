@@ -4,7 +4,7 @@ import { MatchOverview } from '@/utils/match-overview';
 import styles from '@/styles/match-result.module.scss';
 
 export default function MatchResult() {
-  const { matchData } = useAppSelector((store) => store.matchPageSlice);
+  const { matchData } = useAppSelector((store) => store.matchPageSlice as MatchPageSlice);
 
   if (!matchData) {
     return;

@@ -1,21 +1,5 @@
 import { fetchHelper, errorToString } from './common';
 
-import type {
-  Team,
-  Hero,
-  Match,
-  Items,
-  League,
-  Region,
-  GameMode,
-  ProMatch,
-  LobbyType,
-  DotaConstants,
-  PlayerProfile,
-  MatchPageData,
-  MatchesPageData,
-} from '@/types/matches-page';
-
 export async function fetchMatchesPageData(): Promise<MatchesPageData | string> {
   try {
     // TODO: change cache to 'no-cache'

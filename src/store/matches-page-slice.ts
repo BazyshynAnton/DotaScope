@@ -1,7 +1,5 @@
 import { createSlice } from '@/shared/redux-imports';
 
-import type { MatchesPageSlice } from '@/types/matches-page';
-
 const initialState: MatchesPageSlice = {
   proMatches: null,
   teams: null,

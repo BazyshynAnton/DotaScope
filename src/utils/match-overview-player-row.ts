@@ -1,18 +1,3 @@
-import type {
-  PlayerHero,
-  PlayerItems,
-  PlayerDetails,
-  CMatchOverviewPlayerRow,
-} from '@/types/match-overview-player-row';
-import type {
-  Hero,
-  Items,
-  Player,
-  PlayerColors,
-  PlayerProfile,
-  FacetGradientColors,
-} from '@/types/matches-page';
-
 export class MatchOverviewPlayerRow implements CMatchOverviewPlayerRow {
   public findAppropriateHero(player: Player, heroes: Hero[], heroAbilities: any): PlayerHero {
     // reset
@@ -49,7 +34,7 @@ export class MatchOverviewPlayerRow implements CMatchOverviewPlayerRow {
             this.mPlayerDetails.profileInfo.profilePicture = playerProfile.profile.avatar;
 
             // profile url
-            this.mPlayerDetails.profileInfo.profileUrl = playerProfile.profile.profileurl;
+            this.mPlayerDetails.profileInfo.profileUrl = playerProfile.profile.profileUrl;
 
             // rank tier
             this.mPlayerDetails.rankTierInfo = playerProfile.rank_tier;

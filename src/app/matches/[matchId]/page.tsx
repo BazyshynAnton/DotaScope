@@ -1,7 +1,7 @@
 import Match from '@/components/Match/Match';
 
-import { fetchMatchPageData, fetchDotaConstants } from '@/utils/matches-page';
 import { redirect } from 'next/navigation';
+import { fetchMatchPageData, fetchDotaConstants } from '@/utils/matches-page';
 
 export default async function MatchPage({
   searchParams,

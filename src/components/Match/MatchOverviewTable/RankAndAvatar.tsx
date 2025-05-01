@@ -1,7 +1,5 @@
 import { Image } from '@/shared/nextjs-imports';
 
-import type { PlayerDetails } from '@/types/match-overview-player-row';
-
 import styles from '@/styles/match-overview-table-content.module.scss';
 
 export default function RankAndAvatar({ playerDetails }: { playerDetails: PlayerDetails }) {

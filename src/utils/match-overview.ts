@@ -1,6 +1,3 @@
-import type { GameMode, Hero, League, Match, PicksAndBans, Region } from '@/types/matches-page';
-import type { MatchResult, PlayersByTeam, CMatchOverview } from '@/types/matches-page';
-
 export class MatchOverview implements CMatchOverview {
   public static getInstance(): MatchOverview {
     if (!MatchOverview.instance) {

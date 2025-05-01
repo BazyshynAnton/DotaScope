@@ -11,8 +11,6 @@ import { useAppSelector } from '@/hooks/use-app-selector';
 import { useAppDispatch } from '@/hooks/use-app-dispatch';
 import { setMatchPageData, setDotaConstants } from '@/store/match-page-slice';
 
-import type { MatchPageData, DotaConstants } from '@/types/matches-page';
-
 import styles from '@/styles/match.module.scss';
 
 export default function Match({
@@ -22,7 +20,9 @@ export default function Match({
   matchPageData: MatchPageData | string;
   dotaConstants: DotaConstants | string;
 }) {
-  const { matchData, constants, error } = useAppSelector((store) => store.matchPageSlice);
+  const { matchData, constants, error } = useAppSelector(
+    (store) => store.matchPageSlice as MatchPageSlice
+  );
   const dispatch = useAppDispatch();
 
   useEffect(() => {

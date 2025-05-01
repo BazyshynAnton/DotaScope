@@ -13,7 +13,9 @@ export default function MatchOverviewTableContent({
     isRadiant: boolean;
   };
 }) {
-  const { matchData, constants } = useAppSelector((store) => store.matchPageSlice);
+  const { matchData, constants } = useAppSelector(
+    (store) => store.matchPageSlice as MatchPageSlice
+  );
 
   if (!matchOverviewTableData || !matchData?.playersByTeam || !constants) {
     return;
