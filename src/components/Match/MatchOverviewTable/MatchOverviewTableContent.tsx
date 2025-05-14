@@ -1,10 +1,11 @@
-import HeroAndNickname from './HeroAndNickname';
-import RankAndAvatar from './RankAndAvatar';
+import PlayerTableData from './PlayerTableData';
 
 import { useAppSelector } from '@/hooks/use-app-selector';
 import { MatchOverviewPlayerRow } from '@/utils/match-overview-player-row';
 
 import styles from '@/styles/match-overview-table-content.module.scss';
+import PlayerStatisticTableData from './PlayerStatisticTableData';
+import PlayerItemsTableData from './PlayerItemsTableData';
 
 export default function MatchOverviewTableContent({
   matchOverviewTableData,
@@ -36,20 +37,23 @@ export default function MatchOverviewTableContent({
             constants.heroes,
             constants.heroAbilities
           );
-          // const playerItems = matchOverviewPlayerRow.findAppropriateItems(player, constants.items);
+
           const playerDetails = matchOverviewPlayerRow.findAppropriatePlayer(
             player,
             matchData.playerProfiles
           );
 
+          const playerItems = matchOverviewPlayerRow.findAppropriateItems(player, constants.items);
+
           return (
             <tr key={player.account_id} className={styles.table__bodyRow}>
-              <td className={styles.table__bodyCell}>
-                <div className={styles.playerWrapper}>
-                  <HeroAndNickname player={player} playerHero={playerHero} />
-                  <RankAndAvatar playerDetails={playerDetails} />
-                </div>
-              </td>
+              <PlayerTableData
+                player={player}
+                playerHero={playerHero}
+                playerDetails={playerDetails}
+              />
+              <PlayerStatisticTableData player={player} />
+              <PlayerItemsTableData player={player} playerItems={playerItems} />
             </tr>
           );
         })}

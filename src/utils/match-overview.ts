@@ -98,6 +98,249 @@ export class MatchOverview implements CMatchOverview {
     return resultedLeague;
   }
 
+  public findItemNames(slotsType: SlotsType, playerItems: PlayerItem): string[] {
+    const itemNames = [];
+
+    switch (slotsType) {
+      case SlotsType.Main: {
+        for (let i = 0; i < SlotSizes.Main; ++i) {
+          const itemName = playerItems[`item_${i}`]?.name;
+          if (typeof itemName === 'string') {
+            itemNames.push(itemName);
+          }
+        }
+        break;
+      }
+      case SlotsType.Backpack: {
+        for (let i = 0; i < SlotSizes.Backpack; ++i) {
+          const itemName = playerItems[`backpack_${i}`]?.name;
+          if (typeof itemName === 'string') {
+            itemNames.push(itemName);
+          }
+        }
+        break;
+      }
+    }
+
+    return itemNames;
+  }
+
+  public findPlayerItem(
+    playerItemCategory: PlayerItemCategory,
+    itemName: string,
+    playerItems?: PlayerItem,
+    player?: Player
+  ): PlayerItem | null {
+    switch (playerItemCategory) {
+      case PlayerItemCategory.MainAndBackpack: {
+        if (!playerItems) {
+          break;
+        }
+
+        let resPlayerItem: PlayerItem = {};
+
+        for (const value of Object.values(playerItems)) {
+          if (itemName === value.name) {
+            resPlayerItem[itemName] = value;
+            break;
+          }
+        }
+
+        if (typeof player?.purchase_log !== 'undefined') {
+          this.findPlayerItemPurchaseTime(player, itemName, resPlayerItem);
+        }
+
+        return resPlayerItem;
+      }
+      case PlayerItemCategory.Aghanim: {
+        if (itemName === 'ultimate_scepter') {
+          return this.ultimateScepter;
+        }
+
+        if (itemName === 'aghanims_shard') {
+          return this.aghanimsShard;
+        }
+        break;
+      }
+    }
+
+    return null;
+  }
+
+  public handleMouseItemEnter(
+    slotsType: SlotsType,
+    itemName: string,
+    itemNameIndex?: number | string,
+    setterFn?: any
+  ): void {
+    switch (slotsType) {
+      case SlotsType.Main:
+      case SlotsType.Backpack: {
+        if (itemName === 'empty_slot' || itemNameIndex === undefined) return;
+
+        itemNameIndex.toString();
+        setterFn((prevState: any) => {
+          const newState = { ...prevState, [itemNameIndex]: true };
+
+          return newState;
+        });
+
+        break;
+      }
+      case SlotsType.Neutral: {
+        if (itemName === 'empty_slot') return;
+
+        setterFn(true);
+
+        break;
+      }
+      case SlotsType.Aghanim: {
+        if (itemNameIndex === undefined) return;
+
+        setterFn((prevState: any) => {
+          const newState = { ...prevState, [itemNameIndex]: true };
+          return newState;
+        });
+
+        break;
+      }
+    }
+  }
+
+  public handleMouseItemLeave(
+    slotsType: SlotsType,
+    itemNameIndex?: number | string,
+    setterFn?: any
+  ): void {
+    switch (slotsType) {
+      case SlotsType.Main:
+      case SlotsType.Backpack: {
+        if (itemNameIndex === undefined) return;
+
+        itemNameIndex.toString();
+        setterFn((prevState: any) => {
+          const newState = { ...prevState, [itemNameIndex]: false };
+
+          return newState;
+        });
+
+        break;
+      }
+      case SlotsType.Neutral: {
+        setterFn(false);
+        break;
+      }
+      case SlotsType.Aghanim: {
+        if (itemNameIndex === undefined) return;
+
+        setterFn((prevState: any) => {
+          const newState = { ...prevState, [itemNameIndex]: false };
+          return newState;
+        });
+
+        break;
+      }
+    }
+  }
+
   private static instance: MatchOverview;
+
+  private ultimateScepter: PlayerItem = {
+    ultimate_scepter: {
+      abilities: [
+        {
+          type: 'passive',
+          title: 'Ability Upgrade',
+          description: 'Upgrades the ultimate, and some abilities, of all heroes.',
+        },
+      ],
+      hint: [],
+      id: 108,
+      name: 'ultimate_scepter',
+      dname: "Aghanim's Scepter",
+      cost: 4200,
+      attrib: [
+        {
+          key: 'bonus_all_stats',
+          display: '+ {value} All Attributes',
+          value: '10',
+        },
+        {
+          key: 'bonus_health',
+          display: '+ {value} Health',
+          value: '175',
+        },
+        {
+          key: 'bonus_mana',
+          display: '+ {value} Mana',
+          value: '175',
+        },
+      ],
+      mc: false,
+      cd: false,
+      lore: 'The scepter of a wizard with demigod-like powers.',
+      components: ['point_booster', 'staff_of_wizardry', 'ogre_axe', 'blade_of_alacrity'],
+    },
+  };
+
+  // Constant for "aghanims_shard" item
+  private aghanimsShard: PlayerItem = {
+    aghanims_shard: {
+      abilities: [
+        {
+          type: 'passive',
+          title: 'Ability Upgrade',
+          description: 'Upgrades an existing ability or adds a new ability to your hero.',
+        },
+      ],
+      hint: [],
+      id: 609,
+      name: 'aghanims_shard',
+      dname: "Aghanim's Shard",
+      cost: 1400,
+      attrib: [],
+      mc: false,
+      cd: false,
+      lore: 'With origins known only to a single wizard, fragments of this impossible crystal are nearly as coveted as the renowned scepter itself.',
+      components: undefined,
+    },
+  };
+
   private constructor() {}
+
+  private findPlayerItemPurchaseTime(player: Player, itemName: string, resPlayerItem: PlayerItem) {
+    for (const purchase of player.purchase_log) {
+      if (itemName !== purchase.key) {
+        continue;
+      }
+
+      let minutes = Math.floor(purchase.time / 60);
+      let seconds = purchase.time % 60;
+
+      if (minutes < 0 && seconds < 0) {
+        minutes = -1;
+        seconds *= -1;
+      }
+
+      resPlayerItem[itemName].purchaseTime = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+      break;
+    }
+  }
+}
+
+export enum SlotsType {
+  Main = 0,
+  Backpack,
+  Neutral,
+  Aghanim,
+}
+
+enum SlotSizes {
+  Main = 6,
+  Backpack = 3,
+}
+
+export enum PlayerItemCategory {
+  MainAndBackpack = 0,
+  Aghanim,
 }

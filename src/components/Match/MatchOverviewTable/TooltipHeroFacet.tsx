@@ -18,7 +18,7 @@ export default function TooltipHeroFacet({
       className="tooltip"
       classNameArrow="tooltip-arrow"
       isOpen={isOpen}
-      render={({ content, activeAnchor }) => (
+      render={() => (
         <div className={styles.facet}>
           <div
             className={styles.facet__title}

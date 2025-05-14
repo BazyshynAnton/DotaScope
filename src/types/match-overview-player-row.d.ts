@@ -7,13 +7,13 @@ interface CMatchOverviewPlayerRow {
 
   //   findPlayerAvatar(): string;
 
-  findAppropriateItems(player: Player, items: any): PlayerItems | null;
+  findAppropriateItems(player: Player, items: any): PlayerItem | null;
 
   findItemCostByKey(key: string, items: Items): string;
 }
 
 interface CPlayerRowHelper {
-  setItems(detailsAboutItems: PlayerItems, flag: string): void;
+  setItems(detailsAboutItems: PlayerItem, flag: string): void;
 
   handleMouseEnter(item: string, flag: string, idx?: number | string, setter?: any): void;
 
@@ -22,8 +22,8 @@ interface CPlayerRowHelper {
   findDetailsAboutCurrentItem(
     flag: string,
     item: string,
-    detailsAboutItems?: PlayerItems
-  ): PlayerItems | null;
+    detailsAboutItems?: PlayerItem
+  ): PlayerItem | null;
 }
 
 type AbilityIDs = {
@@ -92,7 +92,7 @@ interface Ability {
   description: string;
 }
 
-interface PlayerItems {
+interface PlayerItem {
   [key: string]: {
     abilities?: Ability[];
     hint?: string[];
@@ -114,12 +114,11 @@ interface PlayerItems {
 }
 
 interface SlotInterface {
-  PlayerItems: PlayerItems | null;
+  PlayerItems: PlayerItem | null;
   player?: Player;
 }
 
-// Types for ItemDescription component
 interface ItemDescriptionInterface {
-  details: PlayerItems | null;
+  details: PlayerItem | null;
   item: string;
 }

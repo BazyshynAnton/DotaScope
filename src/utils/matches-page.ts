@@ -75,7 +75,11 @@ export async function fetchDotaConstants() {
   try {
     const heroes = await fetchHelper<Hero[]>(process.env.NEXT_PRIVATE_HERO_LIST_URL as string);
 
-    const heroAbilities = await fetchHelper<any>(process.env.NEXT_PRIVATE_ABILITIES_URL as string);
+    const heroAbilities = await fetchHelper<any>(
+      process.env.NEXT_PRIVATE_HERO_ABILITIES_URL as string
+    );
+
+    // const abilities = await fetchHelper<any>(process.env.NEXT_PRIVATE_ABILITIES_URL as string);
 
     const abilityIds = await fetchHelper<any>(process.env.NEXT_PRIVATE_ABILITY_IDS_URL as string);
 

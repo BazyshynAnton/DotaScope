@@ -129,3 +129,70 @@
     border: sizes.px-to-rem(1) solid colors.$border1;
   }
 }
+
+/* PlayerStatisticTableData.tsx */
+.statistic {
+  text-align: center;
+}
+
+/* PlayerItemsTableData.tsx */
+.items {
+  padding: sizes.px-to-rem(5) 0rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.items__slotsWrapper {
+  width: sizes.px-to-rem(250);
+  display: flex;
+  gap: sizes.px-to-rem(4);
+  flex-direction: column;
+  align-items: center;
+}
+
+.items__slots {
+  display: flex;
+  gap: sizes.px-to-rem(3);
+
+  img {
+    cursor: help;
+    border: sizes.px-to-rem(1) solid colors.$border1;
+  }
+}
+
+.items__neutral {
+  position: relative;
+  width: sizes.px-to-rem(28);
+  height: sizes.px-to-rem(28);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: sizes.px-to-rem(1) solid colors.$border1;
+
+  img {
+    cursor: help;
+  }
+}
+
+.items__item {
+  position: relative;
+}
+
+.items__purchaseTime {
+  position: absolute;
+  bottom: sizes.px-to-rem(3);
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  font-size: sizes.px-to-rem(10);
+  font-weight: bold;
+  color: colors.$text2;
+  text-align: center;
+  background-color: #00000099;
+  pointer-events: none;
+}

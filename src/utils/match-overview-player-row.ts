@@ -58,7 +58,6 @@ export class MatchOverviewPlayerRow implements CMatchOverviewPlayerRow {
     const imagePath = '/pictures/dota-player-rank-icons/';
 
     const leaderboardRank = this.mPlayerDetails.leaderboardRankInfo;
-    console.log(leaderboardRank);
 
     const rankTier = this.mPlayerDetails.rankTierInfo;
 
@@ -91,7 +90,7 @@ export class MatchOverviewPlayerRow implements CMatchOverviewPlayerRow {
   //   return '/pictures/dota-player-icons/anonymous.jpg';
   // }
 
-  public findAppropriateItems(player: Player, items: Items): PlayerItems | null {
+  public findAppropriateItems(player: Player, items: Items): PlayerItem {
     const emptyItemValue = {
       abilities: null,
       hint: null,
@@ -228,7 +227,7 @@ export class MatchOverviewPlayerRow implements CMatchOverviewPlayerRow {
   };
 
   // Player's item details
-  private mPlayerItems: PlayerItems | any = {};
+  private mPlayerItems: PlayerItem | any = {};
 
   // Cache for current hero
   private mCurrentHero: string = '';
@@ -347,7 +346,6 @@ export class MatchOverviewPlayerRow implements CMatchOverviewPlayerRow {
   private findHeroFacet(player: Player, heroAbilities: any): void {
     if (heroAbilities) {
       for (const [heroID, value] of Object.entries(heroAbilities)) {
-        // console.log(this.mCurrentHero, heroID);
         if (this.mCurrentHero === heroID) {
           switch (player.hero_variant) {
             case 1:
