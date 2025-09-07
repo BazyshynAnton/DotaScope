@@ -1,42 +1,37 @@
-import Header from '@/components/Header/Header';
-import Footer from '@/components/Footer/Footer';
-import StoreProvider from '@/store/StoreProvider';
+import GlobalThemeProvider from '@/providers/GlobalThemeProvider';
+// import Header from '@/components/ui/Header/Header';
 
-import { Exo_2 } from 'next/font/google';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 
 import type { Metadata } from 'next';
 
-import '@/styles/globals.scss';
-
-const exo2 = Exo_2({
-  weight: ['400', '500', '700', '900'],
-  style: ['normal'],
-  subsets: ['latin'],
-});
-
 export const metadata: Metadata = {
   title: 'DotaScope',
-  icons: {
-    apple: ['/favicon/apple-touch-icon.png?v=4'],
-    icon: ['/favicon/favicon.ico?v=4'],
-    shortcut: ['/favicon/apple-touch-icon.png'],
-  },
+  description: 'Dota 2 Data Platform',
+  // icons: {}
 };
 
+/**
+ * React component
+ *
+ * Implementation of the "root" layout
+ * includes NextAuth SessionProvider for authentication
+ *
+ * @param {ReactNode} children React node
+ * @returns {JSX.Element}
+ */
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <StoreProvider>
-      <html lang="en">
-        <body className={exo2.className}>
-          <Header />
-          <main className="main-wrapper">{children}</main>
-          <Footer />
-        </body>
-      </html>
-    </StoreProvider>
+    <html lang="en">
+      <body>
+        <AppRouterCacheProvider options={{ enableCssLayer: true }}>
+          <GlobalThemeProvider>{children}</GlobalThemeProvider>
+        </AppRouterCacheProvider>
+      </body>
+    </html>
   );
 }
