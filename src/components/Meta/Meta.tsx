@@ -15,7 +15,7 @@ import styles from '@/styles/meta/meta.module.scss';
 
 export default function Meta({ metaData }: { metaData: MetaData | string }) {
   const [isPub, setIsPub] = useState(true);
-  const [currRank, setCurrRank] = useState(8);
+  const [currRank, setCurrRank] = useState(7);
 
   // true - ascending  , false - descending
   const [tableSort, setTableSort] = useState<TableSort>({ keyToSort: 'winrate', direction: false });

@@ -11,7 +11,6 @@ const ranks = [
   process.env.NEXT_PUBLIC_5_RANK_ICON_URL as string,
   process.env.NEXT_PUBLIC_6_RANK_ICON_URL as string,
   process.env.NEXT_PUBLIC_7_RANK_ICON_URL as string,
-  process.env.NEXT_PUBLIC_8_RANK_ICON_URL as string,
 ];
 
 export default function MetaHeader({
