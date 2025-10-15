@@ -1,0 +1,21 @@
+@use '../variables/font-colors';
+
+@mixin reusableBorder {
+  border-radius: 0.5rem;
+  box-shadow:
+    0 2px 4px #00000014,
+    0 4px 8px #00000014,
+    0 6px 12px #00000014;
+
+  @media (min-width: 1000px) {
+    transition: all 0.15s ease-in-out;
+
+    &:hover {
+      transform: translateY(-0.2%);
+    }
+  }
+}
+
+@mixin gradientBg {
+  background: linear-gradient(to left, font-colors.$bgColor2, #3b4b5e);
+}

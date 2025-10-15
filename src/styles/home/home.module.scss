@@ -1,5 +1,6 @@
 @use '../variables/font-colors.scss';
 @use '../mixins/fontsize.scss';
+@use '../mixins/common.scss';
 
 $border: 1px solid rgba(255, 255, 255, 0.1);
 
@@ -29,6 +30,7 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 4px 10px;
   color: font-colors.$fontColor2;
   border-bottom: $border;
+  @include common.gradientBg;
 
   h1 {
     @include fontsize.adaptiveFont(1, 1, 120);
@@ -56,6 +58,9 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   height: max-content;
   border: $border;
   background-color: #242f39;
+  overflow: hidden;
+
+  @include common.reusableBorder;
 }
 
 .about__content {

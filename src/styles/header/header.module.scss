@@ -1,3 +1,4 @@
+@use '../mixins/common';
 @use '../mixins/fontsize.scss';
 @use '../variables/font-colors.scss';
 
@@ -16,6 +17,7 @@ $bgColor: #242f39;
   background-color: $bgColor;
   border-bottom: $border;
   z-index: 100;
+  @include common.gradientBg;
 }
 
 .headerContainer {
