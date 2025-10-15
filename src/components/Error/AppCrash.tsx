@@ -16,12 +16,7 @@ export default function AppCrash({ error, reset }: { error: Error; reset: () => 
     <div className={styles.error}>
       <section style={{ display: 'flex', alignItems: 'flex-end', gap: '0.3rem' }}>
         <h1>Application Error</h1>
-        <Image
-          src={'/pictures/dotaScopeIcons/enigma_error.gif'}
-          alt={'enigma_error'}
-          width={22}
-          height={22}
-        />
+        <Image src={'/pictures/dota-scope-icons/enigma-error.gif'} alt="" width={22} height={22} />
       </section>
       <span onClick={handleHintClick}>why you see this error </span>
       {isHintOpen && <ErrorExplanation />}
