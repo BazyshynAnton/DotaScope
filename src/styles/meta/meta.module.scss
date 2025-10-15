@@ -1,5 +1,8 @@
 @use '../variables/font-colors.scss';
 @use '../mixins/scroll-x.scss';
+@use '../mixins/common.scss';
+
+$border: 1px solid rgba(255, 255, 255, 0.1);
 
 .meta {
   width: 100%;
@@ -58,13 +61,29 @@
     &:hover {
       filter: none !important; // SEE
     }
+
+    overflow: hidden;
+    border: $border;
+    @include common.reusableBorder;
   }
 }
 
-.metaTable {
+.tableWrapper {
   margin-top: 2rem;
+  overflow: hidden;
+  border: $border;
+  @include common.reusableBorder;
+}
+
+.metaTable {
   width: min-content;
   background-color: font-colors.$bgColor2;
+
+  thead {
+    tr {
+      @include common.gradientBg;
+    }
+  }
 
   th,
   div {

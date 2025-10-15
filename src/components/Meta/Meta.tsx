@@ -31,8 +31,7 @@ export default function Meta({ metaData }: { metaData: MetaData | string }) {
   const handleTableSortClick = (keyToSort: string) => () => {
     setTableSort({
       keyToSort,
-      direction:
-        keyToSort === tableSort.keyToSort ? (tableSort.direction === false ? true : false) : false,
+      direction: keyToSort === tableSort.keyToSort ? !tableSort.direction : false,
     });
   };
 
