@@ -1,5 +1,6 @@
 @use '../variables/font-colors.scss';
 @use '../mixins/scroll-x.scss';
+@use '../mixins/common.scss';
 
 $border: 1px solid rgba(255, 255, 255, 0.1);
 
@@ -23,6 +24,12 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   color: font-colors.$direColor;
 }
 
+.builds__tableWrapper {
+  overflow: hidden;
+  border: $border;
+  @include common.reusableBorder;
+}
+
 // table
 .table {
   width: 100%;
@@ -35,8 +42,9 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   }
 }
 
-// .tableHeadRow {
-// }
+.tableHeadRow {
+  @include common.gradientBg;
+}
 
 .heroDataCell,
 .abilityDataCell {

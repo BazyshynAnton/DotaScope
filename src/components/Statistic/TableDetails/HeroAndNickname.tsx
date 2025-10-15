@@ -7,6 +7,7 @@ import type { HeroDetails } from '@/types/statistic/player-row';
 import type { Player } from '@/types/statistic/match-data';
 
 import styles from '@/styles/statistic/player-row.module.scss';
+import { Tooltip as ReactTooltip } from 'react-tooltip';
 
 export default function HeroAndNickname({
   heroDetails,
@@ -15,15 +16,6 @@ export default function HeroAndNickname({
   heroDetails: HeroDetails;
   player: Player;
 }) {
-  const [isFacetTooltip, setIsFacetTooltip] = useState(false);
-
-  const handleFacetEnter = () => {
-    setIsFacetTooltip(true);
-  };
-  const handleFacetLeave = () => {
-    setIsFacetTooltip(false);
-  };
-
   return (
     <div className={styles.heroAndNickname}>
       <div className={styles.heroAndNickname__hero}>
@@ -51,11 +43,10 @@ export default function HeroAndNickname({
         </div>
         <div className={styles.heroAndNickname__hero__level}>{player.level}</div>
         <span
+          data-tooltip-id={`${heroDetails.heroVariant.icon}${heroDetails.name}`}
           style={{
             background: `${heroDetails.heroVariant.color}`,
           }}
-          onMouseEnter={handleFacetEnter}
-          onMouseLeave={handleFacetLeave}
         >
           {heroDetails.heroVariant.icon && (
             <>
@@ -65,7 +56,17 @@ export default function HeroAndNickname({
                 width={72}
                 height={72}
               />
-              {isFacetTooltip && <FacetDescription heroDetails={heroDetails} />}
+              <ReactTooltip
+                id={`${heroDetails.heroVariant.icon}${heroDetails.name}`}
+                style={{
+                  background: 'transparent',
+                  boxShadow: 'none',
+                }}
+                // float={true}
+                // noArrow={true}
+              >
+                <FacetDescription heroDetails={heroDetails} />
+              </ReactTooltip>
             </>
           )}
         </span>

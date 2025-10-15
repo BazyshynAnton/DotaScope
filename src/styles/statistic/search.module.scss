@@ -1,4 +1,5 @@
 @use '../variables/font-colors.scss';
+@use '../mixins/common.scss';
 
 $border: 1px solid rgba(255, 255, 255, 0.1);
 
@@ -15,9 +16,13 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .search {
+  width: max-content;
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  border: $border;
+  overflow: hidden;
+  @include common.reusableBorder;
 }
 
 .search__input {
@@ -25,8 +30,7 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   width: 300px;
   height: 34px;
   background-color: #242f39;
-  border: $border;
-  color: inherit;
+  //border: $border;
   outline: none;
   transition: all 110ms ease-in-out;
   color: font-colors.$fontColor1;
@@ -35,9 +39,9 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
     color: #ffffff65;
   }
 
-  &:focus {
-    border: 2px solid rgba(255, 255, 255, 0.1);
-  }
+  //&:focus {
+  //  border: 2px solid rgba(255, 255, 255, 0.1);
+  //}
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
@@ -62,9 +66,9 @@ $border: 1px solid rgba(255, 255, 255, 0.1);
   font-weight: 500;
   letter-spacing: 0.3px;
   background-color: #242f39;
-  border-top: $border;
-  border-right: $border;
-  border-bottom: $border;
+  //border-top: $border;
+  border-left: $border;
+  //border-bottom: $border;
   transition: all 110ms ease-in-out;
 }
 

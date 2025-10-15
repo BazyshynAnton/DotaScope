@@ -1,5 +1,5 @@
 import { Image } from '@/shared/nextjs-imports';
-import { React, useEffect, useRef, useState } from '@/shared/react-imports';
+import { React, useEffect, useRef, useState, useLayoutEffect } from '@/shared/react-imports';
 
 import { MdArrowLeft } from 'react-icons/md';
 
@@ -9,7 +9,7 @@ export default function FacetDescription({ heroDetails }: { heroDetails: HeroDet
   const [isBlurEffect, setIsBlurEffect] = useState(false);
   const [componentHeight, setComponentHeight] = useState<number | null>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (typeof window !== 'undefined') {
       setIsBlurEffect(window.innerWidth <= 790);
       const updateWindowWidth = () => {
@@ -40,9 +40,6 @@ export default function FacetDescription({ heroDetails }: { heroDetails: HeroDet
         ...facetDescStyle,
       }}
     >
-      <span style={{ top: (componentHeight || 0) / 2 - 6, ...arrowWrapperStyle }}>
-        <MdArrowLeft style={arrowStyle} />
-      </span>
       <div
         style={{
           background: `${heroDetails.heroVariant.color}`,
@@ -99,9 +96,4 @@ const arrowWrapperStyle: React.CSSProperties = {
   left: -11,
   width: 'max-content',
   zIndex: -1,
-};
-
-const arrowStyle: React.CSSProperties = {
-  transform: 'scale(2.5)',
-  color: '#152128',
 };

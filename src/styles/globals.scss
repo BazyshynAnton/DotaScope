@@ -1,5 +1,6 @@
 @use 'variables/font-colors.scss';
 @use 'mixins/fontsize.scss';
+@use 'mixins/common';
 
 *,
 *::before,
@@ -41,11 +42,25 @@ a {
   padding: 0px 30px;
 }
 
-table,
-th,
-td {
-  border: 1px solid rgba(255, 255, 255, 0.1);
+table {
+  $border: 1px solid rgba(255, 255, 255, 0.1);
+
   border-collapse: collapse;
+  th,
+  td {
+    border-right: $border;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  th {
+    border-bottom: $border;
+  }
+  td {
+    border-top: $border;
+  }
 }
 
 h3 {

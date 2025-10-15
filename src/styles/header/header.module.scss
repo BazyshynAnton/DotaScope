@@ -29,6 +29,7 @@ $bgColor: #242f39;
   align-items: center;
 
   h1 {
+    cursor: default;
     @include fontsize.adaptiveFont(1, 1, 120);
   }
 }

@@ -28,7 +28,7 @@ export default function MatchDetails() {
 
   if (!playersByTeam) {
     dispatch(setTableLoading(true));
-    return;
+    return null;
   } else {
     setTableLoading(false);
   }
