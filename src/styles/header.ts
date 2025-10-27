@@ -1,23 +1,38 @@
 import { styled } from '@mui/material/styles';
 import { applicationContainer } from '@/styles/common';
+import { pxToRem } from '@/utils/px-to-rem';
 
-export const HeaderContainer = styled('header')(() => ({
+export const HeaderContainer = styled('header')(({ theme }) => ({
   margin: '0 auto',
-  padding: '0 20px',
+  padding: `0 ${pxToRem(20)}`,
   width: '100%',
   height: 'max-content',
+  background: `linear-gradient(270deg,${theme.palette.bg2},${theme.palette.bg4})`,
+  borderBottom: `${pxToRem(1)} solid ${theme.palette.border1}`,
 }));
 
 export const HeaderContent = styled('section')(({ theme }) => ({
   ...applicationContainer,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
 
   a: {
     textDecoration: 'none',
+    ...theme.typography['Body/Medium/MD14'],
+  },
 
-    '&:first-child': {
-      color: theme.palette.text1,
-    },
+  '& > a': {
+    color: theme.palette.text1,
+    ...theme.typography['Body/Bold/MD20'],
   },
 }));
 
-export const HeaderNavigation = styled('nav')(() => ({}));
+export const HeaderNavigation = styled('nav')(() => ({
+  position: 'relative',
+
+  a: {
+    padding: pxToRem(7),
+    display: 'inline-block',
+  },
+}));

@@ -1,15 +1,12 @@
 import { createTheme } from '@mui/material/styles';
 import { Exo_2 } from 'next/font/google';
+import { pxToRem } from '@/utils/px-to-rem';
 
 const exo2 = Exo_2({
   weight: ['400', '500', '700', '900'],
   style: ['normal'],
   subsets: ['latin'],
 });
-
-function pxToRem(px: number) {
-  return `${px / 16}rem`;
-}
 
 export const globalTheme = createTheme({
   palette: {

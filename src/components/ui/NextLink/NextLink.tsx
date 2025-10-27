@@ -13,14 +13,27 @@ import { SxProps, Theme } from '@mui/material';
 export default function NextLink({
   href,
   sx = undefined,
+  ref = undefined,
+  onMouseEnter = undefined,
+  onMouseLeave = undefined,
   children,
 }: {
   href: string;
   sx?: SxProps<Theme> | undefined;
+  ref?: React.Ref<HTMLAnchorElement> | undefined;
+  onMouseEnter?: React.MouseEventHandler<HTMLAnchorElement> | undefined;
+  onMouseLeave?: React.MouseEventHandler<HTMLAnchorElement> | undefined;
   children: React.ReactNode;
 }) {
   return (
-    <MuiLink href={href} component={Link} sx={sx}>
+    <MuiLink
+      ref={ref}
+      href={href}
+      component={Link}
+      sx={sx}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       {children}
     </MuiLink>
   );
