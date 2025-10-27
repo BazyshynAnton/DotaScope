@@ -1,7 +1,6 @@
 'use client';
 
-import Link from 'next/link';
-import MuiLink from '@mui/material/Link';
+import NextLink from '@/components/ui/NextLink/NextLink';
 import Navigation from './Navigation';
 
 import { HeaderContainer, HeaderContent } from '@/styles/header';
@@ -17,9 +16,7 @@ export default function Header() {
   return (
     <HeaderContainer>
       <HeaderContent>
-        <MuiLink href="/" component={Link}>
-          DOTASCOPE
-        </MuiLink>
+        <NextLink href="/">DOTASCOPE</NextLink>
         <Navigation />
       </HeaderContent>
     </HeaderContainer>

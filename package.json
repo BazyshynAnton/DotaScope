@@ -27,14 +27,14 @@
     "@mui/material-nextjs": "7.2.0",
     "@tanstack/react-query": "5.83.0",
     "@types/validator": "13.15.2",
-    "axios": "1.11.0",
+    "axios": "1.12.2",
     "next": "15.5.2",
     "next-auth": "4.24.11",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "7.60.0",
     "swiper": "11.2.10",
-    "validator": "13.15.15",
+    "validator": "13.15.20",
     "zod": "4.0.5"
   },
   "devDependencies": {
@@ -70,7 +70,12 @@
     }
   },
   "lint-staged": {
-    "**/*.{js,ts,tsx}": ["eslint --fix --no-warn-ignored", "prettier --write ."],
-    "**/*.html": ["prettier --write ."]
+    "**/*.{js,ts,tsx}": [
+      "eslint --fix --no-warn-ignored",
+      "prettier --write ."
+    ],
+    "**/*.html": [
+      "prettier --write ."
+    ]
   }
 }

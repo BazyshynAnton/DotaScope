@@ -1,6 +1,7 @@
+import Header from '@/components/ui/Header/Header';
 import GlobalThemeProvider from '@/providers/GlobalThemeProvider';
-// import Header from '@/components/ui/Header/Header';
 
+import { ApplicationContainer } from '@/styles/common';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 
 import type { Metadata } from 'next';
@@ -27,9 +28,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body style={{ backgroundColor: '#1c242d' }}>
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-          <GlobalThemeProvider>{children}</GlobalThemeProvider>
+          <GlobalThemeProvider>
+            <Header />
+            <ApplicationContainer>{children}</ApplicationContainer>
+          </GlobalThemeProvider>
         </AppRouterCacheProvider>
       </body>
     </html>
