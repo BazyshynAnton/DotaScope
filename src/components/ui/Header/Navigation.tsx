@@ -1,11 +1,18 @@
 import NextLink from '@/components/ui/NextLink/NextLink';
 
-import { Box } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
+import { Box, useMediaQuery } from '@mui/material';
 import { usePathname } from 'next/navigation';
-import { useRef, useState, useLayoutEffect } from 'react';
+import { useRef, useState } from 'react';
+import { useTheme } from '@mui/material/styles';
 
 import { HeaderNavigation } from '@/styles/header';
+
+const initialMovableBgState = {
+  isRender: false,
+  width: 0,
+  offsetTop: 0,
+  offsetLeft: 0,
+};
 
 /**
  * React component
@@ -15,26 +22,17 @@ import { HeaderNavigation } from '@/styles/header';
  * @returns {JSX.Element}
  */
 export default function Navigation() {
-  const [movableBg, setMovableBg] = useState({
-    isRender: false,
-    width: 0,
-    offsetTop: 0,
-    offsetLeft: 0,
-  });
-  const [windowWidth, setWindowWidth] = useState<number | null>(null);
-  const pathname = usePathname();
+  const [movableBg, setMovableBg] = useState(initialMovableBgState);
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const pathname = usePathname();
   const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
-
-  useLayoutEffect(() => {
-    if (window && window.innerWidth) setWindowWidth(window.innerWidth);
-  }, []);
 
   const handleMouseEnterLink = (idx: number) => () => {
     // retrieve reference of element in array
     const ref = linkRefs.current[idx];
 
-    if (ref && windowWidth && windowWidth > 400) {
+    if (ref && !isMobile) {
       setMovableBg((prevState) => ({
         ...prevState,
         isRender: true,
@@ -46,14 +44,8 @@ export default function Navigation() {
   };
 
   const handleMouseLeaveLink = () => {
-    if (windowWidth && windowWidth > 400) {
-      setMovableBg((prevState) => ({
-        ...prevState,
-        isRender: true,
-        width: 0,
-        offsetTop: 0,
-        offsetLeft: 0,
-      }));
+    if (!isMobile) {
+      setMovableBg(initialMovableBgState);
     }
   };
 
@@ -64,12 +56,13 @@ export default function Navigation() {
           position: 'absolute',
           top: 1,
           zIndex: 1,
-          width: `${movableBg.width || 0}px`,
+          width: `${movableBg.width}px`,
           height: '100%',
           display: movableBg.isRender ? 'block' : 'none',
           background: '#ffffff14',
           transition: 'all 0.2s ease-in-out',
-          transform: `translate(${movableBg.offsetLeft || 0}px,${(movableBg.offsetTop || 0) - 1}px)`,
+          transform: `translate(${movableBg.offsetLeft}px,${movableBg.offsetTop - 1}px)`,
+          pointerEvents: 'none',
         }}
       />
       {[

@@ -50,7 +50,7 @@ export const globalTheme = createTheme({
     },
     'Body/Medium/MD14': {
       fontSize: pxToRem(14),
-      fontWeight: 500,
+      fontWeight: 400,
       lineHeight: '100%',
     },
     // 'Heading/Medium/MD45': {
