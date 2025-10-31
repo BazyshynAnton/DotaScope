@@ -8,7 +8,7 @@ export const HeaderContainer = styled('header')(({ theme }) => ({
   width: '100%',
   height: 'max-content',
   background: `linear-gradient(270deg,${theme.palette.bg2},${theme.palette.bg4})`,
-  borderBottom: `${pxToRem(1)} solid ${theme.palette.border1}`,
+  borderBottom: `${pxToRem(1)} solid ${theme.palette.border2}`,
 
   [theme.breakpoints.down('sm')]: {
     padding: `${pxToRem(10)} ${pxToRem(20)}`,
@@ -23,7 +23,7 @@ export const HeaderContent = styled('section')(({ theme }) => ({
 
   a: {
     textDecoration: 'none',
-    ...theme.typography['Body/Medium/MD14'],
+    ...theme.typography['Body/Medium/MD17'],
   },
 
   '& > a': {
@@ -36,7 +36,7 @@ export const HeaderNavigation = styled('nav')(({ theme }) => ({
   position: 'relative',
 
   a: {
-    padding: pxToRem(7),
+    padding: pxToRem(10),
     display: 'inline-block',
   },
 
@@ -51,6 +51,6 @@ export const HeaderNavigation = styled('nav')(({ theme }) => ({
     alignItems: 'center',
     justifyContent: 'center',
     background: `linear-gradient(270deg,${theme.palette.bg2},${theme.palette.bg4})`,
-    borderTop: `${pxToRem(1)} solid ${theme.palette.border1}`,
+    borderTop: `${pxToRem(1)} solid ${theme.palette.border2}`,
   },
 }));

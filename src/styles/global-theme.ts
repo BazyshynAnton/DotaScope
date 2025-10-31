@@ -27,8 +27,8 @@ export const globalTheme = createTheme({
     bg8: '#152128',
     bg9: '#283441',
 
-    border1: '#ffffff1a',
-    border2: '#ffffffde',
+    border1: '#ffffffde',
+    border2: '#ffffff1a',
     border3: '#27292b',
     border4: '#283441',
   },
@@ -48,8 +48,13 @@ export const globalTheme = createTheme({
       fontWeight: 600,
       lineHeight: '100%',
     },
-    'Body/Medium/MD14': {
-      fontSize: pxToRem(14),
+    'Body/Medium/MD17': {
+      fontSize: pxToRem(17),
+      fontWeight: 400,
+      lineHeight: '100%',
+    },
+    'Body/Medium/MD15': {
+      fontSize: pxToRem(15),
       fontWeight: 400,
       lineHeight: '100%',
     },

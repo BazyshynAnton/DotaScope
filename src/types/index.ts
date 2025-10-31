@@ -59,15 +59,16 @@ interface CustomPalette {
   bg8: '#152128';
   bg9: '#283441';
 
-  border1: '#ffffff1a';
-  border2: '#ffffffde';
+  border1: '#ffffffde';
+  border2: '#ffffff1a';
   border3: '#27292b';
   border4: '#283441';
 }
 
 interface CustomTypography {
   'Body/Bold/MD20': TypographyContent;
-  'Body/Medium/MD14': TypographyContent;
+  'Body/Medium/MD17': TypographyContent;
+  'Body/Medium/MD15': TypographyContent;
 }
 
 interface TypographyContent {
