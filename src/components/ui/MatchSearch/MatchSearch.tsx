@@ -1,9 +1,10 @@
-import { Box, Typography } from '@mui/material';
-import { pxToRem } from '@/utils/px-to-rem';
-import { CommonInput, CommonButton } from '@/styles/common';
-import { useState } from 'react';
-import { matchSearchInputSchema } from '@/schemas/match-search-input-schema';
 import Image from 'next/image';
+import Link from 'next/link';
+import { Box, Typography, useTheme } from '@mui/material';
+import { useState } from 'react';
+import { pxToRem } from '@/utils/px-to-rem';
+import { matchSearchInputSchema } from '@/schemas/match-search-input-schema';
+import { CommonInput, CommonButton } from '@/styles/common';
 
 /**
  * React component
@@ -13,6 +14,7 @@ import Image from 'next/image';
  * @returns {JSX.Element}
  */
 export default function MatchSearch() {
+  const theme = useTheme();
   const [inputValue, setInputValue] = useState<string>('');
   const [inputError, setInputError] = useState<string>('');
 
@@ -35,7 +37,9 @@ export default function MatchSearch() {
         paddingTop: pxToRem(15),
       }}
     >
-      <Typography variant="Body/Medium/MD17">Search Dota 2 match by ID</Typography>
+      <Typography variant="Body/Medium/MD17" sx={{ color: theme.palette.text1 }}>
+        Search Dota 2 match by ID
+      </Typography>
       <CommonInput
         id="matchID"
         label="Match ID"
@@ -47,10 +51,12 @@ export default function MatchSearch() {
         onChange={handleInputValueChange}
       />
       {inputValue && !inputError && (
-        <CommonButton variant="outlined" sx={{ display: 'inline-flex', gap: pxToRem(5) }}>
-          Search
-          <Image src="/images/gem-search.gif" alt="" width={20} height={20} />
-        </CommonButton>
+        <Link href={`/match/${inputValue}`}>
+          <CommonButton variant="outlined" sx={{ display: 'inline-flex', gap: pxToRem(5) }}>
+            Search
+            <Image src="/images/gem-search.gif" alt="" width={20} height={20} />
+          </CommonButton>
+        </Link>
       )}
     </Box>
   );

@@ -76,3 +76,7 @@ interface TypographyContent {
   fontWeight: number | string;
   lineHeight: number | string;
 }
+
+export interface FetchError {
+  error: string;
+}

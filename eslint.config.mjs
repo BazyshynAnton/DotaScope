@@ -24,6 +24,32 @@ const eslintConfig = [
       'testing-library/no-node-access': 'off',
     },
   },
+  {
+    files: ['src/app/**/*.{js,jsx,ts,tsx}'], // app folder imports
+    rules: {
+      'no-restricted-imports': ['error', { patterns: ['@/features/*/**'] }], // allowed only @/features/*/index.ts
+    },
+  },
+  {
+    files: ['src/components/**/*.{js,jsx,ts,tsx}'], // global components folder imports
+    rules: {
+      'no-restricted-imports': ['error', { patterns: ['@/app/*', '@/features/*', '@/pages/*'] }],
+    },
+  },
+  {
+    files: ['src/components/pages/**/*.{js,jsx,ts,tsx}'], // pages folder imports
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: ['@/app/*', '@/features/*/**'], // allowed only @/features/*/index.ts
+        },
+      ],
+    },
+  },
+  {
+    ignores: ['.next/*', 'node_modules/*', 'coverage/*', 'jest.config.js', 'jest.setup.js'],
+  },
   globalIgnores([
     './.next/*',
     './node_modules/*',

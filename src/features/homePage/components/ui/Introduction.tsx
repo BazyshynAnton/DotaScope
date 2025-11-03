@@ -1,5 +1,4 @@
 import { Box, useTheme } from '@mui/material';
-import { pxToRem } from '@/utils/px-to-rem';
 import MatchSearch from '@/components/ui/MatchSearch/MatchSearch';
 
 /**
@@ -14,7 +13,6 @@ export default function Introduction() {
   return (
     <Box
       sx={{
-        paddingTop: `${pxToRem(50)}`,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',

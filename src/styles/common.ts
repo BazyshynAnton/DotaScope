@@ -18,6 +18,10 @@ export const ApplicationContainer = styled('div')(({ theme }) => ({
   },
 }));
 
+export const MainContainer = styled('main')(() => ({
+  paddingTop: `${pxToRem(50)}`,
+}));
+
 export const CommonInput = styled(TextField)(({ theme }) => ({
   '.MuiFormLabel-root': {
     maxWidth: 'min-content',
