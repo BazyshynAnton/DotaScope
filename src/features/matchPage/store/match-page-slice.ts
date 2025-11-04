@@ -1,6 +1,6 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { filterPlayersByTeam } from '@/features/matchPage/utils/find-players-by-team';
-import { type Match, type MatchPageSlice } from '@/features/matchPage/types';
+import { type DotaConstants, type Match, type MatchPageSlice } from '@/features/matchPage/types';
 
 const initialState: MatchPageSlice = {
   matchData: {
@@ -28,16 +28,12 @@ const matchPageSlice = createSlice({
         state.matchData.playersByTeam = filterPlayersByTeam(state.matchData.match);
       }
     },
-    // setDotaConstants: (state, action) => {
-    //   if (typeof action.payload !== 'string') {
-    //     state.constants = action.payload;
-    //   } else {
-    //     state.error = action.payload;
-    //   }
-    // },
+    setDotaConstants: (state, action: PayloadAction<DotaConstants>) => {
+      state.constants = action.payload;
+    },
   },
 });
 
-export const { setMatchPageData } = matchPageSlice.actions;
+export const { setMatchPageData, setDotaConstants } = matchPageSlice.actions;
 
 export default matchPageSlice.reducer;

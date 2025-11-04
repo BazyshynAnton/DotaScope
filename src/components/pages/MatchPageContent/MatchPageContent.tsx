@@ -5,8 +5,12 @@ import {
   MatchHeader,
   MatchNotFoundError,
   useMatchPageDispatch,
+  useMatchPageSelector,
   setMatchPageData,
+  setDotaConstants,
   type Match,
+  type DotaConstants,
+  type MatchPageSlice,
 } from '@/features/matchPage';
 import { useEffect } from 'react';
 import type { FetchError } from '@/types';
@@ -18,7 +22,16 @@ import type { FetchError } from '@/types';
  *
  * @returns {JSX.Element}
  */
-export default function MatchPageContent({ matchData }: { matchData: Match | FetchError }) {
+export default function MatchPageContent({
+  matchData,
+  dotaConstants,
+}: {
+  matchData: Match | FetchError;
+  dotaConstants: DotaConstants;
+}) {
+  const { error: matchPageSliceError } = useMatchPageSelector<MatchPageSlice>(
+    (store) => store.matchPageSlice
+  );
   const dispatch = useMatchPageDispatch();
 
   useEffect(() => {
@@ -27,12 +40,14 @@ export default function MatchPageContent({ matchData }: { matchData: Match | Fet
     }
 
     dispatch(setMatchPageData(matchData));
-  }, [dispatch, matchData]);
+    dispatch(setDotaConstants(dotaConstants));
+  }, [dispatch, matchData, dotaConstants]);
 
-  // Type guard
-  if ('error' in matchData) {
+  if ('error' in matchData || matchPageSliceError) {
     return <MatchNotFoundError />;
   }
+
+  // console.log(data, constants);
 
   return (
     <>
