@@ -3,11 +3,13 @@
 import MatchSearch from '@/components/ui/MatchSearch/MatchSearch';
 import {
   MatchHeader,
-  // useMatchPageDispatch,
-  // setMatchPageData,
+  MatchNotFoundError,
+  useMatchPageDispatch,
+  setMatchPageData,
   type Match,
 } from '@/features/matchPage';
-import { FetchError } from '@/types';
+import { useEffect } from 'react';
+import type { FetchError } from '@/types';
 
 /**
  * React component
@@ -17,19 +19,20 @@ import { FetchError } from '@/types';
  * @returns {JSX.Element}
  */
 export default function MatchPageContent({ matchData }: { matchData: Match | FetchError }) {
-  // const dispatch = useMatchPageDispatch();
+  const dispatch = useMatchPageDispatch();
+
+  useEffect(() => {
+    if ('error' in matchData) {
+      return;
+    }
+
+    dispatch(setMatchPageData(matchData));
+  }, [dispatch, matchData]);
 
   // Type guard
   if ('error' in matchData) {
-    return (
-      <>
-        <MatchSearch />
-        <h1>Match not found.</h1>
-      </>
-    );
+    return <MatchNotFoundError />;
   }
-
-  // dispatch(setMatchPageData(matchData));
 
   return (
     <>

@@ -1,9 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { filterPlayersByTeam } from '@/features/matchPage/utils/find-players-by-team';
-import type { MatchPageSlice } from '@/features/matchPage/types';
+import { type Match, type MatchPageSlice } from '@/features/matchPage/types';
 
 const initialState: MatchPageSlice = {
-  matchData: null,
+  matchData: {
+    match: null,
+    playerProfiles: null,
+  },
   constants: null,
 
   error: null,
@@ -13,19 +16,16 @@ const matchPageSlice = createSlice({
   name: 'match',
   initialState,
   reducers: {
-    setMatchPageData: (state, action) => {
-      if (typeof action.payload !== 'string') {
-        if (state.matchData?.match.match_id !== action.payload.match.match_id) {
-          state.error = action.payload.match.patch < 55 ? 'Unsupported Dota 2 version' : null;
+    setMatchPageData: (state: MatchPageSlice, action: PayloadAction<Match>) => {
+      if (state.matchData.match?.match_id !== action.payload.match_id) {
+        state.error = action.payload.patch < 55 ? 'Unsupported Dota 2 version' : null;
 
-          state.matchData = !state.error ? action.payload : null;
-
-          if (state.matchData && typeof state.matchData !== 'string') {
-            state.matchData.playersByTeam = filterPlayersByTeam(state.matchData.match);
-          }
+        if (state.error) {
+          return;
         }
-      } else {
-        state.error = action.payload;
+
+        state.matchData.match = action.payload;
+        state.matchData.playersByTeam = filterPlayersByTeam(state.matchData.match);
       }
     },
     // setDotaConstants: (state, action) => {

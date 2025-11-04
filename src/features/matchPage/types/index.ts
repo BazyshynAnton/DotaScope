@@ -49,15 +49,15 @@ export interface Match {
 
 // Match.tsx
 export interface MatchPageData {
-  match: Match;
-  playerProfiles: PlayerProfile[];
+  match: Match | null;
+  playerProfiles: PlayerProfile[] | null;
 
   // optional
   playersByTeam?: PlayersByTeam | null;
 }
 
 export interface MatchPageSlice {
-  matchData: MatchPageData | null;
+  matchData: MatchPageData;
   constants: DotaConstants | null;
 
   error: string | null;
