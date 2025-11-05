@@ -1,6 +1,7 @@
 'use client';
 
-import { Box, Typography, useTheme } from '@mui/material';
+import MatchReplayButton from '@/features/matchPage/components/ui/MatchHeader/MatchReplayButton';
+import { Box, Typography } from '@mui/material';
 import {
   MatchHeaderContainer,
   MatchIdAndReplayContainer,
@@ -13,11 +14,16 @@ import { findLeague } from '@/features/matchPage/utils/find-league';
 import { findRegion } from '@/features/matchPage/utils/find-region';
 import { timeAgo } from '@/utils/timeAgo';
 import type { MatchPageSlice } from '@/features/matchPage/types';
-import { CommonButton } from '@/styles/common';
-import NextLink from '@/components/ui/NextLink/NextLink';
 
+/**
+ * React component
+ *
+ * Implementation of the match header
+ *
+ * @returns {JSX.Element|null}
+ */
 export default function MatchHeader() {
-  const { matchData, constants } = useMatchPageSelector<MatchPageSlice>( // Maybe make it global hook
+  const { matchData, constants } = useMatchPageSelector<MatchPageSlice>( // TODO: Maybe make it global hook
     (store) => store.matchPageSlice
   );
 
@@ -70,38 +76,5 @@ export default function MatchHeader() {
         )}
       </MatchInfoContainer>
     </MatchHeaderContainer>
-  );
-}
-
-function MatchReplayButton({ matchReplay }: { matchReplay: string }) {
-  const theme = useTheme();
-
-  return (
-    <CommonButton
-      variant="outlined"
-      disabled={!matchReplay}
-      sx={{
-        padding: '2px 4px',
-        width: 'min-content',
-        '&:hover': {
-          a: {
-            color: theme.palette.text1,
-          },
-        },
-      }}
-    >
-      {matchReplay ? (
-        <NextLink
-          href={matchReplay}
-          target="_blank"
-          variant="Body/Medium/MD15"
-          sx={{ textDecoration: 'none' }}
-        >
-          REPLAY
-        </NextLink>
-      ) : (
-        <Typography variant="Body/Medium/MD15">REPLAY</Typography>
-      )}
-    </CommonButton>
   );
 }
