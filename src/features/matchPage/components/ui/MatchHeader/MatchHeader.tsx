@@ -1,13 +1,23 @@
-// import { Box } from '@mui/material';
+'use client';
+
+import { Box, Typography, useTheme } from '@mui/material';
+import {
+  MatchHeaderContainer,
+  MatchIdAndReplayContainer,
+  MatchInfoContainer,
+  MatchDetailsContainer,
+} from '@/features/matchPage/styles/match-header';
 import { useMatchPageSelector } from '@/features/matchPage/hooks/useMatchPageSelector';
 import { findGameMode } from '@/features/matchPage/utils/find-game-mode';
 import { findLeague } from '@/features/matchPage/utils/find-league';
 import { findRegion } from '@/features/matchPage/utils/find-region';
 import { timeAgo } from '@/utils/timeAgo';
 import type { MatchPageSlice } from '@/features/matchPage/types';
+import { CommonButton } from '@/styles/common';
+import NextLink from '@/components/ui/NextLink/NextLink';
 
 export default function MatchHeader() {
-  const { matchData, constants } = useMatchPageSelector<MatchPageSlice>(
+  const { matchData, constants } = useMatchPageSelector<MatchPageSlice>( // Maybe make it global hook
     (store) => store.matchPageSlice
   );
 
@@ -33,16 +43,16 @@ export default function MatchHeader() {
   const timePast = timeAgo(timePastInSeconds);
 
   return (
-    <section>
-      <div>
+    <MatchHeaderContainer>
+      <Box>
         {match.match_id && (
-          <div>
-            <p>Match ID: {match.match_id}</p>
+          <MatchIdAndReplayContainer>
+            <Typography variant="Body/Medium/MD15">Match ID: {match.match_id}</Typography>
             <MatchReplayButton matchReplay={matchReplay} />
-          </div>
+          </MatchIdAndReplayContainer>
         )}
-      </div>
-      <div>
+      </Box>
+      <MatchInfoContainer>
         {[
           [matchMode, 'GAME MODE'],
           [matchLeague, 'LEAGUE'],
@@ -52,39 +62,46 @@ export default function MatchHeader() {
         ].map(
           ([data, section]) =>
             data && (
-              <div key={section}>
-                <p>{data}</p>
-                <span>{section}</span>
-              </div>
+              <MatchDetailsContainer key={section}>
+                <Typography variant="Body/Medium/MD15">{data}</Typography>
+                <Typography variant="Body/Medium/MD15">{section}</Typography>
+              </MatchDetailsContainer>
             )
         )}
-      </div>
-    </section>
+      </MatchInfoContainer>
+    </MatchHeaderContainer>
   );
 }
 
 function MatchReplayButton({ matchReplay }: { matchReplay: string }) {
+  const theme = useTheme();
+
   return (
-    <button data-tooltip-id={!matchReplay ? 'warning' : ''}>
+    <CommonButton
+      variant="outlined"
+      disabled={!matchReplay}
+      sx={{
+        padding: '2px 4px',
+        width: 'min-content',
+        '&:hover': {
+          a: {
+            color: theme.palette.text1,
+          },
+        },
+      }}
+    >
       {matchReplay ? (
-        <>
-          {/*<IoMdDownload className={styles.replay__download} />*/}
-          <a href={matchReplay} target="_blank">
-            replay
-          </a>
-        </>
+        <NextLink
+          href={matchReplay}
+          target="_blank"
+          variant="Body/Medium/MD15"
+          sx={{ textDecoration: 'none' }}
+        >
+          REPLAY
+        </NextLink>
       ) : (
-        <>
-          {/*<IoMdWarning className={styles.replay__download} />*/}
-          <p>replay</p>
-          {/*<ReactTooltip*/}
-          {/*  id="warning"*/}
-          {/*  place="right"*/}
-          {/*  content="Replay is not available"*/}
-          {/*  className={styles.replay__tooltip}*/}
-          {/*/>*/}
-        </>
+        <Typography variant="Body/Medium/MD15">REPLAY</Typography>
       )}
-    </button>
+    </CommonButton>
   );
 }

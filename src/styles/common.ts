@@ -6,8 +6,14 @@ import { pxToRem } from '@/utils/px-to-rem';
 
 export const applicationContainer = {
   margin: '0 auto',
+  padding: '0 20px',
   maxWidth: pxToRem(1400),
   width: '100%',
+};
+
+export const borderWithShadow = {
+  borderRadius: pxToRem(8),
+  boxShadow: '0 2px 4px #00000014, 0 4px 8px #00000014, 0 6px 12px #00000014',
 };
 
 export const ApplicationContainer = styled('div')(({ theme }) => ({
