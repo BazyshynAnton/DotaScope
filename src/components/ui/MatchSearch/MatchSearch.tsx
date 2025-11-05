@@ -32,6 +32,7 @@ export default function MatchSearch() {
     <Box
       component="form"
       sx={{
+        height: pxToRem(155),
         display: 'flex',
         gap: pxToRem(15),
         flexDirection: 'column',
