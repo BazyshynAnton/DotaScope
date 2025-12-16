@@ -12,8 +12,8 @@ export default function AppError() {
         gap: '0.5rem',
       }}
     >
-      <h1 style={{ fontSize: '1.188rem' }}>Error</h1>
-      <Image src="/pictures/dotaScopeIcons/cheeky.gif" alt="puck" width={22} height={22} />
+      <h1 style={{ fontSize: '1.188rem' }}>OpenDota API is down</h1>
+      <Image src="/pictures/dota-scope-icons/cheeky.gif" alt="puck" width={22} height={22} />
     </section>
   );
 }
