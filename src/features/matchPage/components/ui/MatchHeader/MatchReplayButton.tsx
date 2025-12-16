@@ -1,6 +1,7 @@
 import NextLink from '@/components/ui/NextLink/NextLink';
 import { Typography, useTheme } from '@mui/material';
 import { CommonButton } from '@/styles/common';
+import { pxToRem } from '@/utils/px-to-rem';
 
 /**
  * React component
@@ -17,7 +18,7 @@ export default function MatchReplayButton({ matchReplay }: { matchReplay: string
       variant="outlined"
       disabled={!matchReplay}
       sx={{
-        padding: '2px 4px',
+        padding: `${pxToRem(6)} ${pxToRem(4)}`,
         width: 'min-content',
         '&:hover': {
           a: {

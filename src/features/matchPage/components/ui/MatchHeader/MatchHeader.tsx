@@ -1,7 +1,7 @@
 'use client';
 
 import MatchReplayButton from '@/features/matchPage/components/ui/MatchHeader/MatchReplayButton';
-import { Box, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import {
   MatchHeaderContainer,
   MatchIdAndReplayContainer,
@@ -13,6 +13,7 @@ import { findGameMode } from '@/features/matchPage/utils/find-game-mode';
 import { findLeague } from '@/features/matchPage/utils/find-league';
 import { findRegion } from '@/features/matchPage/utils/find-region';
 import { timeAgo } from '@/utils/timeAgo';
+import { pxToRem } from '@/utils/px-to-rem';
 import type { MatchPageSlice } from '@/features/matchPage/types';
 
 /**
@@ -50,14 +51,12 @@ export default function MatchHeader() {
 
   return (
     <MatchHeaderContainer>
-      <Box>
-        {match.match_id && (
-          <MatchIdAndReplayContainer>
-            <Typography variant="Body/Medium/MD15">Match ID: {match.match_id}</Typography>
-            <MatchReplayButton matchReplay={matchReplay} />
-          </MatchIdAndReplayContainer>
-        )}
-      </Box>
+      {match.match_id && (
+        <MatchIdAndReplayContainer>
+          <Typography variant="Body/Medium/MD15">Match ID: {match.match_id}</Typography>
+          <MatchReplayButton matchReplay={matchReplay} />
+        </MatchIdAndReplayContainer>
+      )}
       <MatchInfoContainer>
         {[
           [matchMode, 'GAME MODE'],
@@ -70,7 +69,12 @@ export default function MatchHeader() {
             data && (
               <MatchDetailsContainer key={section}>
                 <Typography variant="Body/Medium/MD15">{data}</Typography>
-                <Typography variant="Body/Medium/MD15">{section}</Typography>
+                <Typography
+                  variant="Body/Medium/MD15"
+                  sx={{ padding: `${pxToRem(6)} ${pxToRem(0)}` }}
+                >
+                  {section}
+                </Typography>
               </MatchDetailsContainer>
             )
         )}
