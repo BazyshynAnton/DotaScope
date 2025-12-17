@@ -4,6 +4,7 @@ import { borderWithShadow } from '@/styles/common';
 
 export const MatchHeaderContainer = styled('section')(({ theme }) => ({
   marginTop: pxToRem(96),
+  marginBottom: pxToRem(100),
   padding: pxToRem(10),
   display: 'flex',
   justifyContent: 'space-between',

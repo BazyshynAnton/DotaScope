@@ -4,6 +4,7 @@ import MatchSearch from '@/components/ui/MatchSearch/MatchSearch';
 import {
   MatchHeader,
   MatchNotFoundError,
+  MatchOverviewTable,
   useMatchPageDispatch,
   useMatchPageSelector,
   setMatchPageData,
@@ -53,6 +54,7 @@ export default function MatchPageContent({
     <>
       <MatchSearch />
       <MatchHeader />
+      <MatchOverviewTable />
     </>
   );
 }
