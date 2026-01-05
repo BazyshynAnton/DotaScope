@@ -58,6 +58,11 @@ export const globalTheme = createTheme({
       fontWeight: 400,
       lineHeight: '100%',
     },
+    'Body/Medium/MD12': {
+      fontSize: pxToRem(12),
+      fontWeight: 400,
+      lineHeight: '100%',
+    },
     // 'Heading/Medium/MD45': {
     //   fontSize: 45,
     //   fontWeight: 500,

@@ -1,6 +1,19 @@
 import CommonTable from '@/components/ui/CommonTable/CommonTable';
+import HeroAndNickname from '@/features/matchPage/components/ui/MatchOverviewTable/HeroAndNickname';
+import { type MatchPageSlice, useMatchPageSelector } from '@/features/matchPage';
+import { TableRow } from '@mui/material';
 
-export default function MatchOverviewTable() {
+export default function MatchOverviewTable({ isRadiant }: { isRadiant: boolean }) {
+  const { matchPageData } = useMatchPageSelector<MatchPageSlice>((store) => store.matchPageSlice);
+
+  const players = isRadiant
+    ? matchPageData.playersByTeam?.radiant
+    : matchPageData.playersByTeam?.dire;
+
+  if (!players) {
+    return null;
+  }
+
   return (
     <CommonTable
       titles={[
@@ -18,6 +31,14 @@ export default function MatchOverviewTable() {
         'HH/Health restored to heroes',
         'ITEMS/Items built',
       ]}
-    ></CommonTable>
+    >
+      {players.map((player) => {
+        return (
+          <TableRow key={player.account_id}>
+            <HeroAndNickname player={player} />
+          </TableRow>
+        );
+      })}
+    </CommonTable>
   );
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { TextField, Button, TableContainer, TableHead } from '@mui/material';
+import { TextField, Button, TableContainer, TableHead, TableCell } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { pxToRem } from '@/utils/px-to-rem';
 
@@ -91,9 +91,17 @@ export const CommonButton = styled(Button)(({ theme }) => ({
 export const CommonTableContainer = styled(TableContainer)(({ theme }) => ({
   marginTop: pxToRem(50),
   background: theme.palette.bg2,
+  color: theme.palette.text1,
   ...borderWithShadow,
 }));
 
 export const CommonTableHead = styled(TableHead)(({ theme }) => ({
   background: `linear-gradient(270deg,${theme.palette.bg2},${theme.palette.bg4})`,
+}));
+
+export const CommonTableHeadCell = styled(TableCell)(({ theme }) => ({
+  textAlign: 'center',
+  color: theme.palette.text1,
+  ...theme.typography['Body/Medium/MD12'],
+  fontWeight: '700',
 }));

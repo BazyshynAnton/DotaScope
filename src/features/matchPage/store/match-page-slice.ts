@@ -3,9 +3,10 @@ import { filterPlayersByTeam } from '@/features/matchPage/utils/find-players-by-
 import { type DotaConstants, type Match, type MatchPageSlice } from '@/features/matchPage/types';
 
 const initialState: MatchPageSlice = {
-  matchData: {
+  matchPageData: {
     match: null,
     playerProfiles: null,
+    playersByTeam: null,
   },
   constants: null,
 
@@ -17,15 +18,15 @@ const matchPageSlice = createSlice({
   initialState,
   reducers: {
     setMatchPageData: (state: MatchPageSlice, action: PayloadAction<Match>) => {
-      if (state.matchData.match?.match_id !== action.payload.match_id) {
+      if (state.matchPageData.match?.match_id !== action.payload.match_id) {
         state.error = action.payload.patch < 55 ? 'Unsupported Dota 2 version' : null;
 
         if (state.error) {
           return;
         }
 
-        state.matchData.match = action.payload;
-        state.matchData.playersByTeam = filterPlayersByTeam(state.matchData.match);
+        state.matchPageData.match = action.payload;
+        state.matchPageData.playersByTeam = filterPlayersByTeam(state.matchPageData.match);
       }
     },
     setDotaConstants: (state, action: PayloadAction<DotaConstants>) => {

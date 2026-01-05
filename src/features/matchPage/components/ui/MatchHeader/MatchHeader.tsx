@@ -12,7 +12,7 @@ import { useMatchPageSelector } from '@/features/matchPage/hooks/useMatchPageSel
 import { findGameMode } from '@/features/matchPage/utils/find-game-mode';
 import { findLeague } from '@/features/matchPage/utils/find-league';
 import { findRegion } from '@/features/matchPage/utils/find-region';
-import { timeAgo } from '@/utils/timeAgo';
+import { timeAgo } from '@/utils/time-ago';
 import { pxToRem } from '@/utils/px-to-rem';
 import type { MatchPageSlice } from '@/features/matchPage/types';
 
@@ -24,17 +24,17 @@ import type { MatchPageSlice } from '@/features/matchPage/types';
  * @returns {JSX.Element|null}
  */
 export default function MatchHeader() {
-  const { matchData, constants } = useMatchPageSelector<MatchPageSlice>( // TODO: Maybe make it global hook
+  const { matchPageData, constants } = useMatchPageSelector<MatchPageSlice>( // TODO: Maybe make it global hook
     (store) => store.matchPageSlice
   );
 
   // NOTE: At this point they cannot be null
   // this handles in the higher level component "MatchPageContent.tsx"
-  if (!matchData.match || !constants) {
+  if (!matchPageData.match || !constants) {
     return null;
   }
 
-  const { match } = matchData;
+  const { match } = matchPageData;
   const { gameMode, leagues, region } = constants;
 
   const matchMode = findGameMode(match, gameMode);

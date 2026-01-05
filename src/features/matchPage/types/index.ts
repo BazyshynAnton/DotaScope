@@ -57,7 +57,7 @@ export interface MatchPageData {
 }
 
 export interface MatchPageSlice {
-  matchData: MatchPageData;
+  matchPageData: MatchPageData;
   constants: DotaConstants | null;
 
   error: string | null;
@@ -179,6 +179,33 @@ export interface Player {
   };
 }
 
+export interface PlayerHero {
+  name: string;
+  localizedName: string;
+  heroFacet: {
+    icon: string;
+    color: string;
+    colorSingle: string;
+    title: string;
+    description: string;
+  };
+  playerColor: string;
+}
+
+export interface PlayerColors {
+  radiant: {
+    teamNumber: number;
+
+    colors: Colors;
+  };
+
+  dire: {
+    teamNumber: number;
+
+    colors: Colors;
+  };
+}
+
 export interface PicksAndBans {
   isPick: boolean;
   heroId: number;
@@ -276,7 +303,7 @@ export interface League {
   name: string;
 }
 
-export interface CMatchOverview {
+export interface MatchOverview {
   findMatchResult(match: Match): MatchResult;
 
   filterPlayersByTeam(match: Match): PlayersByTeam;

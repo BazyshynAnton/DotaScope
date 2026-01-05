@@ -1,11 +1,16 @@
 import Table from '@mui/material/Table';
-// import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
+import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
 import Tooltip from '@mui/material/Tooltip';
-import { CommonTableContainer, CommonTableHead } from '@/styles/common';
+import { CommonTableContainer, CommonTableHead, CommonTableHeadCell } from '@/styles/common';
 
-export default function CommonTable({ titles }: { titles: string[] }) {
+export default function CommonTable({
+  titles,
+  children,
+}: {
+  titles: string[];
+  children: React.ReactNode;
+}) {
   return (
     <CommonTableContainer>
       <Table>
@@ -16,12 +21,13 @@ export default function CommonTable({ titles }: { titles: string[] }) {
 
               return (
                 <Tooltip key={title} title={tooltip} placement={'top'} arrow>
-                  <TableCell>{title}</TableCell>
+                  <CommonTableHeadCell>{title}</CommonTableHeadCell>
                 </Tooltip>
               );
             })}
           </TableRow>
         </CommonTableHead>
+        <TableBody>{children}</TableBody>
       </Table>
     </CommonTableContainer>
   );

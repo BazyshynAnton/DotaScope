@@ -69,6 +69,7 @@ interface CustomTypography {
   'Body/Bold/MD20': TypographyContent;
   'Body/Medium/MD17': TypographyContent;
   'Body/Medium/MD15': TypographyContent;
+  'Body/Medium/MD12': TypographyContent;
 }
 
 interface TypographyContent {

@@ -54,7 +54,8 @@ export default function MatchPageContent({
     <>
       <MatchSearch />
       <MatchHeader />
-      <MatchOverviewTable />
+      <MatchOverviewTable isRadiant={true} />
+      <MatchOverviewTable isRadiant={false} />
     </>
   );
 }
