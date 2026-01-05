@@ -1,12 +1,12 @@
 import {
   FacetGradientColors,
-  Hero,
+  Heroes,
   Player,
   PlayerColors,
   PlayerHero,
 } from '@/features/matchPage/types';
 
-export function findPlayerHero(player: Player, heroes: Hero[], heroAbilities: unknown): PlayerHero {
+export function findPlayerHero(player: Player, heroes: Heroes, heroAbilities: unknown): PlayerHero {
   const playerHero = {
     name: '',
     localizedName: '',
@@ -71,12 +71,10 @@ function findColor(player: Player, playerHero: PlayerHero): void {
   }
 }
 
-function findHeroName(player: Player, heroList: Hero[], playerHero: PlayerHero): string {
+function findHeroName(player: Player, heroes: Heroes, playerHero: PlayerHero): string {
   let currentHero = '';
 
-  for (let i = 0; i < heroList.length; ++i) {
-    const hero = heroList[i];
-
+  for (const hero of Object.values(heroes)) {
     if (player.hero_id === hero.id) {
       playerHero.name = hero.name;
       playerHero.name = playerHero.name.replace('npc_dota_hero_', '');

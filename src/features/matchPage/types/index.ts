@@ -64,7 +64,7 @@ export interface MatchPageSlice {
 }
 
 export interface DotaConstants {
-  heroes: Hero[];
+  heroes: Heroes;
   heroAbilities: unknown;
   abilityIds: unknown;
   items: Items;
@@ -72,6 +72,10 @@ export interface DotaConstants {
   gameMode: GameMode;
   lobbyType: LobbyType;
   leagues: League[];
+}
+
+export interface Heroes {
+  [key: string]: Hero;
 }
 
 export interface MatchResult {
