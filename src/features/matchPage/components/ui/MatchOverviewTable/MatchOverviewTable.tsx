@@ -42,7 +42,7 @@ export default function MatchOverviewTable({ isRadiant }: { isRadiant: boolean }
     >
       {players.map((player) => {
         return (
-          <TableRow key={player.account_id}>
+          <TableRow key={player.hero_id}>
             <HeroAndNickname player={player} />
           </TableRow>
         );

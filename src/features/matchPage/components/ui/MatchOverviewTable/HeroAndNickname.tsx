@@ -29,6 +29,7 @@ export default function HeroAndNickname({ player }: { player: Player }) {
       <Box sx={{ position: 'relative' }}>
         <Box
           sx={{
+            position: 'relative',
             width: 'min-content',
             height: '30px',
             borderRight: `3px solid ${playerHero.playerColor}`,
@@ -46,7 +47,12 @@ export default function HeroAndNickname({ player }: { player: Player }) {
               alt="Disconnect"
               width={51}
               height={14.9}
-              style={{ position: 'absolute', top: 0, left: 0 }}
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+              }}
             />
           )}
         </Box>
