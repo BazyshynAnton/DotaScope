@@ -1,12 +1,21 @@
-import { Box, TableCell } from '@mui/material';
+import Image from 'next/image';
+import { Box, TableCell, useTheme } from '@mui/material';
 import { type MatchPageSlice, Player } from '@/features/matchPage/types';
 import { findPlayerHero } from '@/features/matchPage/utils/find-player-hero';
 import { useMatchPageSelector } from '@/features/matchPage';
-import Image from 'next/image';
 import { envHelper } from '@/utils/env-helper';
 import { pxToRem } from '@/utils/px-to-rem';
 
+/**
+ * React component
+ *
+ * Implementation of the hero and nickname component
+ *
+ * @param player Player
+ * @returns {JSX.Element|null}
+ */
 export default function HeroAndNickname({ player }: { player: Player }) {
+  const theme = useTheme();
   const { constants } = useMatchPageSelector<MatchPageSlice>((store) => store.matchPageSlice);
 
   if (!constants) {
@@ -16,10 +25,12 @@ export default function HeroAndNickname({ player }: { player: Player }) {
   const playerHero = findPlayerHero(player, constants.heroes, constants.heroAbilities);
 
   return (
-    <TableCell>
+    <TableCell sx={{ display: 'flex', alignItems: 'center', gap: pxToRem(10) }}>
       <Box sx={{ position: 'relative' }}>
         <Box
           sx={{
+            width: 'min-content',
+            height: '30px',
             borderRight: `3px solid ${playerHero.playerColor}`,
           }}
         >
@@ -59,8 +70,8 @@ export default function HeroAndNickname({ player }: { player: Player }) {
         </Box>
         {/*<HeroFacet playerHero={playerHero} />*/}
       </Box>
-      <Box>
-        <Box>{player.personaname ? 'Player' : 'Anonymous'}</Box>
+      <Box sx={{ color: theme.palette.text1 }}>
+        <Box>{player.personaname ? player.personaname : 'Anonymous'}</Box>
       </Box>
     </TableCell>
   );

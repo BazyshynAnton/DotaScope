@@ -3,6 +3,14 @@ import HeroAndNickname from '@/features/matchPage/components/ui/MatchOverviewTab
 import { type MatchPageSlice, useMatchPageSelector } from '@/features/matchPage';
 import { TableRow } from '@mui/material';
 
+/**
+ * React component
+ *
+ * Implementation of the match overview table
+ *
+ * @param isRadiant Bool value that indicates side
+ * @returns {JSX.Element|null}
+ */
 export default function MatchOverviewTable({ isRadiant }: { isRadiant: boolean }) {
   const { matchPageData } = useMatchPageSelector<MatchPageSlice>((store) => store.matchPageSlice);
 

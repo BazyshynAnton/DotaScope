@@ -9,7 +9,11 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'DotaScope',
   description: 'Dota 2 Data Platform',
-  // icons: {}
+  icons: {
+    apple: ['/favicon/apple-touch-icon.png?v=4'],
+    icon: ['/favicon/favicon.ico?v=4'],
+    shortcut: ['/favicon/apple-touch-icon.png'],
+  },
 };
 
 /**

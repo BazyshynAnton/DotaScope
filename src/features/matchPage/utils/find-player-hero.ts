@@ -6,6 +6,14 @@ import {
   PlayerHero,
 } from '@/features/matchPage/types';
 
+/**
+ * Returns player's hero
+ *
+ * @param player Player
+ * @param heroes Heroes constants
+ * @param heroAbilities Hero Abilities constants
+ * @returns {PlayerHero}
+ */
 export function findPlayerHero(player: Player, heroes: Heroes, heroAbilities: unknown): PlayerHero {
   const playerHero = {
     name: '',
