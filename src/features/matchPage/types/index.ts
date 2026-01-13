@@ -50,7 +50,6 @@ export interface Match {
 // Match.tsx
 export interface MatchPageData {
   match: Match | null;
-  playerProfiles: PlayerProfile[] | null;
 
   // optional
   playersByTeam?: PlayersByTeam | null;
@@ -58,6 +57,7 @@ export interface MatchPageData {
 
 export interface MatchPageSlice {
   matchPageData: MatchPageData;
+  playerProfiles: PlayerProfile[] | null;
   constants: DotaConstants | null;
 
   error: string | null;
@@ -183,6 +183,16 @@ export interface Player {
   };
 }
 
+export interface PlayerDetails {
+  profileInfo: {
+    avatar: string;
+    rankIcon: string;
+    profileUrl: string;
+  };
+  rankTier: number | null;
+  leaderboardRank: number | null;
+}
+
 export interface PlayerHero {
   name: string;
   localizedName: string;
@@ -228,9 +238,9 @@ export interface PlayerProfile {
   profile: {
     account_id: number;
     avatar: string;
-    avatarMedium: string;
-    avatarFull: string;
-    profileUrl: string;
+    avatarmedium: string;
+    avatarfull: string;
+    profileurl: string;
   };
   rank_tier: number | null;
   leaderboard_rank: number | null;

@@ -8,10 +8,12 @@ import {
   useMatchPageDispatch,
   useMatchPageSelector,
   setMatchPageData,
+  setPlayerProfiles,
   setDotaConstants,
   type Match,
   type DotaConstants,
   type MatchPageSlice,
+  type PlayerProfile,
 } from '@/features/matchPage';
 import { useEffect } from 'react';
 import type { FetchError } from '@/types';
@@ -25,9 +27,11 @@ import type { FetchError } from '@/types';
  */
 export default function MatchPageContent({
   matchData,
+  playerProfiles,
   dotaConstants,
 }: {
   matchData: Match | FetchError;
+  playerProfiles: PlayerProfile[] | null;
   dotaConstants: DotaConstants;
 }) {
   const { error: matchPageSliceError } = useMatchPageSelector<MatchPageSlice>(
@@ -41,8 +45,9 @@ export default function MatchPageContent({
     }
 
     dispatch(setMatchPageData(matchData));
+    dispatch(setPlayerProfiles(playerProfiles));
     dispatch(setDotaConstants(dotaConstants));
-  }, [dispatch, matchData, dotaConstants]);
+  }, [dispatch, matchData, dotaConstants, playerProfiles]);
 
   if ('error' in matchData || matchPageSliceError) {
     return <MatchNotFoundError />;

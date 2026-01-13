@@ -1,13 +1,18 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { filterPlayersByTeam } from '@/features/matchPage/utils/find-players-by-team';
-import { type DotaConstants, type Match, type MatchPageSlice } from '@/features/matchPage/types';
+import {
+  type DotaConstants,
+  type Match,
+  type MatchPageSlice,
+  PlayerProfile,
+} from '@/features/matchPage/types';
 
 const initialState: MatchPageSlice = {
   matchPageData: {
     match: null,
-    playerProfiles: null,
     playersByTeam: null,
   },
+  playerProfiles: null,
   constants: null,
 
   error: null,
@@ -29,12 +34,17 @@ const matchPageSlice = createSlice({
         state.matchPageData.playersByTeam = filterPlayersByTeam(state.matchPageData.match);
       }
     },
+
+    setPlayerProfiles: (state: MatchPageSlice, action: PayloadAction<PlayerProfile[] | null>) => {
+      state.playerProfiles = action.payload;
+    },
+
     setDotaConstants: (state, action: PayloadAction<DotaConstants>) => {
       state.constants = action.payload;
     },
   },
 });
 
-export const { setMatchPageData, setDotaConstants } = matchPageSlice.actions;
+export const { setMatchPageData, setPlayerProfiles, setDotaConstants } = matchPageSlice.actions;
 
 export default matchPageSlice.reducer;

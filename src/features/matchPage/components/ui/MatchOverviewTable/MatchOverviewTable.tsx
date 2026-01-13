@@ -1,7 +1,8 @@
 import CommonTable from '@/components/ui/CommonTable/CommonTable';
+import RankAndAvatar from '@/features/matchPage/components/ui/MatchOverviewTable/RankAndAvatar';
 import HeroAndNickname from '@/features/matchPage/components/ui/MatchOverviewTable/HeroAndNickname';
+import { TableRow, TableCell } from '@mui/material';
 import { type MatchPageSlice, useMatchPageSelector } from '@/features/matchPage';
-import { TableRow } from '@mui/material';
 
 /**
  * React component
@@ -43,7 +44,12 @@ export default function MatchOverviewTable({ isRadiant }: { isRadiant: boolean }
       {players.map((player) => {
         return (
           <TableRow key={player.hero_id}>
-            <HeroAndNickname player={player} />
+            <TableCell
+              sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
+            >
+              <HeroAndNickname player={player} />
+              <RankAndAvatar player={player} />
+            </TableCell>
           </TableRow>
         );
       })}

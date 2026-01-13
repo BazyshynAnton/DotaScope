@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import { Box, TableCell, useTheme } from '@mui/material';
-import { type MatchPageSlice, Player } from '@/features/matchPage/types';
+import { Box, useTheme } from '@mui/material';
 import { findPlayerHero } from '@/features/matchPage/utils/find-player-hero';
 import { useMatchPageSelector } from '@/features/matchPage';
 import { envHelper } from '@/utils/env-helper';
 import { pxToRem } from '@/utils/px-to-rem';
+import type { MatchPageSlice, Player } from '@/features/matchPage/types';
 
 /**
  * React component
@@ -25,7 +25,7 @@ export default function HeroAndNickname({ player }: { player: Player }) {
   const playerHero = findPlayerHero(player, constants.heroes, constants.heroAbilities);
 
   return (
-    <TableCell sx={{ display: 'flex', alignItems: 'center', gap: pxToRem(10) }}>
+    <Box sx={{ display: 'flex', alignItems: 'center', gap: pxToRem(10) }}>
       <Box sx={{ position: 'relative' }}>
         <Box
           sx={{
@@ -79,6 +79,6 @@ export default function HeroAndNickname({ player }: { player: Player }) {
       <Box sx={{ color: theme.palette.text1 }}>
         <Box>{player.personaname ? player.personaname : 'Anonymous'}</Box>
       </Box>
-    </TableCell>
+    </Box>
   );
 }

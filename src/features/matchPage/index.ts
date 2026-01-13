@@ -4,8 +4,17 @@ import MatchNotFoundError from '@/features/matchPage/components/ui/MatchNotFound
 import MatchOverviewTable from '@/features/matchPage/components/ui/MatchOverviewTable/MatchOverviewTable';
 import { useMatchPageDispatch } from '@/features/matchPage/hooks/useMatchPageDispatch';
 import { useMatchPageSelector } from '@/features/matchPage/hooks/useMatchPageSelector';
-import { setMatchPageData, setDotaConstants } from '@/features/matchPage/store/match-page-slice';
-import type { Match, DotaConstants, MatchPageSlice } from '@/features/matchPage/types';
+import {
+  setMatchPageData,
+  setPlayerProfiles,
+  setDotaConstants,
+} from '@/features/matchPage/store/match-page-slice';
+import type {
+  Match,
+  DotaConstants,
+  MatchPageSlice,
+  PlayerProfile,
+} from '@/features/matchPage/types';
 
 export {
   MatchHeader,
@@ -15,8 +24,10 @@ export {
   useMatchPageDispatch,
   useMatchPageSelector,
   setMatchPageData,
+  setPlayerProfiles,
   setDotaConstants,
   type Match,
   type DotaConstants,
   type MatchPageSlice,
+  type PlayerProfile,
 };

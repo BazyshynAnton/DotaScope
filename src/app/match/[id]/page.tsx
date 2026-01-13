@@ -1,7 +1,12 @@
 import MatchPageContent from '@/components/pages/MatchPageContent/MatchPageContent';
 
 import { OpenDota } from 'opendota.js';
-import { StoreProvider, type Match, type DotaConstants } from '@/features/matchPage';
+import {
+  StoreProvider,
+  type Match,
+  type DotaConstants,
+  type PlayerProfile,
+} from '@/features/matchPage';
 import { FetchError } from '@/types';
 
 /**
@@ -15,6 +20,11 @@ export default async function MatchPage({ params }: { params: { id: string } }) 
   const { id: matchID } = await params;
   const openDota = new OpenDota();
   const matchData: Match | FetchError = await openDota.getMatch(parseInt(matchID));
+  const playerProfiles: PlayerProfile[] | null = !('error' in matchData)
+    ? await Promise.all(
+        matchData.players.map(async (player) => await openDota.getPlayer(player.account_id))
+      )
+    : null;
   const dotaConstants: DotaConstants = {
     heroes: await openDota.getConstants('heroes'),
     heroAbilities: await openDota.getConstants('hero_abilities'),
@@ -28,7 +38,11 @@ export default async function MatchPage({ params }: { params: { id: string } }) 
 
   return (
     <StoreProvider>
-      <MatchPageContent matchData={matchData} dotaConstants={dotaConstants} />
+      <MatchPageContent
+        matchData={matchData}
+        playerProfiles={playerProfiles}
+        dotaConstants={dotaConstants}
+      />
     </StoreProvider>
   );
 }
