@@ -122,6 +122,7 @@ export interface Player {
   aghanims_shard: number;
   moonshard: number;
   hero_damage: number;
+  rune_pickups: number;
   tower_damage: number;
   hero_healing: number;
   gold: number;

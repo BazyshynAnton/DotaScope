@@ -1,10 +1,18 @@
 import Image from 'next/image';
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import { useMatchPageSelector } from '@/features/matchPage';
 import { findPlayerDetails } from '@/features/matchPage/utils/find-player-details';
 import { pxToRem } from '@/utils/px-to-rem';
 import type { MatchPageSlice, Player } from '@/features/matchPage/types';
 
+/**
+ * React component
+ *
+ * Implementation of the rank and avatar
+ *
+ * @param player Player
+ * @returns {JSX.Element}
+ */
 export default function RankAndAvatar({ player }: { player: Player }) {
   const { playerProfiles } = useMatchPageSelector<MatchPageSlice>((store) => store.matchPageSlice);
 
@@ -38,7 +46,7 @@ export default function RankAndAvatar({ player }: { player: Player }) {
               color: '#fff',
             }}
           >
-            {leaderboardRank}
+            <Typography variant="Body/Medium/MD12">{leaderboardRank}</Typography>
           </Box>
         )}
       </Box>
