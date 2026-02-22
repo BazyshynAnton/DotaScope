@@ -16,24 +16,24 @@ import type { Player } from '@/features/matchPage/types';
  */
 export default function PlayerStatistic({ player }: { player: Player }) {
   const data = [
-    player.kills,
-    player.deaths,
-    player.assists,
-    player.last_hits,
-    player.denies,
-    player.net_worth,
-    player.gold_per_min,
-    player.xp_per_min,
-    player.hero_damage,
-    player.tower_damage,
-    player.hero_healing,
+    { reactKey: 'kills', value: player.kills },
+    { reactKey: 'deaths', value: player.deaths },
+    { reactKey: 'assists', value: player.assists },
+    { reactKey: 'last_hits', value: player.last_hits },
+    { reactKey: 'denies', value: player.denies },
+    { reactKey: 'net_worth', value: player.net_worth },
+    { reactKey: 'gold_per_min', value: player.gold_per_min },
+    { reactKey: 'xp_per_min', value: player.xp_per_min },
+    { reactKey: 'hero_damage', value: player.hero_damage },
+    { reactKey: 'tower_damage', value: player.tower_damage },
+    { reactKey: 'hero_healing', value: player.hero_healing },
   ];
 
   return (
     <>
-      {data.map((el) => (
-        <PlayerStatisticTableCell key={el}>
-          <PlayerStatisticBox>{el}</PlayerStatisticBox>
+      {data.map(({ reactKey, value }) => (
+        <PlayerStatisticTableCell key={reactKey}>
+          <PlayerStatisticBox>{value}</PlayerStatisticBox>
         </PlayerStatisticTableCell>
       ))}
     </>
