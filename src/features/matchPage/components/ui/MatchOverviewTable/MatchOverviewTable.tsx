@@ -45,7 +45,7 @@ export default function MatchOverviewTable({ isRadiant }: { isRadiant: boolean }
     >
       {players.map((player) => {
         return (
-          <TableRow key={player.hero_id}>
+          <TableRow key={player.hero_id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
             <TableCell>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <HeroAndNickname player={player} />

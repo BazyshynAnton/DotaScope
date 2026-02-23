@@ -1,10 +1,17 @@
 import Image from 'next/image';
+import React from 'react';
 
 import { TableCell, Box } from '@mui/material';
 import { findItem } from '@/features/matchPage/utils/find-item';
 import { useMatchPageSelector } from '@/features/matchPage';
 import { pxToRem } from '@/utils/px-to-rem';
 import { envHelper } from '@/utils/env-helper';
+import { findItemTiming } from '@/features/matchPage/utils/find-item-timing';
+
+import {
+  BackpackSlotsItemTiming,
+  MainSlotsItemTiming,
+} from '@/features/matchPage/styles/item-slots';
 
 import type { Items, MatchPageSlice, Player } from '@/features/matchPage/types';
 
@@ -41,8 +48,20 @@ export default function ItemSlots({ player }: { player: Player }) {
   return (
     <TableCell>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: pxToRem(3) }}>
-        <Slots slots={mainSlots} items={constants.items} imgWidth={37} imgHeight={27} />
-        <Slots slots={backpackSlots} items={constants.items} imgWidth={27} imgHeight={20} />
+        <Slots
+          slots={mainSlots}
+          player={player}
+          items={constants.items}
+          imgWidth={37}
+          imgHeight={27}
+        />
+        <Slots
+          slots={backpackSlots}
+          player={player}
+          items={constants.items}
+          imgWidth={27}
+          imgHeight={20}
+        />
       </Box>
     </TableCell>
   );
@@ -50,15 +69,19 @@ export default function ItemSlots({ player }: { player: Player }) {
 
 function Slots({
   slots,
+  player,
   items,
   imgWidth,
   imgHeight,
 }: {
   slots: { reactKey: string; itemId: number }[];
+  player: Player;
   items: Items;
   imgWidth: number;
   imgHeight: number;
 }) {
+  const isMainSlots = slots.length === 6;
+
   return (
     <Box
       sx={{
@@ -72,16 +95,22 @@ function Slots({
         }
 
         const itemName = findItem(itemId, items);
+        const itemTiming = findItemTiming(player, itemName);
 
         return (
-          <Image
-            key={reactKey}
-            src={`${envHelper(process.env.NEXT_PUBLIC_ITEM_ICON_URL)}/${itemName}.png`}
-            alt={itemName}
-            width={imgWidth}
-            height={imgHeight}
-            style={{ border: '1px solid rgba(255, 255, 255, 0.1)' }}
-          />
+          <Box key={reactKey}>
+            <Box sx={{ position: 'relative', width: imgWidth, height: imgHeight }}>
+              <Image
+                src={`${envHelper(process.env.NEXT_PUBLIC_ITEM_ICON_URL)}/${itemName}.png`}
+                alt={itemName}
+                width={imgWidth}
+                height={imgHeight}
+                style={{ border: '1px solid rgba(255, 255, 255, 0.1)' }}
+              />
+              {isMainSlots && <MainSlotsItemTiming>{itemTiming}</MainSlotsItemTiming>}
+            </Box>
+            {!isMainSlots && <BackpackSlotsItemTiming>{itemTiming}</BackpackSlotsItemTiming>}
+          </Box>
         );
       })}
     </Box>
