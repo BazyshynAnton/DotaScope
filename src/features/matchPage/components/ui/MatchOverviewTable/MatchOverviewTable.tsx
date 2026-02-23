@@ -3,7 +3,7 @@ import RankAndAvatar from '@/features/matchPage/components/ui/MatchOverviewTable
 import HeroAndNickname from '@/features/matchPage/components/ui/MatchOverviewTable/HeroAndNickname';
 import PlayerStatistic from '@/features/matchPage/components/ui/MatchOverviewTable/PlayerStatistic';
 import ItemSlots from '@/features/matchPage/components/ui/MatchOverviewTable/ItemSlots';
-import { TableRow, TableCell } from '@mui/material';
+import { TableRow, TableCell, Box } from '@mui/material';
 import { type MatchPageSlice, useMatchPageSelector } from '@/features/matchPage';
 
 /**
@@ -46,11 +46,11 @@ export default function MatchOverviewTable({ isRadiant }: { isRadiant: boolean }
       {players.map((player) => {
         return (
           <TableRow key={player.hero_id}>
-            <TableCell
-              sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
-            >
-              <HeroAndNickname player={player} />
-              <RankAndAvatar player={player} />
+            <TableCell>
+              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <HeroAndNickname player={player} />
+                <RankAndAvatar player={player} />
+              </Box>
             </TableCell>
             <PlayerStatistic player={player} />
             <ItemSlots player={player} />
