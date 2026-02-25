@@ -13,8 +13,8 @@ export function findPlayerDetails(
 ): PlayerDetails {
   const playerDetails: PlayerDetails = {
     profileInfo: {
-      avatar: '',
-      rankIcon: '',
+      avatar: '/images/players/anonymous.jpg',
+      rankIcon: '/images/ranks/00.png',
       profileUrl: '',
     },
     rankTier: null,

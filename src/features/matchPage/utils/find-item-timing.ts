@@ -8,6 +8,10 @@ import type { Player } from '@/features/matchPage/types';
  * @returns {string}
  */
 export function findItemTiming(player: Player, itemName: string) {
+  if (!player.purchase_log) {
+    return '';
+  }
+
   for (const purchase of player.purchase_log) {
     if (itemName !== purchase.key) {
       continue;
