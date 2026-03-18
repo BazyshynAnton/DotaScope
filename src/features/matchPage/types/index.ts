@@ -72,7 +72,18 @@ export interface DotaConstants {
   gameMode: GameMode;
   lobbyType: LobbyType;
   leagues: League[];
+  permanentBuffs: PermanentBuffs;
 }
+
+export interface PermanentBuffs {
+  [key: string]: string;
+}
+
+export type PlayerPermanentBuffs = {
+  permanent_buff: number;
+  stack_count: number;
+  grant_time: number;
+}[];
 
 export interface Heroes {
   [key: string]: Hero;
@@ -92,6 +103,7 @@ export interface Player {
   team_slot: number;
   hero_id: number;
   hero_variant: number;
+  permanent_buffs: PlayerPermanentBuffs;
   item_0: number;
   item_1: number;
   item_2: number;

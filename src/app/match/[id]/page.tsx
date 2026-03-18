@@ -34,6 +34,7 @@ export default async function MatchPage({ params }: { params: { id: string } }) 
     gameMode: await openDota.getConstants('game_mode'),
     lobbyType: await openDota.getConstants('lobby_type'),
     leagues: await openDota.getLeagues(),
+    permanentBuffs: await openDota.getConstants('permanent_buffs'),
   };
 
   return (

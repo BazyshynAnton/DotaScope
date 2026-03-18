@@ -40,7 +40,7 @@ export default function MatchOverviewTable({ isRadiant }: { isRadiant: boolean }
         'HD/Damage dealt to heroes',
         'TD/Damage dealt to buildings',
         'HH/Health restored to heroes',
-        'ITEMS/Items built',
+        'ITEMS & BUFFS/Items built and hero buffs',
       ]}
     >
       {players.map((player) => {

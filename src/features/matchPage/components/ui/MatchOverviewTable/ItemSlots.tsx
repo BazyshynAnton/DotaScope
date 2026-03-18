@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
+import Buffs from './Buffs';
 
 import { TableCell, Box } from '@mui/material';
 import { findItem } from '@/features/matchPage/utils/find-item';
@@ -48,6 +49,7 @@ export default function ItemSlots({ player }: { player: Player }) {
   return (
     <TableCell>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: pxToRem(3) }}>
+        <Buffs player={player} />
         <Slots
           slots={mainSlots}
           player={player}
@@ -94,7 +96,8 @@ function Slots({
           return null;
         }
 
-        const itemName = findItem(itemId, items);
+        const currItemName = findItem(itemId, items);
+        const itemName = !currItemName.includes('recipe') ? currItemName : 'recipe';
         const itemTiming = findItemTiming(player, itemName);
 
         return (
