@@ -8,6 +8,10 @@ import type { Match, GameMode } from '@/features/matchPage/types';
  * @returns {string}
  */
 export function findGameMode(match: Match, gameMode: GameMode): string {
+  if (!gameMode[match.game_mode]) {
+    return '';
+  }
+
   const currMode = gameMode[match.game_mode].name.replace('game_mode_', '').replace('_', ' ') || '';
 
   if (!currMode) return '';
