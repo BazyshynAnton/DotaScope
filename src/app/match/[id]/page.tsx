@@ -16,15 +16,19 @@ import { FetchError } from '@/types';
  *
  * @returns {JSX.Element}
  */
-export default async function MatchPage({ params }: { params: { id: string } }) {
+export default async function MatchPage({ params }: { params: Promise<{ id: string }> }) {
   const { id: matchID } = await params;
+
   const openDota = new OpenDota();
+
   const matchData: Match | FetchError = await openDota.getMatch(parseInt(matchID));
+
   const playerProfiles: PlayerProfile[] | null = !('error' in matchData)
     ? await Promise.all(
         matchData.players.map(async (player) => await openDota.getPlayer(player.account_id))
       )
     : null;
+
   const dotaConstants: DotaConstants = {
     heroes: await openDota.getConstants('heroes'),
     heroAbilities: await openDota.getConstants('hero_abilities'),
