@@ -15,6 +15,7 @@ import {
 } from '@/features/matchPage/styles/item-slots';
 
 import type { Items, MatchPageSlice, Player } from '@/features/matchPage/types';
+import ItemTooltip from '@/features/matchPage/components/ui/MatchOverviewTable/ItemTooltip';
 
 /**
  * React component
@@ -102,16 +103,18 @@ function Slots({
 
         return (
           <Box key={reactKey}>
-            <Box sx={{ position: 'relative', width: imgWidth, height: imgHeight }}>
-              <Image
-                src={`${envHelper(process.env.NEXT_PUBLIC_ITEM_ICON_URL)}/${itemName}.png`}
-                alt={itemName}
-                width={imgWidth}
-                height={imgHeight}
-                style={{ border: '1px solid rgba(255, 255, 255, 0.1)' }}
-              />
-              {isMainSlots && <MainSlotsItemTiming>{itemTiming}</MainSlotsItemTiming>}
-            </Box>
+            <ItemTooltip>
+              <Box sx={{ position: 'relative', width: imgWidth, height: imgHeight }}>
+                <Image
+                  src={`${envHelper(process.env.NEXT_PUBLIC_ITEM_ICON_URL)}/${itemName}.png`}
+                  alt={itemName}
+                  width={imgWidth}
+                  height={imgHeight}
+                  style={{ border: '1px solid rgba(255, 255, 255, 0.1)' }}
+                />
+                {isMainSlots && <MainSlotsItemTiming>{itemTiming}</MainSlotsItemTiming>}
+              </Box>
+            </ItemTooltip>
             {!isMainSlots && <BackpackSlotsItemTiming>{itemTiming}</BackpackSlotsItemTiming>}
           </Box>
         );

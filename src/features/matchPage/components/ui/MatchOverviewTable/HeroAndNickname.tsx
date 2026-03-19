@@ -77,7 +77,9 @@ export default function HeroAndNickname({ player }: { player: Player }) {
         {/*<HeroFacet playerHero={playerHero} />*/}
       </Box>
       <Box sx={{ color: theme.palette.text1 }}>
-        <Box>{player.personaname ? player.personaname : 'Anonymous'}</Box>
+        <Box>
+          {player.name ? player.name : player.personaname ? player.personaname : 'Anonymous'}
+        </Box>
       </Box>
     </Box>
   );
